@@ -1,5 +1,13 @@
 {
-    "require": {
-        "slim/slim": "2.*"
-    }
+	"require": {
+		"slim/slim": "2.*",
+		"zeuxisoo/slim-whoops": "0.2.0",
+		"filp/whoops": "1.1.2",
+		"illuminate/database": "4.2.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/"
+		}
+	}
 }
