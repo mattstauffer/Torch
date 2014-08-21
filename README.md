@@ -1,19 +1,19 @@
 # Illuminate Slim
 
-Using a naked Slim project to test out bootstraps for Illuminate packages.
+Using a bare Slim project to test out bootstraps for Illuminate packages.
 
 ## Usage
 At the moment, the project is divided into many directories beneath public which will each contain a Slim index file. Navigate to that directory in your terminal and run the following to serve a web site from that directory:
 
 ```bash
-php -S localhost:8000
+$ php -S localhost:8000
 ```
 
-Now you can visit http://localhost:8000/ in your browser to view the output of each.
+Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of each.
 
 ## Packages
 
-### Started or Done
+### In Progress
  * [Eloquent](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/eloquent)
 
 ### Planned
