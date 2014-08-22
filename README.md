@@ -13,8 +13,9 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
-### In Progress
- * [Database](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/databasel)
+### In Progress/Complete
+ * [Database](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/database)
+ * [Support](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/support)
 
 ### Planned
  * Pagination
