@@ -26,6 +26,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * Mail
  * Validation
  * Translation
+ * Artisan
 
 ## Thanks
 Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
