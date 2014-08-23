@@ -50,7 +50,7 @@ $app->get('/', function () {
 	// Use it
 	echo '<pre>';
 
-	$user = Capsule::table('users')->where('id', '=', 1)->get();
+	$user = Capsule::table('users')->where('id', 1)->get();
 
 	var_dump($user);
 

@@ -4,7 +4,9 @@
 		"zeuxisoo/slim-whoops": "0.2.0",
 		"filp/whoops": "1.1.2",
 		"illuminate/database": "4.2.8",
-		"illuminate/support": "4.2.8"
+		"illuminate/support": "4.2.8",
+		"illuminate/session": "4.2.8",
+		"illuminate/filesystem": "4.2.8"
 	},
 	"autoload": {
 		"psr-4": {

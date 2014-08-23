@@ -13,15 +13,16 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
-### In Progress/Complete
+### Done/In Progress
  * [Database](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/database)
  * [Support](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/support)
+ * [Cache](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/cache)
 
 ### Planned
+ * Session
  * Pagination
  * IOC
  * Cache
- * Session
  * HTTP
  * Queue
  * Mail
