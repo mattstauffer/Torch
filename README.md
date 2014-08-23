@@ -1,4 +1,4 @@
-# Illuminate Slim
+# Illuminate Non-Laravel
 
 Using a bare Slim project to test out bootstraps for Illuminate packages.
 
