@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9a5003e1fb45273a3bac7eef7a2e0721",
+    "hash": "f449bbded08cce4469c855a84b644fbf",
     "packages": [
         {
             "name": "filp/whoops",
@@ -112,6 +112,49 @@
                 }
             ],
             "time": "2014-08-05 10:44:40"
+        },
+        {
+            "name": "illuminate/config",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/config.git",
+                "reference": "03de040d413800bd3c672a484202bc8b355b6f9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/config/zipball/03de040d413800bd3c672a484202bc8b355b6f9b",
+                "reference": "03de040d413800bd3c672a484202bc8b355b6f9b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "4.2.*",
+                "illuminate/support": "4.2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Config": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-07-15 11:11:21"
         },
         {
             "name": "illuminate/container",
@@ -1011,11 +1054,21 @@
             "time": "2014-04-02 04:57:23"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
 }
