@@ -18,11 +18,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Support](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/support)
  * [Cache](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/cache)
  * [Config](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/config)
+ * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
 
 ### Planned
  * Session
  * Pagination
- * IOC
  * Routing
  * HTTP
  * Queue
