@@ -1,6 +1,6 @@
 # Illuminate Non-Laravel
 
-Using a bare Slim project to test out bootstraps for Illuminate packages.
+Showing a simplest-use example for using each Illuminate component in non-Laravel applications.
 
 ## Usage
 At the moment, the project is divided into many directories beneath public which will each contain a Slim index file. Navigate to that directory in your terminal and run the following to serve a web site from that directory:
@@ -17,13 +17,13 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Database](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/database)
  * [Support](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/support)
  * [Cache](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/cache)
+ * [Config](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/config)
 
 ### Planned
  * Session
  * Pagination
  * IOC
  * Routing
- * Config
  * HTTP
  * Queue
  * Mail
@@ -31,5 +31,12 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * Translation
  * Artisan
 
+## Contributing
+A few important notes:
+
+ 1. The imagined end user is a CodeIgniter developer copying the route closure directly into a project, so try to avoid using any Slim conventions and use as little code outside the closure as possible.
+ 2. While some components would be *easier* to implement with a Laravel-style Application instance and a fuller bootstrap, I'd prefer we implement as many as possible *without* loading Laravel's Service Providers.
+ 3. Some components will require a bootstrap, and I hope we can come up with a Best-Practice bootstrap and Laravel-style Application instance for loading Service Providers, etc.
+
 ## Thanks
-Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
+Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and anyone who's submitted PRs, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
