@@ -20,32 +20,28 @@ $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 /* Config path */
-$app->configPath = __DIR__ . '/config';
+$configPath = __DIR__ . '/config';
 
-$app->container->singleton('files', function () {
-    return new Filesystem;
-});
 
-$app->container->singleton('loader', function ($app) {
-    return new FileLoader($app->files, $app->configPath);
-});
-
-$app->container->singleton('config', function ($app) {
-    return new Repository($app->loader, ENVIRONMENT);
-});
-
-$app->get('/', function () use ($app)
+$app->get('/', function () use ($configPath)
 {
+	// Init
+	$files = new Filesystem;
+
+	$loader = new FileLoader($files, $configPath);
+
+	$config = new Repository($loader, ENVIRONMENT);
+
     // Get config using the get method
-    echo "This is coming from config/app.php: <hr>" . $app->config->get('app.siteName') . "<br><br><br>";
+    echo "This is coming from config/app.php: <hr>" . $config->get('app.siteName') . "<br><br><br>";
 
     // Get config using ArrayAccess
-    echo "This is coming from config/local/settings.php: <hr>" . $app->config['settings.user'] . "<br><br>";
+    echo "This is coming from config/local/settings.php: <hr>" . $config['settings.user'] . "<br><br>";
 
     // Set a config
-    $app->config->set('settings.greeting', 'Hello there how are you?');
+    $config->set('settings.greeting', 'Hello there how are you?');
 
-    echo "Set using config->set: <hr>" . $app->config->get('settings.greeting');
+    echo "Set using config->set: <hr>" . $config->get('settings.greeting');
 });
 
 $app->run();
