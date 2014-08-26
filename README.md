@@ -3,7 +3,7 @@
 Showing a simplest-use example for using each Illuminate component in non-Laravel applications.
 
 ## Usage
-At the moment, the project is divided into many directories beneath public which will each contain a Slim index file. Navigate to that directory in your terminal and run the following to serve a web site from that directory:
+At the moment, the project is divided into many directories beneath public which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
 
 ```bash
 $ php -S localhost:8000
@@ -19,11 +19,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Cache](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/cache)
  * [Config](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/config)
  * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
+ * [Routing](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/routing)
 
 ### Planned
  * Session
  * Pagination
- * Routing
  * HTTP
  * Queue
  * Mail
@@ -39,4 +39,4 @@ A few important notes:
  3. Some components will require a bootstrap, and I hope we can come up with a Best-Practice bootstrap and Laravel-style Application instance for loading Service Providers, etc.
 
 ## Thanks
-Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and anyone who's submitted PRs, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
+Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and anyone who's submitted PRs, and Mohammad Gufran's blog posts on Config and Routing, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
