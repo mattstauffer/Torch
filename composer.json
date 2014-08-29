@@ -10,7 +10,7 @@
 		"illuminate/config": "4.2.8",
 		"illuminate/routing": "4.2.8",
 		"illuminate/events": "4.2.8",
-        "illuminate/translation": "4.2.8"
+        	"illuminate/translation": "4.2.8"
 	},
 	"autoload": {
 		"psr-4": {
