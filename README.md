@@ -20,6 +20,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Config](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/config)
  * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
  * [Routing](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/routing)
+ * [Translation](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/translation)
 
 ### Planned
  * Session
@@ -28,7 +29,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * Queue
  * Mail
  * Validation
- * Translation
  * Artisan
 
 ## Contributing
