@@ -1,45 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Use me right?
-|--------------------------------------------------------------------------
-*/
-
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Filesystem\Filesystem;
-use Slim\Slim;
-use Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware;
-
-
-/*
-|--------------------------------------------------------------------------
-| Composer: "illuminate/translation": "4.2.8"
-|--------------------------------------------------------------------------
-*/
 
 require_once '../../vendor/autoload.php';
 
+/**
+ * Illuminate/translation
+ *
+ * Translate your applications with ease
+ *
+ * Requires: illuminate/filesystem
+ *
+ * @source https://github.com/illuminate/translation
+ * @author Robin Malfait
+ */
 
-/*
-|--------------------------------------------------------------------------
-| Instantiate it
-|--------------------------------------------------------------------------
-*/
+$app = new Slim\Slim();
+$app->add(new Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
-$app = new Slim();
-$app->add(new WhoopsMiddleware);
+$app->get('/', function() {
 
-
-/*
-|--------------------------------------------------------------------------
-| Make things work!
-|--------------------------------------------------------------------------
-*/
-
-$app->get('/', function()
-{
     /* Getting the file loader ready */
     $loader = new FileLoader(new Filesystem(), './lang');
 
@@ -54,12 +36,5 @@ $app->get('/', function()
     echo "English: " . $transEnglish->get('talk.conclusion') . "\n";
     echo "Dutch:   " . $transDutch->get('talk.conclusion');
 });
-
-
-/*
-|--------------------------------------------------------------------------
-| Boot it
-|--------------------------------------------------------------------------
-*/
 
 $app->run();
