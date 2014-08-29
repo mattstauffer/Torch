@@ -67,6 +67,9 @@ $app->get('/', function () {
 	var_dump($session->all());
 
 	$driver->save();
+
+	// @todo: Get illuminate http component, attach cookie to it, etc.
+	// @todo: $response->send();
 });
 
 $app->run();
