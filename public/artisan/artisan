@@ -1,0 +1,61 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * This file is effectively the same as Laravel's artisan, but modified for use in CodeIgniter
+ *
+ * @author Jan Hartigan (treeface)
+ *
+ * https://github.com/laravel/laravel/blob/master/artisan
+ */
+
+// set the request data
+$_SERVER['REQUEST_URI'] = '/home/artisan';
+$_SERVER['SERVER_NAME'] = gethostname();
+$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+$args = $_SERVER['argv'];
+$_SERVER['argv'] = array('index.php', 'home', 'artisan');
+
+// run codeigniter, including setting up the composer autoloader
+require __DIR__.'/public/index.php';
+
+// set the args back after codeigniter has had its fun
+$_SERVER['argv'] = $args;
+
+/**
+ * Fake the application instance with a container instance and set any necessary values on it
+ */
+$app = Container::make('container');
+$app['exception'] = null;
+$app['path.app'] = __DIR__ . '/application/';
+$app['path.public'] = __DIR__ . '/';
+$app['path.base'] = __DIR__ . '/';
+$app['path.storage'] = __DIR__ . '/storage/';
+
+/*
+|--------------------------------------------------------------------------
+| Load The Artisan Console Application
+|--------------------------------------------------------------------------
+|
+| We'll need to run the script to load and return the Artisan console
+| application. We keep this in its own script so that we will load
+| the console application independent of running commands which
+| will allow us to fire commands from Routes when we want to.
+|
+*/
+
+$artisan = Illuminate\Console\Application::start($app);
+
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
+$status = $artisan->run();
+
+exit($status);
