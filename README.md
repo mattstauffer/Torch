@@ -44,4 +44,5 @@ Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniel
 ## Related
 See other related projects:
 
-* [@jeremyvaught](https://github.com/jeremyvaught)'s [CodeIgniter-Service-Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level)
+* [CodeIgniter Service Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level) by [@jeremyvaught](https://github.com/jeremyvaught)
+* [Slim Services](https://github.com/itsgoingd/slim-services) by [@itsgoingd](https://github.com/itsgoingd)
