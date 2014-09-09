@@ -46,4 +46,4 @@ See other related projects:
 
 * [CodeIgniter Service Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level) by [@jeremyvaught](https://github.com/jeremyvaught)
 * [Slim Services](https://github.com/itsgoingd/slim-services) by [@itsgoingd](https://github.com/itsgoingd)
-* [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox/session)
+* [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox)
