@@ -40,3 +40,8 @@ A few important notes:
 
 ## Thanks
 Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and anyone who's submitted PRs, and Mohammad Gufran's blog posts on Config and Routing, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
+
+## Related
+See other related projects:
+
+* [@jeremyvaught](https://github.com/jeremyvaught)'s [CodeIgniter-Service-Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level)
