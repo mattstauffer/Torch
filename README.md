@@ -21,6 +21,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
  * [Routing](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/routing)
  * [Translation](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/translation)
+ * [Encryption](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/encryption)
 
 ### Planned
  * Session
@@ -40,3 +41,10 @@ A few important notes:
 
 ## Thanks
 Thanks for explicit contributions from Jan Hartigan, Jeremy Vaught, Kayla Daniels, and anyone who's submitted PRs, and Mohammad Gufran's blog posts on Config and Routing, and the work done by Phil Sturgeon and Dan Horrigan towards this general direction. Also, of course, Taylor "Baller" Otwell.
+
+## Related
+See other related projects:
+
+* [CodeIgniter Service Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level) by [@jeremyvaught](https://github.com/jeremyvaught)
+* [Slim Services](https://github.com/itsgoingd/slim-services) by [@itsgoingd](https://github.com/itsgoingd)
+* [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox)
