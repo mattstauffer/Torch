@@ -21,6 +21,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
  * [Routing](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/routing)
  * [Translation](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/translation)
+ * [Encryption](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/encryption)
 
 ### Planned
  * Session
