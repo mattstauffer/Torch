@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f29b72cf826fd4cb2b8e09a1fc50bba",
+    "hash": "2e426978299a75656aa4e7d2ba307463",
     "packages": [
         {
             "name": "filp/whoops",
@@ -155,6 +155,48 @@
                 }
             ],
             "time": "2014-07-15 11:11:21"
+        },
+        {
+            "name": "illuminate/console",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/console.git",
+                "reference": "26ab2d3f5223851ac537668c778f13cad8742e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/console/zipball/26ab2d3f5223851ac537668c778f13cad8742e4c",
+                "reference": "26ab2d3f5223851ac537668c778f13cad8742e4c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/console": "2.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Console": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-08-01 12:29:44"
         },
         {
             "name": "illuminate/container",
@@ -475,6 +517,66 @@
             "time": "2014-08-01 12:29:44"
         },
         {
+            "name": "illuminate/queue",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Queue",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/queue.git",
+                "reference": "7d3e873c2ef111ec3d8f71d127805c1c36a8cca5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/queue/zipball/7d3e873c2ef111ec3d8f71d127805c1c36a8cca5",
+                "reference": "7d3e873c2ef111ec3d8f71d127805c1c36a8cca5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "4.2.*",
+                "illuminate/container": "4.2.*",
+                "illuminate/http": "4.2.*",
+                "illuminate/support": "4.2.*",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0",
+                "symfony/process": "2.5.*"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "~2.6",
+                "illuminate/cache": "4.2.*",
+                "illuminate/events": "4.2.*",
+                "iron-io/iron_mq": "~1.5",
+                "pda/pheanstalk": "~2.1"
+            },
+            "suggest": {
+                "illuminate/redis": "Allows use of the Redis queue driver."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Queue": ""
+                },
+                "classmap": [
+                    "IlluminateQueueClosure.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-08-05 12:19:09"
+        },
+        {
             "name": "illuminate/routing",
             "version": "v4.2.8",
             "target-dir": "Illuminate/Routing",
@@ -670,6 +772,100 @@
             "time": "2014-07-15 11:11:21"
         },
         {
+            "name": "iron-io/iron_core",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iron-io/iron_core_php.git",
+                "reference": "bf399c13a42a78079b3fe56d0e2e1791290521c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iron-io/iron_core_php/zipball/bf399c13a42a78079b3fe56d0e2e1791290521c4",
+                "reference": "bf399c13a42a78079b3fe56d0e2e1791290521c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "IronCore.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander S",
+                    "email": "alexander@iron.io",
+                    "homepage": "http://iron.io",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Iron.io",
+                    "email": "support@iron.io",
+                    "homepage": "http://iron.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Collection of common functions for all iron.io client libraries",
+            "homepage": "http://github.com/iron-io/iron_core_php",
+            "keywords": [
+                "iron",
+                "iron_core"
+            ],
+            "time": "2014-08-05 13:53:05"
+        },
+        {
+            "name": "iron-io/iron_mq",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iron-io/iron_mq_php.git",
+                "reference": "82dde27337801a914a5ac88cd5f1ba7739f85f19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iron-io/iron_mq_php/zipball/82dde27337801a914a5ac88cd5f1ba7739f85f19",
+                "reference": "82dde27337801a914a5ac88cd5f1ba7739f85f19",
+                "shasum": ""
+            },
+            "require": {
+                "iron-io/iron_core": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "IronMQ.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander S",
+                    "email": "alexander@iron.io",
+                    "homepage": "http://iron.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Client binding for IronMQ (hosted message queue)",
+            "homepage": "http://github.com/iron-io/iron_mq_php",
+            "keywords": [
+                "MQ",
+                "iron",
+                "iron_mq"
+            ],
+            "time": "2014-02-19 14:02:39"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.12.0",
             "source": {
@@ -798,6 +994,61 @@
                 "router"
             ],
             "time": "2014-04-05 18:33:59"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.5.4",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
+                "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-08-14 16:10:54"
         },
         {
             "name": "symfony/debug",
@@ -1083,6 +1334,53 @@
             "time": "2014-09-03 09:51:48"
         },
         {
+            "name": "symfony/process",
+            "version": "v2.5.4",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/136cf0bdaacea81f779583376d47dd8aef4fc6ba",
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-08-31 03:22:04"
+        },
+        {
             "name": "symfony/routing",
             "version": "v2.5.4",
             "target-dir": "Symfony/Component/Routing",
@@ -1316,21 +1614,11 @@
             "time": "2014-04-02 04:57:23"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }

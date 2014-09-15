@@ -11,7 +11,9 @@
 		"illuminate/routing": "4.2.8",
 		"illuminate/events": "4.2.8",
 		"illuminate/translation": "4.2.8",
-		"illuminate/encryption": "4.2.8"
+		"illuminate/encryption": "4.2.8",
+		"illuminate/queue": "4.2.8",
+		"iron-io/iron_mq": "1.5.1"
 	},
 	"autoload": {
 		"psr-4": {
