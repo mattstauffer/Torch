@@ -14,6 +14,7 @@ require_once '../../vendor/autoload.php';
  *           illuminate/support (for array dot notation)
  *
  * @source https://github.com/illuminate/config
+ * @see http://thoughts.silentworks.co.uk/slim-php-101-using-laravel-config-package/
  */
 
 $app = new \Slim\Slim();
