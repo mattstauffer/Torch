@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2e426978299a75656aa4e7d2ba307463",
+    "hash": "cb0e2093b3586f0f6fdc8c57ea3643bf",
     "packages": [
         {
             "name": "filp/whoops",
@@ -66,17 +66,17 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v4.2.8",
+            "version": "v4.2.9",
             "target-dir": "Illuminate/Cache",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
-                "reference": "83b4bf235d833cd74b8b356ead0c866217e14482"
+                "reference": "3fd8deccb023561d39651e8ad00af725c2bd4811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/83b4bf235d833cd74b8b356ead0c866217e14482",
-                "reference": "83b4bf235d833cd74b8b356ead0c866217e14482",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/3fd8deccb023561d39651e8ad00af725c2bd4811",
+                "reference": "3fd8deccb023561d39651e8ad00af725c2bd4811",
                 "shasum": ""
             },
             "require": {
@@ -111,7 +111,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-08-05 10:44:40"
+            "time": "2014-09-10 16:29:36"
         },
         {
             "name": "illuminate/config",
@@ -158,17 +158,17 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v4.2.8",
+            "version": "v4.2.9",
             "target-dir": "Illuminate/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
-                "reference": "26ab2d3f5223851ac537668c778f13cad8742e4c"
+                "reference": "d52fd2d8debdcb7e1ebf931581fe518ae865db0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/console/zipball/26ab2d3f5223851ac537668c778f13cad8742e4c",
-                "reference": "26ab2d3f5223851ac537668c778f13cad8742e4c",
+                "url": "https://api.github.com/repos/illuminate/console/zipball/d52fd2d8debdcb7e1ebf931581fe518ae865db0a",
+                "reference": "d52fd2d8debdcb7e1ebf931581fe518ae865db0a",
                 "shasum": ""
             },
             "require": {
@@ -196,21 +196,21 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-08-01 12:29:44"
+            "time": "2014-09-05 17:27:06"
         },
         {
             "name": "illuminate/container",
-            "version": "v4.2.8",
+            "version": "v4.2.9",
             "target-dir": "Illuminate/Container",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "33f3dbfc21eafa2a71f64c156955e618142afc3c"
+                "reference": "5c43bd3bd5eea2ed2061cd0dd57d72404aceb978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/33f3dbfc21eafa2a71f64c156955e618142afc3c",
-                "reference": "33f3dbfc21eafa2a71f64c156955e618142afc3c",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/5c43bd3bd5eea2ed2061cd0dd57d72404aceb978",
+                "reference": "5c43bd3bd5eea2ed2061cd0dd57d72404aceb978",
                 "shasum": ""
             },
             "require": {
@@ -237,21 +237,21 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-07-18 22:26:34"
+            "time": "2014-09-11 19:02:16"
         },
         {
             "name": "illuminate/cookie",
-            "version": "v4.2.8",
+            "version": "v4.2.9",
             "target-dir": "Illuminate/Cookie",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cookie.git",
-                "reference": "683db517ca4eb7c271f4a8ae629ddc4b0f6500aa"
+                "reference": "17d70ef8ea1561e910cb67043db09753ff4feb86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cookie/zipball/683db517ca4eb7c271f4a8ae629ddc4b0f6500aa",
-                "reference": "683db517ca4eb7c271f4a8ae629ddc4b0f6500aa",
+                "url": "https://api.github.com/repos/illuminate/cookie/zipball/17d70ef8ea1561e910cb67043db09753ff4feb86",
+                "reference": "17d70ef8ea1561e910cb67043db09753ff4feb86",
                 "shasum": ""
             },
             "require": {
@@ -282,7 +282,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-08-01 12:29:44"
+            "time": "2014-08-07 11:28:31"
         },
         {
             "name": "illuminate/database",
@@ -473,17 +473,17 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v4.2.8",
+            "version": "v4.2.9",
             "target-dir": "Illuminate/Http",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "2336a70410c4fbc4396aad8d1da5e9bfe16f6044"
+                "reference": "34a3012bf8f502ac38c7f1c012366dc4f62d1a49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/2336a70410c4fbc4396aad8d1da5e9bfe16f6044",
-                "reference": "2336a70410c4fbc4396aad8d1da5e9bfe16f6044",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/34a3012bf8f502ac38c7f1c012366dc4f62d1a49",
+                "reference": "34a3012bf8f502ac38c7f1c012366dc4f62d1a49",
                 "shasum": ""
             },
             "require": {
@@ -502,6 +502,101 @@
             "autoload": {
                 "psr-0": {
                     "Illuminate\\Http": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-09-10 14:59:29"
+        },
+        {
+            "name": "illuminate/log",
+            "version": "v4.2.9",
+            "target-dir": "Illuminate/Log",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/log.git",
+                "reference": "4255f0cb3bf72afad0ad59234b65b57e275e208f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/log/zipball/4255f0cb3bf72afad0ad59234b65b57e275e208f",
+                "reference": "4255f0cb3bf72afad0ad59234b65b57e275e208f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.2.*",
+                "monolog/monolog": "~1.6",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/events": "4.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Log": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-08-07 11:28:31"
+        },
+        {
+            "name": "illuminate/mail",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Mail",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/mail.git",
+                "reference": "efeb008e144f1caa3b4691e542242ca6d13fb5a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/mail/zipball/efeb008e144f1caa3b4691e542242ca6d13fb5a8",
+                "reference": "efeb008e144f1caa3b4691e542242ca6d13fb5a8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "4.2.*",
+                "illuminate/log": "4.2.*",
+                "illuminate/support": "4.2.*",
+                "illuminate/view": "4.2.*",
+                "php": ">=5.4.0",
+                "swiftmailer/swiftmailer": "~5.1"
+            },
+            "require-dev": {
+                "illuminate/queue": "4.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Mail": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -772,6 +867,51 @@
             "time": "2014-07-15 11:11:21"
         },
         {
+            "name": "illuminate/view",
+            "version": "v4.2.9",
+            "target-dir": "Illuminate/View",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/view.git",
+                "reference": "b301c3b7186a23bbd7bce8c3315618b9cef7f38b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/b301c3b7186a23bbd7bce8c3315618b9cef7f38b",
+                "reference": "b301c3b7186a23bbd7bce8c3315618b9cef7f38b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "4.2.*",
+                "illuminate/events": "4.2.*",
+                "illuminate/filesystem": "4.2.*",
+                "illuminate/support": "4.2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\View": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-09-02 04:23:50"
+        },
+        {
             "name": "iron-io/iron_core",
             "version": "0.2.1",
             "source": {
@@ -864,6 +1004,74 @@
                 "iron_mq"
             ],
             "time": "2014-02-19 14:02:39"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "25b16e801979098cb2f120e697bfce454b18bf23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/25b16e801979098cb2f120e697bfce454b18bf23",
+                "reference": "25b16e801979098cb2f120e697bfce454b18bf23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "~2.4, >2.4.8",
+                "doctrine/couchdb": "~1.0@dev",
+                "graylog2/gelf-php": "~1.0",
+                "phpunit/phpunit": "~3.7.0",
+                "raven/raven": "~0.5",
+                "ruflin/elastica": "0.90.*"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "raven/raven": "Allow sending log messages to a Sentry server",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "time": "2014-06-04 16:30:04"
         },
         {
             "name": "nesbot/carbon",
@@ -994,6 +1202,60 @@
                 "router"
             ],
             "time": "2014-04-05 18:33:59"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/2b9af56cc676c338d52fca4c657e5bdff73bb7af",
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2014-06-13 11:44:54"
         },
         {
             "name": "symfony/console",
@@ -1614,11 +1876,21 @@
             "time": "2014-04-02 04:57:23"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
 }

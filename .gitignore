@@ -1,4 +1,7 @@
 vendor/
 cache/*
 !cache/.gitkeep
+logs/*
+!logs/.gitkeep
 .idea/
+.DS_Store
