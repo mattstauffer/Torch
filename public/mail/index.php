@@ -3,7 +3,9 @@
 /**
  * Illuminate/Mail
  *
- * todo: provide a module description
+ * The Laravel mail component provides a clean, 
+ * unified interface for numerous transport types
+ * (SMTP, PHP Mail, Sendmail, Mailgun, Maindrill, Log).
  *
  * Requires: illuminate/container
  *           illuminate/log
@@ -98,4 +100,3 @@ $app->get('/', function ()
 });
 
 $app->run();
-
