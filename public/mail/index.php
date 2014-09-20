@@ -63,7 +63,7 @@ $app->get('/', function ()
     $transport->setEncryption(true);
 
     $swift    = new SwiftMailer($transport);
-    $finder   = new FileViewFinder(new Filesystem, [__DIR__ . '/../../app/views']);
+    $finder   = new FileViewFinder(new Filesystem, ['views']);
     $resolver = new EngineResolver;
 
     // determine which template engine to use
