@@ -23,12 +23,12 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Translation](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/translation)
  * [Encryption](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/encryption)
  * [Queue](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/queue)
+ * [Mail](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/mail)
 
 ### Planned
  * Session
  * Pagination
  * HTTP
- * Mail
  * Validation
  * Artisan
  * Events
