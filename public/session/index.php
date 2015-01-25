@@ -5,7 +5,7 @@ require_once '../../vendor/autoload.php';
 /**
 * Illuminate/session
 *
-* Basic non-Slim, non-Laravel Illuminate Sessions;
+* Illuminate Sessions outside of laravel;
 *
 * Requires: illuminate/support
 *           illuminate/container
@@ -80,7 +80,8 @@ var_dump($app['session']->all());
 // Save the session
 $app['session']->save();
 
-// Now the session is saved, we'll double check we are storing the session ID in a cookie
+// Now the session is saved, we'll store the session ID in a cookie to allow for
+// the session to remain on future requests
 $cookie = new Symfony\Component\HttpFoundation\Cookie(
     $app['session']->getName(),
     $app['session']->getId(),
