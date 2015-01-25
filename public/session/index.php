@@ -1,5 +1,13 @@
 <?php
 
+use Illuminate\Config\FileLoader;
+use Illuminate\Config\Repository as Config;
+use Illuminate\Container\Container;
+use Illuminate\Cookie\CookieJar;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Session\SessionManager;
+use Symfony\Component\HttpFoundation\Cookie;
+
 require_once '../../vendor/autoload.php';
 
 /**
@@ -15,83 +23,368 @@ require_once '../../vendor/autoload.php';
 * @todo Drivers other than the file driver
 *
 * @source https://github.com/illuminate/session
+* @author Matt Stauffer
 * @author Sam Jordan
 */
+$app = new \Slim\Slim();
+$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+
+// BOOTSTRAP-------------------------------------------------------------------
 
 // Determine our base path
 $path = __DIR__;
 
 // Init the container
-$app = new Illuminate\Container\Container();
-$app->bind('app', $app);
+$container = new Container;
+$container->bind('app', $container);
 
-$app['config'] = new Illuminate\Config\Repository(
-    new Illuminate\Config\FileLoader(
-        new Illuminate\Filesystem\Filesystem,
+$container['config'] = new Config(
+    new FileLoader(
+        new Filesystem,
         $path
     ),
     'production'
 );
-$app['files'] = new Illuminate\Filesystem\Filesystem;
+$container['files'] = new Filesystem;
 
 // Not 100% sure on how many of these are needed
-$app['config']['session.lifetime'] = 120; // Minutes idleable
-$app['config']['session.expire_on_close'] = false; // Minutes idleable
-$app['config']['session.lottery'] = array(2, 100); // lottery--how often do they sweep storage location to clear old ones?
-$app['config']['session.cookie'] = 'laravel_session';
-$app['config']['session.path'] = '/';
-$app['config']['session.domain'] = null;
-$app['config']['session.driver'] = 'file';
-$app['config']['session.files'] = $path . '/sessions';
+$container['config']['session.lifetime'] = 120; // Minutes idleable
+$container['config']['session.expire_on_close'] = false;
+$container['config']['session.lottery'] = array(2, 100); // lottery--how often do they sweep storage location to clear old ones?
+$container['config']['session.cookie'] = 'laravel_session';
+$container['config']['session.path'] = '/';
+$container['config']['session.domain'] = null;
+$container['config']['session.driver'] = 'file';
+$container['config']['session.files'] = $path . '/sessions';
 
 // Cookie time
-$app['cookie'] = (new Illuminate\Cookie\CookieJar)->setDefaultPathAndDomain('/', null);
+$container['cookie'] = (new CookieJar)->setDefaultPathAndDomain('/', null);
 
 // Now we need to fire up the session manager
-$sessionManager = new Illuminate\Session\SessionManager($app);
-$app['session.store'] = $sessionManager->driver();
-$app['session'] = $sessionManager;
+$sessionManager = new SessionManager($container);
+$container['session.store'] = $sessionManager->driver();
+$container['session'] = $sessionManager;
 
 // In order to maintain the session between requests, we need to populate the
 // session ID from the supplied cookie
-$cookieName = $app['session']->getName();
+$cookieName = $container['session']->getName();
 
 if (isset($_COOKIE[$cookieName])) {
     if ($sessionId = $_COOKIE[$cookieName]) {
-        $app['session']->setId($sessionId);
+        $container['session']->setId($sessionId);
     }
 }
 
 // Boot the session
-$app['session']->start();
+$container['session']->start();
+// END BOOTSTRAP---------------------------------------------------------------
 
-// Set a variable if it isn't already set
-if (!$app['session']->has('test')) {
-    echo "<p>'test' is not set, adding it to the session via put.</p>";
-    $app['session']->put('test', 'laravel');
-} else {
-    echo "<p>'test' exists on the session.</p>";
+// View
+$app->get('/', function () use ($container)
+{    
+    echo 'Current state of <code>$test</code>: ';
+
+    if ($container['session']->has('test')) {
+        echo 'Set<br> Value: ' . $container['session']->get('test');
+    } else {
+        echo 'Not set';
+    }
+
+    echo '<hr><a href="/set">Set session variable</a>';
+});
+
+// Set
+$app->get('/set', function () use ($container)
+{
+    $var = randomVar();
+
+    if ($container['session']->has('test')) {
+        echo '<p><code>$test</code> is set. Overriding it to now be <code>' . $var . '</code></p>';
+    } else {
+        echo '<p><code>$test</code> is not set. Setting to be <code>' . $var . '</code></p>';
+    }
+
+    $container['session']->put('test', $var);
+
+    // Save the session
+    $container['session']->save();
+
+    // The session is saved; now, we'll store the session ID in a cookie to allow for
+    // the session to remain on future requests
+    $cookie = new Cookie(
+        $container['session']->getName(),
+        $container['session']->getId(),
+        time() + ($container['config']['session.lifetime'] * 60),
+        '/',
+        null,
+        false
+    );
+
+    setcookie(
+        $cookie->getName(),
+        $cookie->getValue(),
+        $cookie->getExpiresTime(),
+        $cookie->getPath(),
+        $cookie->getDomain()
+    );
+
+    echo '<hr><a href="/">View current value of session variable</a>';
+});
+
+function randomVar()
+{
+    $names = [
+        "Afghanistan",
+        "Åland Islands",
+        "Albania",
+        "Algeria",
+        "American Samoa",
+        "Andorra",
+        "Angola",
+        "Anguilla",
+        "Antarctica",
+        "Antigua and Barbuda",
+        "Argentina",
+        "Armenia",
+        "Aruba",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Belgium",
+        "Belize",
+        "Benin",
+        "Bermuda",
+        "Bhutan",
+        "Bolivia (Plurinational State of)",
+        "Bonaire, Sint Eustatius and Saba",
+        "Bosnia and Herzegovina",
+        "Botswana",
+        "Bouvet Island",
+        "Brazil",
+        "British Indian Ocean Territory",
+        "Brunei Darussalam",
+        "Bulgaria",
+        "Burkina Faso",
+        "Burundi",
+        "Cambodia",
+        "Cameroon",
+        "Canada",
+        "Cabo Verde",
+        "Cayman Islands",
+        "Central African Republic",
+        "Chad",
+        "Chile",
+        "China",
+        "Christmas Island",
+        "Cocos (Keeling) Islands",
+        "Colombia",
+        "Comoros",
+        "Congo",
+        "Congo (Democratic Republic of the)",
+        "Cook Islands",
+        "Costa Rica",
+        "Côte d'Ivoire",
+        "Croatia",
+        "Cuba",
+        "Curaçao",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Djibouti",
+        "Dominica",
+        "Dominican Republic",
+        "Ecuador",
+        "Egypt",
+        "El Salvador",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Estonia",
+        "Ethiopia",
+        "Falkland Islands (Malvinas)",
+        "Faroe Islands",
+        "Fiji",
+        "Finland",
+        "France",
+        "French Guiana",
+        "French Polynesia",
+        "French Southern Territories",
+        "Gabon",
+        "Gambia",
+        "Georgia",
+        "Germany",
+        "Ghana",
+        "Gibraltar",
+        "Greece",
+        "Greenland",
+        "Grenada",
+        "Guadeloupe",
+        "Guam",
+        "Guatemala",
+        "Guernsey",
+        "Guinea",
+        "Guinea-Bissau",
+        "Guyana",
+        "Haiti",
+        "Heard Island and McDonald Islands",
+        "Holy See",
+        "Honduras",
+        "Hong Kong",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Iran (Islamic Republic of)",
+        "Iraq",
+        "Ireland",
+        "Isle of Man",
+        "Israel",
+        "Italy",
+        "Jamaica",
+        "Japan",
+        "Jersey",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kiribati",
+        "Korea (Democratic People's Republic of)",
+        "Korea (Republic of)",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Lao People's Democratic Republic",
+        "Latvia",
+        "Lebanon",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macao",
+        "Macedonia (the former Yugoslav Republic of)",
+        "Madagascar",
+        "Malawi",
+        "Malaysia",
+        "Maldives",
+        "Mali",
+        "Malta",
+        "Marshall Islands",
+        "Martinique",
+        "Mauritania",
+        "Mauritius",
+        "Mayotte",
+        "Mexico",
+        "Micronesia (Federated States of)",
+        "Moldova (Republic of)",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Montserrat",
+        "Morocco",
+        "Mozambique",
+        "Myanmar",
+        "Namibia",
+        "Nauru",
+        "Nepal",
+        "Netherlands",
+        "New Caledonia",
+        "New Zealand",
+        "Nicaragua",
+        "Niger",
+        "Nigeria",
+        "Niue",
+        "Norfolk Island",
+        "Northern Mariana Islands",
+        "Norway",
+        "Oman",
+        "Pakistan",
+        "Palau",
+        "Palestine, State of",
+        "Panama",
+        "Papua New Guinea",
+        "Paraguay",
+        "Peru",
+        "Philippines",
+        "Pitcairn",
+        "Poland",
+        "Portugal",
+        "Puerto Rico",
+        "Qatar",
+        "Réunion",
+        "Romania",
+        "Russian Federation",
+        "Rwanda",
+        "Saint Barthélemy",
+        "Saint Helena, Ascension and Tristan da Cunha",
+        "Saint Kitts and Nevis",
+        "Saint Lucia",
+        "Saint Martin (French part)",
+        "Saint Pierre and Miquelon",
+        "Saint Vincent and the Grenadines",
+        "Samoa",
+        "San Marino",
+        "Sao Tome and Principe",
+        "Saudi Arabia",
+        "Senegal",
+        "Serbia",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Sint Maarten (Dutch part)",
+        "Slovakia",
+        "Slovenia",
+        "Solomon Islands",
+        "Somalia",
+        "South Africa",
+        "South Georgia and the South Sandwich Islands",
+        "South Sudan",
+        "Spain",
+        "Sri Lanka",
+        "Sudan",
+        "Suriname",
+        "Svalbard and Jan Mayen",
+        "Swaziland",
+        "Sweden",
+        "Switzerland",
+        "Syrian Arab Republic",
+        "Taiwan, Province of China",
+        "Tajikistan",
+        "Tanzania, United Republic of",
+        "Thailand",
+        "Timor-Leste",
+        "Togo",
+        "Tokelau",
+        "Tonga",
+        "Trinidad and Tobago",
+        "Tunisia",
+        "Turkey",
+        "Turkmenistan",
+        "Turks and Caicos Islands",
+        "Tuvalu",
+        "Uganda",
+        "Ukraine",
+        "United Arab Emirates",
+        "United Kingdom of Great Britain and Northern Ireland",
+        "United States of America",
+        "United States Minor Outlying Islands",
+        "Uruguay",
+        "Uzbekistan",
+        "Vanuatu",
+        "Venezuela (Bolivarian Republic of)",
+        "Viet Nam",
+        "Virgin Islands (British)",
+        "Virgin Islands (U.S.)",
+        "Wallis and Futuna",
+        "Western Sahara",
+        "Yemen",
+        "Zambia",
+    ];
+
+    return $names[array_rand($names)];
 }
 
-// Retrieve it
-echo "<hr /><pre>";
-var_dump($app['session']->all());
-
-// Save the session
-$app['session']->save();
-
-// Now the session is saved, we'll store the session ID in a cookie to allow for
-// the session to remain on future requests
-$cookie = new Symfony\Component\HttpFoundation\Cookie(
-    $app['session']->getName(),
-    $app['session']->getId(),
-    time() + ($app['config']['session.lifetime'] * 60),
-    '/', null, false
-);
-setcookie(
-    $cookie->getName(),
-    $cookie->getValue(),
-    $cookie->getExpiresTime(),
-    $cookie->getPath(),
-    $cookie->getDomain()
-);
+$app->run();

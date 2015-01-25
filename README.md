@@ -14,20 +14,19 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ## Packages
 
 ### Done/In Progress
- * [Database](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/database)
- * [Support](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/support)
- * [Cache](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/cache)
- * [Config](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/config)
- * [IoC Container](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/container)
- * [Routing](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/routing)
- * [Translation](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/translation)
- * [Encryption](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/encryption)
- * [Queue](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/queue)
- * [Mail](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/mail)
- * [Session (File Driver)](https://github.com/mattstauffer/IlluminateSlim/tree/master/public/session)
+ * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/database)
+ * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/support)
+ * [Cache](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/cache)
+ * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/config)
+ * [IoC Container](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/container)
+ * [Routing](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/routing)
+ * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/translation)
+ * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/encryption)
+ * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/queue)
+ * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/mail)
+ * [Session (File Driver)](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/session)
 
 ### Planned
- * Session
  * Pagination
  * HTTP
  * Validation
