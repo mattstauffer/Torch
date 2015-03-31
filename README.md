@@ -51,4 +51,4 @@ See other related projects:
 * [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox)
 
 ## Why 4.2?
-A lot of the refactoring of Illuminate components in Laravel 4.3 made it difficult to implement them in any framework that doesn't use Symfony's HttpRequest object, so the cost of implementing goes up significantly. It might be worth building a branch of this projec that targets using 5.0 components and limiting it to only work on frameworks that use HttpRequest.
+A lot of the refactoring of Illuminate components in Laravel 4.3 made it difficult to implement them in any framework that doesn't use Symfony's HttpRequest object, so the cost of implementing goes up significantly. It might be worth building a branch of this project that targets using 5.0 components and limiting it to only work on frameworks that use HttpRequest.
