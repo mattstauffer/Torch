@@ -1,6 +1,6 @@
 # Illuminate Non-Laravel
 
-Showing a simplest-use example for using each Illuminate component in non-Laravel applications.
+Showing a simplest-use example for using each v4.2 Illuminate component in non-Laravel applications.
 
 ## Usage
 At the moment, the project is divided into many directories beneath public which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
@@ -49,3 +49,6 @@ See other related projects:
 * [CodeIgniter Service Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level) by [@jeremyvaught](https://github.com/jeremyvaught)
 * [Slim Services](https://github.com/itsgoingd/slim-services) by [@itsgoingd](https://github.com/itsgoingd)
 * [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox)
+
+## Why 4.2?
+A lot of the refactoring of Illuminate components in Laravel 4.3 made it difficult to implement them in any framework that doesn't use Symfony's HttpRequest object, so the cost of implementing goes up significantly. It might be worth building a branch of this projec that targets using 5.0 components and limiting it to only work on frameworks that use HttpRequest.
