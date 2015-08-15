@@ -3,7 +3,9 @@
 /**
  * Illuminate/Mail
  *
- * todo: provide a module description
+ * The Laravel mail component provides a clean, 
+ * unified interface for numerous transport types
+ * (SMTP, PHP Mail, Sendmail, Mailgun, Maindrill, Log).
  *
  * Requires: illuminate/container
  *           illuminate/log
@@ -63,7 +65,7 @@ $app->get('/', function ()
     $transport->setEncryption(true);
 
     $swift    = new SwiftMailer($transport);
-    $finder   = new FileViewFinder(new Filesystem, [__DIR__ . '/../../app/views']);
+    $finder   = new FileViewFinder(new Filesystem, ['views']);
     $resolver = new EngineResolver;
 
     // determine which template engine to use
@@ -98,4 +100,3 @@ $app->get('/', function ()
 });
 
 $app->run();
-

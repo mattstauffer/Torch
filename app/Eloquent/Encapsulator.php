@@ -28,7 +28,7 @@ class Encapsulator
 			$capsule->addConnection([
 				'driver'    => 'mysql',
 				'host'      => 'localhost',
-				'database'  => 'illuminateslim',
+				'database'  => 'illuminate_non_laravel',
 				'username'  => 'root',
 				'password'  => '',
 				'charset'   => 'utf8',
