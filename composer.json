@@ -15,6 +15,7 @@
 		"illuminate/encryption": "4.2.8",
 		"illuminate/queue": "4.2.8",
 		"illuminate/mail": "4.2.8",
+		"illuminate/validation": "4.2.8",
 		"iron-io/iron_mq": "1.5.1"
 	},
 	"autoload": {
