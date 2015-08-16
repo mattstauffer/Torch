@@ -3,14 +3,14 @@
 /**
  * Illuminate/Validation
  *
- * The Laravel validation component provides a simple, 
+ * The Laravel validation component provides a simple,
  * convenient interface for validating data.
- * 
+ *
  * Requires: illuminate/container
  *           illuminate/database
  *           illuminate/filesystem
  *           illuminate/translation
- * 
+ *
  * @source https://github.com/illuminate/validation
  */
 
@@ -24,12 +24,27 @@ use Illuminate\Translation\Translator;
 use Illuminate\Validation\DatabasePresenceVerifier;
 use Illuminate\Validation\Factory;
 
-$app = new \Slim\Slim();
+$app = new \Slim\Slim([
+    'templates.path' => './'
+]);
 
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
-$app->get('/', function ()
+$app->get('/', function() use ($app)
 {
+    return $app->render('form.php', [
+        'posted'   => false,
+        'messages' => null,
+        'email'    => '',
+    ]);
+});
+
+$app->post('/', function() use ($app)
+{
+    // For a thorough example, we establish a database connection
+    // to drive the database presence verifier used by the validator.
+    // If you do not need to validate against values in the database,
+    // the database presence verifier and related code can be removed.
     $capsule = new Capsule;
 
     $capsule->addConnection([
@@ -50,35 +65,22 @@ $app->get('/', function ()
 
     $validation->setPresenceVerifier($presence);
 
-    $rules = [
-        'email' => 'email',
-    ];
-
-    $data  = [
-        'email' => 'steve@apple.com',
-    ];
-
-    $validator = $validation->make($data, $rules);
-
-    if ($validator->passes())
-    {
-        var_dump('All good.');
-    }
-
-    $data  = [
-        'email' => 'bad@email',
-    ];
+    $data     = ['email' => $_POST['email']];
+    $rules    = ['email' => 'required|email'];
+    $messages = null;
 
     $validator = $validation->make($data, $rules);
 
     if ($validator->fails())
     {
-        var_dump('No good.');
-
-        var_dump($validator->errors()->toArray());    
+        $messages = $validator->errors();
     }
 
+    return $app->render('form.php', [
+        'posted'   => true,
+        'messages' => $messages,
+        'email'    => $_POST['email'],
+    ]);
 });
 
 $app->run();
-
