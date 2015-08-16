@@ -29,7 +29,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Planned
  * Pagination
- * HTTP
+ * ~~HTTP~~
  * Artisan
  * Events
 
