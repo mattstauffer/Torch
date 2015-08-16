@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b680740b97c05193679e34b90a332b02",
+    "hash": "b7d1f6690dc9d586ae90abbcff523f5c",
     "packages": [
         {
             "name": "filp/whoops",
@@ -867,6 +867,54 @@
             "time": "2014-07-15 11:11:21"
         },
         {
+            "name": "illuminate/validation",
+            "version": "v4.2.8",
+            "target-dir": "Illuminate/Validation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/validation.git",
+                "reference": "eaefaa2644749cf1489ba7492779c6779f79a298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/validation/zipball/eaefaa2644749cf1489ba7492779c6779f79a298",
+                "reference": "eaefaa2644749cf1489ba7492779c6779f79a298",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "4.2.*",
+                "illuminate/support": "4.2.*",
+                "php": ">=5.4.0",
+                "symfony/http-foundation": "2.5.*",
+                "symfony/translation": "2.5.*"
+            },
+            "require-dev": {
+                "illuminate/database": "4.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Validation": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-08-01 12:29:44"
+        },
+        {
             "name": "illuminate/view",
             "version": "v4.2.16",
             "target-dir": "Illuminate/View",
@@ -1166,12 +1214,12 @@
             "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeguy/Slim.git",
+                "url": "https://github.com/slimphp/Slim.git",
                 "reference": "04958a10ed95bc7bc97568e573877d4f9b62db48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/04958a10ed95bc7bc97568e573877d4f9b62db48",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/04958a10ed95bc7bc97568e573877d4f9b62db48",
                 "reference": "04958a10ed95bc7bc97568e573877d4f9b62db48",
                 "shasum": ""
             },

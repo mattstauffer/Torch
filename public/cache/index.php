@@ -23,7 +23,7 @@ $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 $cache_dir = __DIR__  . '/../../cache';
 
-$app->get('/', function () use($cache_dir) {
+$app->get('/', function () use ($cache_dir) {
 	// Filesystem cache
 	$capsule = new Capsule;
 	$container = $capsule->getContainer();
@@ -40,7 +40,7 @@ $app->get('/', function () use($cache_dir) {
 	echo $cache->get('cache-test');
 });
 
-$app->get('/cacheDatabase', function() use($cache_dir) {
+$app->get('/cacheDatabase', function() use ($cache_dir) {
 	// Filesystem cache, merged with basic database connection for 'remember'
 	$capsule = new Capsule;
 	$container = $capsule->getContainer();
