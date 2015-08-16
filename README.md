@@ -25,11 +25,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/queue)
  * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/mail)
  * [Session (File Driver)](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/session)
+ * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/validation)
 
 ### Planned
  * Pagination
  * HTTP
- * Validation
  * Artisan
  * Events
 
