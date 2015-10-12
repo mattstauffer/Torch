@@ -20,6 +20,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
  * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
  * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/config)
+ * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/encryption)
 
 ### Planned
  
@@ -27,7 +28,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * IoC
  * Routing
  * Translation
- * Encryption
  * Queue
  * Mail
  * Session
