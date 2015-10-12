@@ -17,7 +17,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ## Packages
 
 ### Done/In Progress
- * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/database)
+ * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
 
 ### Planned
  
