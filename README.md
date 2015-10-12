@@ -5,7 +5,7 @@ Showing a simplest-use example for using each v5.1 Illuminate component in non-L
 **Note**: This is *just* getting started. If you want to use these components today, you might want to check out our [archive of the 4.2 components](https://github.com/mattstauffer/illuminatenonlaravel/tree/4.2); most of them will work just fine on your project.
 
 ## Usage
-At the moment, the project is divided into many directories beneath public which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
+At the moment, the project is divided into many directories beneath `components` which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
 
 ```bash
 $ composer install
