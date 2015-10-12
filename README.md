@@ -8,6 +8,7 @@ Showing a simplest-use example for using each v5.1 Illuminate component in non-L
 At the moment, the project is divided into many directories beneath public which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
 
 ```bash
+$ composer install
 $ php -S localhost:8000
 ```
 
