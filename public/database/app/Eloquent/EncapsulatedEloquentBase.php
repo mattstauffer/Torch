@@ -1,4 +1,4 @@
-<?php  namespace App\Eloquent;
+<?php namespace App\Eloquent;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  */
 abstract class EncapsulatedEloquentBase extends Eloquent
 {
-	public function __construct(array $attributes = array())
-	{
-		Encapsulator::init();
+    public function __construct(array $attributes = array())
+    {
+        Encapsulator::init();
 
-		parent::__construct($attributes);
-	}
+        parent::__construct($attributes);
+    }
 }

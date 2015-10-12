@@ -2,5 +2,5 @@
 
 class UserEncapsulated extends EncapsulatedEloquentBase
 {
-	protected $table = 'users';
+    protected $table = 'users';
 }
