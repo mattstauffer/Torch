@@ -18,10 +18,10 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Done/In Progress
  * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
+ * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
 
 ### Planned
  
- * Support
  * Cache
  * Config
  * IoC
@@ -46,6 +46,8 @@ A few important notes:
 
 ## Contributing
 The [4.2](https://github.com/mattstauffer/illuminatenonlaravel/tree/4.2) branch is still going strong, but this 5.1 branch is brand-new. I would appreciate any and all contributions.
+
+At this point, most contributions could be just copying the 4.2 component over, adding `composer.json` and a `.gitignore`, and making sure our old code still works.
 
 ## But my framework doesn't use Symfony's HttpFoundation!
 That's tough. If you're using CodeIgniter, and it's a new project, honestly, it's time to upgrade. ¯\(°_o)/¯ But if it's a pre-existing project, and we all have those, the majority of the 4.2 components will still work with CodeIgniter and other older projects.
