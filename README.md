@@ -19,11 +19,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ### Done/In Progress
  * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
  * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
+ * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/config)
 
 ### Planned
  
  * Cache
- * Config
  * IoC
  * Routing
  * Translation
