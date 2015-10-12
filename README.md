@@ -16,20 +16,21 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
-### Done/In Progress
+### Done
  * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
  * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
  * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/config)
  * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/encryption)
 
+### In Progress
+ * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/mail) - Imported from 4.2 but needs to be tested/tweaked
+
 ### Planned
- 
  * Cache
  * IoC
  * Routing
  * Translation
  * Queue
- * Mail
  * Session
  * Validation
  * Pagination
