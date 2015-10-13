@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Users
+class UsersController
 {
 	public function index()
 	{

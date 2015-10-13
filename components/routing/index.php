@@ -8,7 +8,9 @@ include 'vendor/autoload.php';
 
 $router = new Router(new Dispatcher());
 
-include 'routes.php';
+$router->group(['namespace' => 'App\Controllers'], function(Router $router) {
+	include 'routes.php';
+});
 
 $request = Request::createFromGlobals();
 
