@@ -23,6 +23,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/encryption)
  * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/translation)
  * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/validation)
+ * [Session](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/session)
 
 ### In Progress
  * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/mail) - Imported from 4.2 but needs to be tested/tweaked
@@ -32,7 +33,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * IoC
  * Routing
  * Queue
- * Session
  * Pagination
  * Artisan
  * Events
