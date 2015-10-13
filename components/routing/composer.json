@@ -1,6 +1,6 @@
 {
-	"require": {
-		"illuminate/routing": "~5.1.16",
-		"illuminate/events": "~5.1.16"
-	}
+    "require": {
+        "illuminate/routing": "~5.1.16",
+        "illuminate/events": "~5.1.16"
+    }
 }

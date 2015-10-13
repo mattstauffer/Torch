@@ -14,9 +14,8 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 
-// Using Illuminate/Events/Dispatcher here (not required),
-// any implementation of Illuminate/Contracts/Event/Dispatcher
-// is acceptable
+// Using Illuminate/Events/Dispatcher here (not required); any implementation of
+// Illuminate/Contracts/Event/Dispatcher is acceptable
 $events = new Dispatcher(new Container);
 
 // Create the router instance
