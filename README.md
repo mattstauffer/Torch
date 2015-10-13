@@ -14,18 +14,18 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ## Packages
 
 ### Done/In Progress
- * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/database)
- * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/support)
- * [Cache](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/cache)
- * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/config)
- * [IoC Container](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/container)
- * [Routing](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/routing)
- * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/translation)
- * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/encryption)
- * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/queue)
- * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/mail)
- * [Session (File Driver)](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/session)
- * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/public/validation)
+ * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/database)
+ * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/support)
+ * [Cache](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/cache)
+ * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/config)
+ * [IoC Container](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/container)
+ * [Routing](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/routing)
+ * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/translation)
+ * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/encryption)
+ * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/queue)
+ * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/mail)
+ * [Session (File Driver)](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/session)
+ * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/validation)
 
 ### Planned
  * Pagination
@@ -49,6 +49,3 @@ See other related projects:
 * [CodeIgniter Service Level](https://github.com/jeremyvaught/CodeIgniter-Service-Level) by [@jeremyvaught](https://github.com/jeremyvaught)
 * [Slim Services](https://github.com/itsgoingd/slim-services) by [@itsgoingd](https://github.com/itsgoingd)
 * [Session Gear](https://github.com/phpgearbox/session) by [@phpgearbox](https://github.com/phpgearbox)
-
-## Why 4.2?
-A lot of the refactoring of Illuminate components in Laravel 4.3 made it difficult to implement them in any framework that doesn't use Symfony's HttpRequest object, so the cost of implementing goes up significantly. It might be worth building a branch of this project that targets using 5.0 components and limiting it to only work on frameworks that use HttpRequest.
