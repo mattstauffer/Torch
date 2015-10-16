@@ -1,4 +1,4 @@
-# Illuminate Non-Laravel
+# Floodlamp ![](floodlamp-logo.png)
 
 Showing a simplest-use example for using each v5.1 Illuminate component in non-Laravel applications.
 
