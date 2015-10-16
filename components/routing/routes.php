@@ -13,10 +13,8 @@ $router->get('bye', function () {
 });
 
 $router->group(['namespace' => 'App\Controllers', 'prefix' => 'users'], function (Router $router) {
-
     $router->get('/', ['name' => 'users.index', 'uses' => 'UsersController@index']);
     $router->post('/', ['name' => 'users.store', 'uses' => 'UsersController@store']);
-
 });
 
 // catch-all route

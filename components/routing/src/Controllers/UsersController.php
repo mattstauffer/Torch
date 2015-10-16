@@ -6,7 +6,7 @@ class UsersController
 {
     public function index()
     {
-        return "listing the users";
+        return "listing the users<br><br><form method='post'><input type='submit'></form>";
     }
 
     public function store()
