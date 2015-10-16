@@ -17,21 +17,21 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ## Packages
 
 ### Done
- * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
- * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
- * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/config)
- * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/encryption)
- * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/translation)
- * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/validation)
  * [Cache](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/cache)
+ * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/config)
+ * [Container](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/container)
+ * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/database)
+ * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/encryption)
  * [Routing](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/routing)
+ * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/translation)
  * [Session](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/session)
+ * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/support)
+ * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/master/components/validation)
 
 ### In Progress
  * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/mail) - Imported from 4.2 but needs to be tested/tweaked
 
 ### Planned
- * IoC
  * Queue
  * Pagination
  * Artisan
