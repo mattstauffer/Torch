@@ -30,9 +30,9 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### In Progress
  * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/components/mail) - Imported from 4.2 but needs to be tested/tweaked
+ * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/queue) - Imported from 4.2 but needs to be tested/tweaked
 
 ### Planned
- * Queue
  * Pagination
  * Artisan
  * Events
