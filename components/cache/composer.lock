@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "62cd363818c9d6545689d15d63eac004",
+    "hash": "42cb5317540729be3a83c31a72ad9728",
+    "content-hash": "192c2bbd73c7811b4f95beed8685944b",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -189,16 +190,16 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v5.1.16",
+            "version": "v5.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
-                "reference": "dcd7551151aa752324562ad220e4fe4ee0687116"
+                "reference": "6ffa99bbc2c6dccb1e50ed5219a30aea6d02f0d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/dcd7551151aa752324562ad220e4fe4ee0687116",
-                "reference": "dcd7551151aa752324562ad220e4fe4ee0687116",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/6ffa99bbc2c6dccb1e50ed5219a30aea6d02f0d3",
+                "reference": "6ffa99bbc2c6dccb1e50ed5219a30aea6d02f0d3",
                 "shasum": ""
             },
             "require": {
@@ -235,20 +236,20 @@
             ],
             "description": "The Illuminate Cache package.",
             "homepage": "http://laravel.com",
-            "time": "2015-09-03 11:44:03"
+            "time": "2015-10-06 17:04:59"
         },
         {
             "name": "illuminate/container",
-            "version": "v5.1.16",
+            "version": "v5.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "66621248395705cc64bc1ce9262b99b4bfa606f2"
+                "reference": "4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/66621248395705cc64bc1ce9262b99b4bfa606f2",
-                "reference": "66621248395705cc64bc1ce9262b99b4bfa606f2",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4",
+                "reference": "4ecdb3df4de7a4587914f44c8e3a129a12ba6eb4",
                 "shasum": ""
             },
             "require": {
@@ -278,20 +279,20 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2015-08-26 23:00:38"
+            "time": "2015-09-24 11:16:48"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.1.16",
+            "version": "v5.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "610aea16e3d91dfd85db4cf43703403a83b7cba2"
+                "reference": "e2b71fdbeeb3438748dca5f497e205888788a883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/610aea16e3d91dfd85db4cf43703403a83b7cba2",
-                "reference": "610aea16e3d91dfd85db4cf43703403a83b7cba2",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/e2b71fdbeeb3438748dca5f497e205888788a883",
+                "reference": "e2b71fdbeeb3438748dca5f497e205888788a883",
                 "shasum": ""
             },
             "require": {
@@ -320,20 +321,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2015-08-31 12:59:22"
+            "time": "2015-09-24 11:16:48"
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.1.16",
+            "version": "v5.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "b93043ad8efe4a2ccd0bb202d8493255bb865720"
+                "reference": "43032afcbc57cc31a7c6a423e7420cb09a941df2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/b93043ad8efe4a2ccd0bb202d8493255bb865720",
-                "reference": "b93043ad8efe4a2ccd0bb202d8493255bb865720",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/43032afcbc57cc31a7c6a423e7420cb09a941df2",
+                "reference": "43032afcbc57cc31a7c6a423e7420cb09a941df2",
                 "shasum": ""
             },
             "require": {
@@ -370,20 +371,65 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2015-08-24 08:44:48"
+            "time": "2015-10-13 14:34:04"
         },
         {
-            "name": "illuminate/support",
-            "version": "v5.1.16",
+            "name": "illuminate/redis",
+            "version": "v5.1.20",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "c5389968d48517b3b51cfd8cd4abd72f0cc1575b"
+                "url": "https://github.com/illuminate/redis.git",
+                "reference": "f959758fc593f232307e5133b9202f92f937a185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c5389968d48517b3b51cfd8cd4abd72f0cc1575b",
-                "reference": "c5389968d48517b3b51cfd8cd4abd72f0cc1575b",
+                "url": "https://api.github.com/repos/illuminate/redis/zipball/f959758fc593f232307e5133b9202f92f937a185",
+                "reference": "f959758fc593f232307e5133b9202f92f937a185",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9",
+                "predis/predis": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Redis\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "The Illuminate Redis package.",
+            "homepage": "http://laravel.com",
+            "time": "2015-06-18 02:16:31"
+        },
+        {
+            "name": "illuminate/support",
+            "version": "v5.1.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "cf634d1b61d80ea1d7749ef71e0ab3c088931463"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/cf634d1b61d80ea1d7749ef71e0ab3c088931463",
+                "reference": "cf634d1b61d80ea1d7749ef71e0ab3c088931463",
                 "shasum": ""
             },
             "require": {
@@ -395,6 +441,7 @@
             },
             "suggest": {
                 "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
+                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (^1.0.4).",
                 "symfony/var-dumper": "Required to use the dd function (2.7.*)."
             },
             "type": "library",
@@ -423,7 +470,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-09-03 15:47:41"
+            "time": "2015-10-12 17:24:03"
         },
         {
             "name": "nesbot/carbon",
@@ -471,6 +518,56 @@
                 "time"
             ],
             "time": "2015-06-25 04:19:39"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/84060b9034d756b4d79641667d7f9efe1aeb8e04",
+                "reference": "84060b9034d756b4d79641667d7f9efe1aeb8e04",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete PHP client library for Redis",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2015-07-30 18:34:15"
         },
         {
             "name": "slim/slim",

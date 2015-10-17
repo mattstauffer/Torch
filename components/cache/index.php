@@ -3,6 +3,7 @@
 use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Redis\Database;
 
 require_once 'vendor/autoload.php';
 
@@ -23,10 +24,10 @@ $app->get('/', function () {
     // which are loaded from the config class in the container.
     // More about the config class can be found in the config component; for now we will use an array
     $container['config'] = [
-        'cache.default' => 'file',
+        'cache.default'     => 'file',
         'cache.stores.file' => [
             'driver' => 'file',
-            'path' => __DIR__ . '/cache'
+            'path'   => __DIR__ . '/cache'
         ]
     ];
 
@@ -46,6 +47,39 @@ $app->get('/', function () {
     $cache->put('test', 'This is loaded from cache.', 500);
 
     // Echo out the value we just stored in cache
+    echo $cache->get('test');
+});
+
+// NOTE: You will need to have redis running for this to work
+$app->get('/redis', function () {
+    $container = new Container;
+
+    $container['config'] = [
+        'cache.default'     => 'redis',
+        'cache.stores.redis' => [
+            'driver'     => 'redis',
+            'connection' => 'default'
+        ],
+        'cache.prefix' => 'illuminate_non_laravel',
+        'database.redis'    => [
+            'cluster' => false,
+            'default' => [
+                'host'     => '127.0.0.1',
+                'port'     => 6379,
+                'database' => 0,
+            ],
+        ]
+    ];
+
+    $container['redis'] = new Database($container['config']['database.redis']);
+
+    $cacheManager = new CacheManager($container);
+
+    $cache = $cacheManager->store();
+    // $cache = $cacheManager->store('redis');
+
+    $cache->put('test', 'This is loaded from cache.', 500);
+    
     echo $cache->get('test');
 });
 
