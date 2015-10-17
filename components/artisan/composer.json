@@ -1,0 +1,7 @@
+{
+    "require": {
+        "illuminate/console": "~5.1.0",
+        "illuminate/container": "~5.1.0",
+        "illuminate/events": "~5.1.0"
+    }
+}
