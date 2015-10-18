@@ -12,7 +12,7 @@ require_once 'vendor/autoload.php';
  * Requires: illuminate/filesystem
  *
  * @source https://github.com/illuminate/translation
- * @author Robin Malfait
+ * @contributor Robin Malfait
  */
 
 $app = new Slim\Slim();

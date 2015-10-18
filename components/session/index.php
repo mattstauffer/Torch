@@ -21,9 +21,9 @@ require_once 'vendor/autoload.php';
 * @todo Drivers other than the file driver
 *
 * @source https://github.com/illuminate/session
-* @author Matt Stauffer
-* @author Sam Jordan
-* @author Jordon Brill
+* @contributor Matt Stauffer
+* @contributor Sam Jordan
+* @contributor Jordon Brill
 */
 
 $app = new \Slim\Slim();

@@ -4,7 +4,7 @@
  * Illuminate/Routing
  *
  * @source https://github.com/illuminate/routing
- * @author https://github.com/jwalton512
+ * @contributor https://github.com/jwalton512
  */
 
 require_once 'vendor/autoload.php';

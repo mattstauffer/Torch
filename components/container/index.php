@@ -10,7 +10,7 @@
  * Requires: illuminate/container
  *
  * @source https://github.com/illuminate/container
- * @author https://github.com/reinink
+ * @contributor https://github.com/reinink
  */
 
 /*

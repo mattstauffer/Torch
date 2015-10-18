@@ -9,7 +9,7 @@
  * Requires: illuminate/database // If using database validation
  *
  * @source https://github.com/illuminate/validation
- * @author https://github.com/tunr
+ * @contributor https://github.com/tunr
  */
 
 require_once 'vendor/autoload.php';
