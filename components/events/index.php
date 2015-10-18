@@ -2,6 +2,13 @@
 
 include 'vendor/autoload.php';
 
+/**
+ * Illuminate/events
+ *
+ * @source https://github.com/illuminate/events
+ * @contributor https://github.com/angelov
+ */
+
 use App\Events\UserHasRegisteredEvent;
 use App\Listeners\SendWelcomingEmail;
 
