@@ -1,4 +1,4 @@
-# Illuminate Non-Laravel
+# Torch
 
 Showing a simplest-use example for using each v4.2 Illuminate component in non-Laravel applications.
 
@@ -14,18 +14,18 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ## Packages
 
 ### Done/In Progress
- * [Database](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/database)
- * [Support](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/support)
- * [Cache](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/cache)
- * [Config](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/config)
- * [IoC Container](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/container)
- * [Routing](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/routing)
- * [Translation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/translation)
- * [Encryption](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/encryption)
- * [Queue](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/queue)
- * [Mail](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/mail)
- * [Session (File Driver)](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/session)
- * [Validation](https://github.com/mattstauffer/IlluminateNonLaravel/tree/4.2/public/validation)
+ * [Database](https://github.com/mattstauffer/Torch/tree/4.2/public/database)
+ * [Support](https://github.com/mattstauffer/Torch/tree/4.2/public/support)
+ * [Cache](https://github.com/mattstauffer/Torch/tree/4.2/public/cache)
+ * [Config](https://github.com/mattstauffer/Torch/tree/4.2/public/config)
+ * [IoC Container](https://github.com/mattstauffer/Torch/tree/4.2/public/container)
+ * [Routing](https://github.com/mattstauffer/Torch/tree/4.2/public/routing)
+ * [Translation](https://github.com/mattstauffer/Torch/tree/4.2/public/translation)
+ * [Encryption](https://github.com/mattstauffer/Torch/tree/4.2/public/encryption)
+ * [Queue](https://github.com/mattstauffer/Torch/tree/4.2/public/queue)
+ * [Mail](https://github.com/mattstauffer/Torch/tree/4.2/public/mail)
+ * [Session (File Driver)](https://github.com/mattstauffer/Torch/tree/4.2/public/session)
+ * [Validation](https://github.com/mattstauffer/Torch/tree/4.2/public/validation)
 
 ### Planned
  * Pagination

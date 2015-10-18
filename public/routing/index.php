@@ -12,7 +12,7 @@ require_once '../../vendor/autoload.php';
  *           illuminate/events
  *
  * @todo Abstract out the creation of the $app/iOC so that we have a commonly-
- *       agreed-upon way to do it across all of the IlluminateNonLaravel
+ *       agreed-upon way to do it across all of the Torch
  *       examples.
  *
  * @source https://github.com/illuminate/routing

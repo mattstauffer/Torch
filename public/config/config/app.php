@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'siteName' => 'IlluminateNonLaravel Config'
+    'siteName' => 'Torch Config'
 );
