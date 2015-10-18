@@ -2,7 +2,7 @@
 
 return [
     'app' => [
-        'siteName' => 'IlluminateNonLaravel Config',
+        'siteName' => 'Torch Config',
         'user' => 'Slim'
     ]
 ];

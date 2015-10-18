@@ -4,6 +4,8 @@
  * Illuminate/Routing
  *
  * @source https://github.com/illuminate/routing
+ * @contributor Muhammed Gufran
+ * @contributor Matt Stauffer
  * @contributor https://github.com/jwalton512
  */
 
