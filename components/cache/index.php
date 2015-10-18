@@ -24,7 +24,7 @@ $app->get('/', function () {
     // which are loaded from the config class in the container.
     // More about the config class can be found in the config component; for now we will use an array
     $container['config'] = [
-        'cache.default'     => 'file',
+        'cache.default' => 'file',
         'cache.stores.file' => [
             'driver' => 'file',
             'path'   => __DIR__ . '/cache'
@@ -55,17 +55,17 @@ $app->get('/redis', function () {
     $container = new Container;
 
     $container['config'] = [
-        'cache.default'     => 'redis',
+        'cache.default' => 'redis',
         'cache.stores.redis' => [
-            'driver'     => 'redis',
+            'driver' => 'redis',
             'connection' => 'default'
         ],
         'cache.prefix' => 'illuminate_non_laravel',
-        'database.redis'    => [
+        'database.redis' => [
             'cluster' => false,
             'default' => [
-                'host'     => '127.0.0.1',
-                'port'     => 6379,
+                'host' => '127.0.0.1',
+                'port' => 6379,
                 'database' => 0,
             ],
         ]
@@ -75,7 +75,9 @@ $app->get('/redis', function () {
 
     $cacheManager = new CacheManager($container);
 
+    // Get the default cache driver (file in this case)
     $cache = $cacheManager->store();
+    // Or if you have multiple drivers configured, you can get the redis store like this:
     // $cache = $cacheManager->store('redis');
 
     $cache->put('test', 'This is loaded from cache.', 500);
