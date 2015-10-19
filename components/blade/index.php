@@ -17,11 +17,11 @@ $view_filename = 'hello';
 try {
     // Load the view within the current scope
     echo $tpl->view()
-         ->make($view_filename)
-         ->with($view_data)
-         ->render();
-    }
+        ->make($view_filename)
+        ->with($view_data)
+        ->render();
+}
 catch (Exception $e) {
     // Re-throw the exception
-     throw $e;
+    throw $e;
 }
