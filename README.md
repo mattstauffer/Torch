@@ -37,6 +37,8 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * Pagination
  * Artisan
  * Views/Templates/Blade
+ * Logging & Errors
+ * Middleware
  * More?
 
 ## Contributing
