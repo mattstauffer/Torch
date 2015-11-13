@@ -1,5 +1,5 @@
 <?php
-    require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
     /**
 	 * Illuminate/log
@@ -14,23 +14,21 @@
     $app->get('/',function ()
     {
     	//create new writer instance with dependencies
-	    $log = new Illuminate\Log\Writer(new Monolog\Logger('Torch Logger'));
+    	$log = new Illuminate\Log\Writer(new Monolog\Logger('Torch Logger'));
 
 	    //setup log file location
-	    $log->useFiles('./logs/torch.log');
+    	$log->useFiles('./logs/torch.log');
 
 	    //actual logging(s)
-	    $log->info('Logging INFO message');
-	    echo '<p style="color:#0000FF">Logging INFO message</p>';
+    	$log->info('Logging INFO message');
+    	echo '<p style="color:#0000FF">Logging INFO message</p>';
 
-	    $log->error('Logging ERROR message');
-	    echo '<p style="color:#FF0000">Logging ERROR message</p>';
+    	$log->error('Logging ERROR message');
+    	echo '<p style="color:#FF0000">Logging ERROR message</p>';
 
-	    $log->notice('Logging NOTICE message');
-	    echo '<p style="color:#008000">Logging NOTICE message</p>';
+    	$log->notice('Logging NOTICE message');
+    	echo '<p style="color:#008000">Logging NOTICE message</p>';
     	
     });
-
-    //run the app to serve request and provide response
     $app->run();
-  
+    
