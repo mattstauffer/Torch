@@ -29,7 +29,7 @@ require_once 'libraries/Mailer.php';
 require_once 'libraries/Template.php';
 
 // Create new IoC Container instance
-$container = new Illuminate\Container\Container;
+$container = new Illuminate\Container\Container();
 
 // Bind a "template" class to the container
 $container->bind('template', 'Acme\Template');
@@ -37,7 +37,7 @@ $container->bind('template', 'Acme\Template');
 // Bind a "mailer" class to the container
 // Use a callback to set additional settings
 $container->bind('mailer', function ($container) {
-    $mailer = new Acme\Mailer;
+    $mailer = new Acme\Mailer();
     $mailer->username = 'username';
     $mailer->password = 'password';
     $mailer->from = 'foo@bar.com';
@@ -52,9 +52,8 @@ $container->singleton('database', function ($container) {
 });
 
 // Bind an existing "authentication" class instance to the container
-$auth = new Acme\Authentication;
+$auth = new Acme\Authentication();
 $container->instance('auth', $auth);
-
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +105,7 @@ $app->get('/articles', function () use ($container) {
 
     // Display the articles
     foreach ($articles as $article) {
-        echo '<a href="#">' . $article['title'] . '</a><br>';
+        echo '<a href="#">'.$article['title'].'</a><br>';
     }
 });
 

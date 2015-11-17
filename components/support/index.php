@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 require_once 'vendor/autoload.php';
 
-/**
+/*
  * Illuminate/support
  *
  * Provides array helpers, Collection, Fluent, Pluralizer, Str, MessageBag, and more
@@ -19,11 +19,11 @@ require_once 'vendor/autoload.php';
  */
 
 $app = new \Slim\Slim();
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware());
 
 $app->get('/', function () {
     // MessageBag init
-    $messageBag = new MessageBag;
+    $messageBag = new MessageBag();
 
     echo '<h2>Array dot notation with array_get</h2>';
     echo '<pre>';
@@ -31,15 +31,14 @@ $app->get('/', function () {
     $person = [
         'name' => [
             'first' => 'Jill',
-            'last' => 'Schmoe'
-        ]
+            'last'  => 'Schmoe',
+        ],
     ];
-    echo 'name.first is ' . array_get($person, 'name.first') . "\n";
+    echo 'name.first is '.array_get($person, 'name.first')."\n";
 
     $messageBag->add('notice', 'Array dot notation displayed.');
 
     echo '</pre><hr>';
-
 
     // Collection
     echo '<h2>Collection</h2>';
@@ -58,34 +57,32 @@ $app->get('/', function () {
 
     // More at http://laravel.com/docs/5.1/collections
 
-
     // Fluent
     echo '<h2>Fluent</h2>';
     echo '<pre>';
     $personRecord = [
         'first_name' => 'Mohammad',
-        'last_name' => 'Gufran'
+        'last_name'  => 'Gufran',
     ];
     $record = new Fluent($personRecord);
 
     $record->address('hometown, street, house');
 
-    echo $record->first_name . "\n";
-    echo $record->address . "\n";
+    echo $record->first_name."\n";
+    echo $record->address."\n";
 
     $messageBag->add('notice', 'Fluent displayed.');
 
     echo '</pre><hr>';
-
 
     // Pluralizer
     echo '<h2>Pluralizer</h2>';
     echo '<pre>';
 
     $item = 'goose';
-    echo "One $item, two " . Pluralizer::plural($item) . "\n";
+    echo "One $item, two ".Pluralizer::plural($item)."\n";
     $item = 'moose';
-    echo "One $item, two " . Pluralizer::plural($item) . "\n";
+    echo "One $item, two ".Pluralizer::plural($item)."\n";
 
     echo '</pre><hr>';
 

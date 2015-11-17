@@ -2,7 +2,7 @@
 
 include 'vendor/autoload.php';
 
-/**
+/*
  * Illuminate/events
  *
  * @source https://github.com/illuminate/events
@@ -20,4 +20,4 @@ $dispatcher->listen([UserHasRegisteredEvent::class], SendWelcomingEmail::class);
 
 // Firing the event
 
-$dispatcher->fire(new UserHasRegisteredEvent("example"));
+$dispatcher->fire(new UserHasRegisteredEvent('example'));
