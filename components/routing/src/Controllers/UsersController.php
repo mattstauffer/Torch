@@ -11,6 +11,6 @@ class UsersController
 
     public function store()
     {
-        return "creating new user";
+        return 'creating new user';
     }
 }

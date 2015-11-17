@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Illuminate/Routing
+ * Illuminate/Routing.
  *
  * @source https://github.com/illuminate/routing
  * @contributor Muhammed Gufran
  * @contributor Matt Stauffer
  * @contributor https://github.com/jwalton512
  */
-
 require_once 'vendor/autoload.php';
 
 use Illuminate\Container\Container;
@@ -18,7 +17,7 @@ use Illuminate\Routing\Router;
 
 // Using Illuminate/Events/Dispatcher here (not required); any implementation of
 // Illuminate/Contracts/Event/Dispatcher is acceptable
-$events = new Dispatcher(new Container);
+$events = new Dispatcher(new Container());
 
 // Create the router instance
 $router = new Router($events);

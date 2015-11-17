@@ -4,7 +4,7 @@ use Illuminate\Encryption\Encrypter;
 
 require_once 'vendor/autoload.php';
 
-/**
+/*
  * Illuminate/encryption
  *
  * Requires: symfony/security-core
@@ -13,7 +13,7 @@ require_once 'vendor/autoload.php';
  */
 
 $app = new \Slim\Slim();
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware());
 
 /*
  * This key is used by the Illuminate encrypter service and should be set
@@ -27,11 +27,11 @@ $app->get('/', function () use ($key) {
 
     // Encrypt Hello World string
     $encryptedHelloWorld = $encrypter->encrypt('Hello World');
-    echo "Here is the encrypted string: <hr>" . $encryptedHelloWorld . "<br><br><br>";
+    echo 'Here is the encrypted string: <hr>'.$encryptedHelloWorld.'<br><br><br>';
 
     // Decrypt encrypted string
     $decryptedHelloWorld = $encrypter->decrypt($encryptedHelloWorld);
-    echo "Here is the decrypted string: <hr>" . $decryptedHelloWorld . "<br><br>";
+    echo 'Here is the decrypted string: <hr>'.$decryptedHelloWorld.'<br><br>';
 });
 
 $app->run();
