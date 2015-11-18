@@ -1,16 +1,17 @@
-<?php namespace App\Eloquent;
+<?php
+
+namespace App\Eloquent;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class EncapsulatedEloquentBase
+ * Class EncapsulatedEloquentBase.
  *
  * @author Kayla Daniels
- * @package App\Eloquent
  */
 abstract class EncapsulatedEloquentBase extends Eloquent
 {
-    public function __construct(array $attributes = array())
+    public function __construct(array $attributes = [])
     {
         Encapsulator::init();
 
