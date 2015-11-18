@@ -1,4 +1,6 @@
-<?php namespace App\Eloquent;
+<?php
+
+namespace App\Eloquent;
 
 class UserEncapsulated extends EncapsulatedEloquentBase
 {

@@ -1,41 +1,44 @@
-<?php namespace App\Eloquent;
+<?php
+
+namespace App\Eloquent;
 
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 
 /**
- * Class Encapsulator
+ * Class Encapsulator.
  *
  * @author Original encapsulation pattern contributed by Kayla Daniels
- * @package App\Eloquent
  */
 class Encapsulator
 {
     private static $conn;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
-     * Initialize capsule and store reference to connection
+     * Initialize capsule and store reference to connection.
      */
-    static public function init()
+    public static function init()
     {
         if (is_null(self::$conn)) {
-            $capsule = new Capsule;
+            $capsule = new Capsule();
 
             $capsule->addConnection([
-                'driver' => 'mysql',
-                'host' => 'localhost',
-                'database' => 'illuminate_non_laravel',
-                'username' => 'root',
-                'password' => '',
-                'charset' => 'utf8',
+                'driver'    => 'mysql',
+                'host'      => 'localhost',
+                'database'  => 'illuminate_non_laravel',
+                'username'  => 'root',
+                'password'  => '',
+                'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
-                'prefix' => '',
+                'prefix'    => '',
             ]);
 
-            $capsule->setEventDispatcher(new Dispatcher(new Container));
+            $capsule->setEventDispatcher(new Dispatcher(new Container()));
 
             // Set the cache manager instance used by connections... (optional)
             // $capsule->setCacheManager(...);

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-/** @var $router Router */
+/* @var $router Router */
 
 $router->get('/', function () {
     return 'hello world!';

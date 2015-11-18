@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
-use Illuminate\Filesystem\Filesystem;
 
 require_once 'vendor/autoload.php';
 
-/**
+/*
  * Illuminate/translation
  *
  * Requires: illuminate/filesystem
@@ -16,22 +16,22 @@ require_once 'vendor/autoload.php';
  */
 
 $app = new Slim\Slim();
-$app->add(new Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+$app->add(new Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware());
 
 $app->get('/', function () {
     // Prepare the FileLoader
     $loader = new FileLoader(new Filesystem(), './lang');
 
     // Register the English translator
-    $transEnglish = new Translator($loader, "en");
+    $transEnglish = new Translator($loader, 'en');
 
     // Register the Dutch translator
-    $transDutch = new Translator($loader, "nl");
+    $transDutch = new Translator($loader, 'nl');
 
-    echo "<h1>Translations</h1><pre>";
+    echo '<h1>Translations</h1><pre>';
 
-    echo "English: " . $transEnglish->get('talk.conclusion') . "\n";
-    echo "Dutch:   " . $transDutch->get('talk.conclusion');
+    echo 'English: '.$transEnglish->get('talk.conclusion')."\n";
+    echo 'Dutch:   '.$transDutch->get('talk.conclusion');
 });
 
 $app->run();
