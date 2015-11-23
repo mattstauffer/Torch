@@ -79,14 +79,8 @@ $app->post('/database', function () use ($app) {
     $capsule = new Capsule;
 
     $capsule->addConnection([
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'database' => 'illuminate_non_laravel',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix' => '',
+        'driver' => 'sqlite',
+        'database' => __DIR__.'/resources/database/db.sqlite'
     ]);
 
     $loader = new FileLoader(new Filesystem, 'lang');
