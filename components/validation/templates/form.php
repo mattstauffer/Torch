@@ -21,6 +21,11 @@
                 <?php endif; ?>
             <?php endif; ?>
             <form method="post">
+                <h2>Taken emails:</h2>
+                <ul class="list-group">
+                  <li class="list-group-item">admin@example.com</li>
+                  <li class="list-group-item">alan@example.com</li>
+                </ul>
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="email" value="<?php echo $email; ?>" class="form-control">
