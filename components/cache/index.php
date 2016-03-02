@@ -1,11 +1,11 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Redis\Database;
-
-require_once 'vendor/autoload.php';
 
 /**
  * Illuminate/config
@@ -16,6 +16,7 @@ require_once 'vendor/autoload.php';
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
+// Cache with file driver
 $app->get('/', function () {
     // Create a new Container object, needed by the cache manager.
     $container = new Container;
@@ -27,7 +28,7 @@ $app->get('/', function () {
         'cache.default' => 'file',
         'cache.stores.file' => [
             'driver' => 'file',
-            'path'   => __DIR__ . '/cache'
+            'path' => __DIR__ . '/cache'
         ]
     ];
 
@@ -50,6 +51,7 @@ $app->get('/', function () {
     echo $cache->get('test');
 });
 
+// Cache with redis driver
 // NOTE: You will need to have redis running for this to work
 $app->get('/redis', function () {
     $container = new Container;
@@ -75,8 +77,9 @@ $app->get('/redis', function () {
 
     $cacheManager = new CacheManager($container);
 
-    // Get the default cache driver (file in this case)
+    // Get the default cache driver (redis in this case)
     $cache = $cacheManager->store();
+
     // Or if you have multiple drivers configured, you can get the redis store like this:
     // $cache = $cacheManager->store('redis');
 
