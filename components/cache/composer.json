@@ -5,6 +5,8 @@
         "filp/whoops": "1.1.2",
         "illuminate/cache": "~5.1.0",
         "illuminate/container": "~5.1.0",
-        "illuminate/filesystem": "~5.1.0"
+        "illuminate/filesystem": "~5.1.0",
+        "illuminate/redis": "~5.1.0",
+        "predis/predis": "^1.0"
     }
 }
