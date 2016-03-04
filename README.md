@@ -28,12 +28,12 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Support](https://github.com/mattstauffer/Torch/tree/master/components/support)
  * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
  * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
- * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
- * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination) (half-completed component)
+ * [View](https://github.com/mattstauffer/Torch/tree/master/components/view))
 
 ### In Progress
  * [Mail](https://github.com/mattstauffer/Torch/tree/master/components/mail) - Imported from 4.2 but needs to be tested/tweaked
  * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue) - Imported from 4.2 but needs to be tested/tweaked
+ * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination) - Shows pagination for Eloquent, still needs to show pagination for non-Eloquent
 
 ### Planned
  * Artisan
