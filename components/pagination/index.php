@@ -37,8 +37,7 @@ Paginator::currentPageResolver(function ($pageName = 'page') {
 });
 
 $app->get('/', function () {
-
-    // set up the database connection, see the database component for more info
+    // Set up the database connection--see the database component for more info
     $capsule = new Capsule;
     $capsule->addConnection([
         'driver'    => 'mysql',
@@ -54,28 +53,34 @@ $app->get('/', function () {
     $capsule->setEventDispatcher(new Dispatcher(new Container));
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
+    // End of database setup
 
     $perPage = 5; // results per page
     $columns = ['*']; // (optional, defaults to *) array of columns to retrieve from database
     $pageName = 'page'; // (optional, defaults to 'page') query string parameter name for the page number
 
-    // $page (optional, defaults to null) current page
-    // if not set, the currentPageResolver will be used
+    if (User::all()->count() <= $perPage) {
+        exit("Need more than <strong>$perPage</strong> users in your <i>illuminate_non_laravel</i> database to see this work");
+    }
+
+    // Set $page (optional, defaults to null) to the current page;
+    // if this is not set, the currentPageResolver will be used
     $page = isset($_REQUEST[$pageName]) ? $_REQUEST[$pageName] : null;
 
-    // query and paginate the results
+    // Query and paginate the results
     $results = User::orderBy('id')->paginate($perPage, $columns, $pageName, $page);
 
-    // display the table of users
+    // Display the table of users
+    echo '<h1>Users</h1>';
     echo '<table>';
     foreach ($results as $user) {
-        echo '<tr><td>' . $user->id . '</td></tr>';
+        echo "<tr><td>User number {$user->id}</td></tr>";
     }
     echo '<table>' . "\n";
 
-    // render the Bootstrap framework compatible pagination html
-    // the appends() method is used to retain the other query string parameters (if any)
-    // it takes in an array of key/values
+    // Render the Bootstrap framework compatible pagination html;
+    // the appends() method retains any other query string parameters
+    // so that they can be passed along with pagination links
     echo $results->appends($_GET)->render();
 
     // additional helper methods available are:
