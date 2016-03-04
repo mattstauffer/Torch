@@ -10,7 +10,10 @@ use Illuminate\Pagination\Paginator;
 
 /**
  * Illuminate/paginiation
- * Allows you to add a pagination layer to your illuminate database results
+ * Allows you to add a pagination layer to your illuminate database results.
+ *
+ * Note: Additional work is still required to use the pagination library indepently
+ * from eloquent (illuminate/database). Example coming soon...
  *
  * Requires: illuminate/database
  *           illuminate/pagination
