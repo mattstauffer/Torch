@@ -25,17 +25,6 @@ use Illuminate\Pagination\Paginator;
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
-// Set up a current path resolver so the paginator can generate proper links
-Paginator::currentPathResolver(function () {
-    return isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
-});
-
-// Set up a current page resolver
-Paginator::currentPageResolver(function ($pageName = 'page') {
-    $page = isset($_REQUEST[$pageName]) ? $_REQUEST[$pageName] : 1;
-    return $page;
-});
-
 $app->get('/', function () {
     // Set up the database connection--see the database component for more info
     $capsule = new Capsule;
@@ -54,6 +43,17 @@ $app->get('/', function () {
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
     // End of database setup
+
+    // Set up a current path resolver so the paginator can generate proper links
+    Paginator::currentPathResolver(function () {
+        return isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
+    });
+
+    // Set up a current page resolver
+    Paginator::currentPageResolver(function ($pageName = 'page') {
+        $page = isset($_REQUEST[$pageName]) ? $_REQUEST[$pageName] : 1;
+        return $page;
+    });
 
     $perPage = 5; // results per page
     $columns = ['*']; // (optional, defaults to *) array of columns to retrieve from database
