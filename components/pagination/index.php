@@ -11,13 +11,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Illuminate/paginiation
- * Allows you to add a pagination layer to your illuminate database results.
+ * Allows you to add a pagination layer to your arrays or illuminate database results.
  *
- * Note: Additional work is still required to use the pagination library indepently
- * from eloquent (illuminate/database). Example coming soon...
- *
- * Requires: illuminate/database
- *           illuminate/pagination
+ * Requires: illuminate/pagination
+ *           illuminate/database
  *
  * @source https://github.com/illuminate/pagination
  * @contributor https://github.com/jamescarlos
@@ -26,6 +23,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
+// This route demonstrates an example of using the paginator with the illuminate\database component
 $app->get('/', function () {
     // Set up the database connection--see the database component for more info
     $capsule = new Capsule;
