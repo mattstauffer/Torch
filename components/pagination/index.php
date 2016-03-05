@@ -7,6 +7,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Illuminate/paginiation
@@ -95,6 +96,67 @@ $app->get('/', function () {
     // $results->url($page);
     // $results->firstItem();
     // $results->lastItem();
+});
+
+// This route demonstrates an example of paginating an array of items
+$app->get('/paginator', function () {
+    // Set up the pagination options
+    $total = 100; // total nubmer of items
+    $perPage = 25; // results per page
+    $currentPage = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1; // current page number
+    $offset = ($currentPage - 1) * $perPage;
+    $options = [
+        'path' => strtok($_SERVER['REQUEST_URI'], '?') // the path to use for the pagination links
+    ];
+
+    // Build an array of items for the current page
+    $items = [];
+    for ($i = 1; $i <= $total; $i++) {
+        // get the current line item
+        $items[] = [
+            'id' => $i,
+            'hash' => md5($i)
+        ];
+    }
+
+    // The pagination library provides 2 classes: Paginator & LengthAwarePaginator
+    // The Paginator class does not need to know the total number of items in the result set; however, because of this,
+    // the class does not have methods for retrieving the index of the last page.
+    // The LengthAwarePaginator accepts almost the same arguments as the Paginator; however, it does require a count of
+    // the total number of items in the result set.
+
+    // You should manually "slice" the array of results you pass to the paginator
+
+    // Paginator class example
+    $items = array_slice($items, $offset);
+    $results = new Paginator($items, $perPage, $currentPage, $options);
+    // End of Paginator example
+
+    // LengthAwarePaginator class example
+    //$items = array_slice($items, $offset, $perPage);
+    //$results = new LengthAwarePaginator($items, $total, $perPage, $currentPage, $options);
+    // End of LengthAwarePaginator example
+
+    // Display a paginated table of our array
+    echo '<h1>I love hashes</h1>';
+    echo '<table>';
+    foreach ($results as $result) {
+        echo "
+        <tr>
+            <td>{$result['id']}</td>
+            <td>{$result['hash']}</td>
+        </tr>";
+    }
+    echo '<table>' . "\n";
+    echo $results->appends($_GET)->render();
+
+    echo 'Current Page: ' . $results->currentPage();
+    echo '<br>Items Per Page: ' . $results->perPage();
+
+    // The following methods are only available when using the LengthAwarePaginator instance
+    //echo '<br>From ' . $results->firstItem() . ' to ' . $results->lastItem();
+    //echo '<br>Total Items: ' . $results->total();
+    //echo '<br>Last Page: ' . $results->lastPage();
 });
 
 $app->run();
