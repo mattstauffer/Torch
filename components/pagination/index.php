@@ -97,7 +97,7 @@ $app->get('/', function () {
 });
 
 // This route demonstrates an example of paginating an array of items
-$app->get('/paginator', function () {
+$app->get('/array', function () {
     // Set up the pagination options
     $total = 100; // total nubmer of items
     $perPage = 25; // results per page
