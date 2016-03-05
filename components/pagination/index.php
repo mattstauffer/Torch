@@ -93,6 +93,8 @@ $app->get('/', function () {
     // $results->previousPageUrl();
     // $results->total();
     // $results->url($page);
+    // $results->firstItem();
+    // $results->lastItem();
 });
 
 $app->run();
