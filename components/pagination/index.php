@@ -126,13 +126,13 @@ $app->get('/array', function () {
     // You should manually "slice" the array of results you pass to the paginator
 
     // Paginator class example
-    $items = array_slice($items, $offset);
-    $results = new Paginator($items, $perPage, $currentPage, $options);
+    $paginatorItems = array_slice($items, $offset);
+    $results = new Paginator($paginatorItems, $perPage, $currentPage, $options);
     // End of Paginator example
 
     // LengthAwarePaginator class example
-    //$items = array_slice($items, $offset, $perPage);
-    //$results = new LengthAwarePaginator($items, $total, $perPage, $currentPage, $options);
+    //$lengthAwarePaginatorItems = array_slice($items, $offset, $perPage);
+    //$results = new LengthAwarePaginator($lengthAwarePaginatorItems, $total, $perPage, $currentPage, $options);
     // End of LengthAwarePaginator example
 
     // Display a paginated table of our array
