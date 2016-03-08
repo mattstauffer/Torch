@@ -1,36 +1,31 @@
 <?php
-    require_once 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
+date_default_timezone_set('America/Detroit');
 
-    /**
-	 * Illuminate/log
-	 *
-	 * @source https://github.com/illuminate/log
-	 */
+/**
+ * Illuminate/log
+ *
+ * @source https://github.com/illuminate/log
+ */
 
-    // create new Slim instance
-    $app = new \Slim\Slim();
+$app = new \Slim\Slim();
 
-    //attach a route
-    $app->get('/',function ()
-    {
-    	//create new writer instance with dependencies
-	    $log = new Illuminate\Log\Writer(new Monolog\Logger('Torch Logger'));
+$app->get('/', function ()
+{
+    // Create new writer instance with dependencies
+    $log = new Illuminate\Log\Writer(new Monolog\Logger('Torch Logger'));
 
-	    //setup log file location
-	    $log->useFiles('./logs/torch.log');
+    // Setup log file location
+    $log->useFiles('./logs/torch.log');
 
-	    //actual logging(s)
-	    $log->info('Logging INFO message');
-	    echo '<p style="color:#0000FF">Logging INFO message</p>';
+    // Actual log(s)
+    $log->info('Logging an info message');
 
-	    $log->error('Logging ERROR message');
-	    echo '<p style="color:#FF0000">Logging ERROR message</p>';
+    $log->error('Logging an error message');
 
-	    $log->notice('Logging NOTICE message');
-	    echo '<p style="color:#008000">Logging NOTICE message</p>';
-    	
-    });
+    $log->notice('Logging a notice message');
 
-    //run the app to serve request and provide response
-    $app->run();
-  
+    echo str_replace("\n", "<br>", file_get_contents('./logs/torch.log'));
+});
+
+$app->run();
