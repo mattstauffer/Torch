@@ -1,0 +1,10 @@
+{
+    "require": {
+        "illuminate/events": "~5.1.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
