@@ -31,6 +31,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
  * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination)
  * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
+ * [Middleware](https://github.com/mattstauffer/Torch/tree/master/components/middleware)
 
 ### In Progress
  * [Mail](https://github.com/mattstauffer/Torch/tree/master/components/mail) - Imported from 4.2 but needs to be tested/tweaked
@@ -39,7 +40,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ### Planned
  * Artisan - [Work In Progress PR](https://github.com/mattstauffer/Torch/pull/22)
  * Logging & Errors
- * Middleware
  * More?
 
 ## Contributing
