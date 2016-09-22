@@ -42,6 +42,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * Logging & Errors
  * More?
 
+## Other Packages
+
+### Done
+ * [LaravelCollective/html](https://github.com/mattstauffer/Torch/tree/master/other-components/html)
+
 ## Contributing
 A few important notes:
 
