@@ -1,0 +1,13 @@
+{
+    "require": {
+        "illuminate/routing": "5.1.*",
+        "illuminate/events": "5.1.*",
+        "illuminate/config": "5.1.*",
+        "laravelcollective/html": "5.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
