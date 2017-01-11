@@ -19,11 +19,11 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Router;
 use Illuminate\Routing\UrlGenerator;
 
-// Create a request from server variables
-$request = Request::capture();
+// Create a service container
+$container = new Container;
 
-// Create service container, bind instance of request to it
-$container = new Container();
+// Create a request from server variables, and bind it to the container; optional
+$request = Request::capture();
 $container->instance('Illuminate\Http\Request', $request);
 
 // Using Illuminate/Events/Dispatcher here (not required); any implementation of

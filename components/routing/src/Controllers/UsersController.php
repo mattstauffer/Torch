@@ -20,7 +20,7 @@ class UsersController
 
     public function store(Request $request)
     {
-        $name = $request->request->get("name");
+        $name = $request->input('name');
 
         return "creating new user named $name";
     }
