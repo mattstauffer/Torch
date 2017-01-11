@@ -60,4 +60,4 @@ The [4.2](https://github.com/mattstauffer/torch/tree/4.2) branch is still going 
 At this point, most contributions could be just copying the 4.2 component over, adding `composer.json`, tweaking the old code for the new folder structure, and making sure our old code still works.
 
 ## But my framework doesn't use Symfony's HttpFoundation!
-That's hard, unfortunately. If you're using CodeIgniter, and it's a new project, honestly, it's time to upgrade frameworks. `¯\(°_o)/¯` But if it's a pre-existing project, and we all have those, the majority of the 4.2 components will still work with CodeIgniter and other older projects.
+Many of these components will still work. But a few of them require HttpFoundation. `¯\(°_o)/¯`
