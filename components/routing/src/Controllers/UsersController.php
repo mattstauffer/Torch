@@ -2,15 +2,26 @@
 
 namespace App\Controllers;
 
+use Illuminate\Http\Request;
+
 class UsersController
 {
     public function index()
     {
-        return "listing the users<br><br><form method='post'><input type='submit'></form>";
+        return "
+            listing the users
+            <br>
+            <br>
+            <form method='post'>
+            <input type='text' name='name'>
+            <input type='submit'>
+            </form>";
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return "creating new user";
+        $name = $request->request->get("name");
+
+        return "creating new user named $name";
     }
 }
