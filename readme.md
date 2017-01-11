@@ -28,6 +28,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
+* [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue)
 * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
 * [Support](https://github.com/mattstauffer/Torch/tree/tree/components/support)
 * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
@@ -41,7 +42,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ### Need to be moved over from 4.2
 
 * [Mail](https://github.com/mattstauffer/Torch/tree/master/4.2/mail) - Imported from 4.2 but needs to be tested/tweaked
-* [Queue](https://github.com/mattstauffer/Torch/tree/master/4.2/queue) - Imported from 4.2 but needs to be tested/tweaked
 
 ## Other Packages
 
