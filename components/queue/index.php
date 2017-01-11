@@ -2,7 +2,12 @@
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Container\Container;
+use Illuminate\Encryption\EncryptionServiceProvider;
+use Illuminate\Events\EventServiceProvider;
+use Illuminate\Queue\Connectors\SyncConnector;
 use Illuminate\Queue\QueueManager as Queue;
+use Illuminate\Queue\QueueServiceProvider;
+
 
 require_once 'vendor/autoload.php';
 
@@ -10,9 +15,10 @@ require_once 'vendor/autoload.php';
  * Illuminate/queue
  *
  * Requires: illuminate/queue
+ *           illuminate/events
  *           illuminate/config
- *           illuminate/http/request (if using iron.io, others? unsure?)
- *           iron-io/iron_mq (if using iron.io)
+ *           illuminate/encryption
+ *           pda/pheanstalk *if using beanstalkd* (see docs for requirements for other drivers)
  *
  * Note: Laravel's queue driver is for pushing Closures and classes up to
  *       a queue, and then pulling them back down and operating on them.
@@ -21,7 +27,6 @@ require_once 'vendor/autoload.php';
  *
  * @source https://github.com/illuminate/queue
  * @author https://github.com/mattstauffer
- * @see http://safeerahmed.uk/illuminate-queues-everywhere-laravel-4-queues-component
  */
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
@@ -29,83 +34,45 @@ date_default_timezone_set('UTC');
 
 // BOOTSTRAP-------------------------------------------------------------------
 $container = new Container;
-$config = [
-    'queue' => [
-        'default' => 'sync',
-        'connections' => [
-            'sync' => [
-                'driver' => 'sync',
-            ],
-        ]
-    ]
-];
-$container->bind('config', new Config($config));
-$queue = new Queue($container);
 
-// Make this Capsule instance available globally via static methods... (optional)
-// $queue->setAsGlobal();
+$container['config'] = new Config(array_merge(
+    require __DIR__ . '/config/app.php',
+    require __DIR__ . '/config/queue.php'
+));
 
-$queue->getContainer()->bind('encrypter', function() {
-    return new Illuminate\Encryption\Encrypter('foobar');
-});
+(new EncryptionServiceProvider($container))->register();
+(new EventServiceProvider($container))->register();
+(new QueueServiceProvider($container))->register();
+
 // END BOOTSTRAP---------------------------------------------------------------
 
 $app->get('/', function () {
-    return '<a href="/sync">sync</a><br>' .
-        '<a href="/ironio/add">Iron.IO - Add</a><br>' .
-        '<a href="/ironio/work/worker">Iron.IO - Do work</a><br>' .
-        '<a href="/ironio/work/worker">Iron.IO - Do work as a worker</a><br>' .
-        '<a href="/ironio/work/worker">Iron.IO - Do work one-off</a><br>';
+    echo '<a href="/sync">sync</a><br>' .
+        '<a href="/beanstalkd/add">Beanstalkd - Add</a><br>' .
+        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a><br>' .
+        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a><br>';
 });
 
-$app->get('/sync', function () use ($queue) {
-//     $queue->addConnection([
-//         'driver' => 'sync'
-//     ]);
+$app->get('/sync', function () use ($container) {
+    $queue = $container['queue'];
 
-    Queue::push('doThing', ['string' => 'sync-' . date('r')]);
+    $queue->push('doThing', ['string' => 'sync-' . date('r')]);
 
     echo 'Pushed an instance of doThing to sync driver.';
 });
 
-$app->get('/ironio/add', function () use ($queue) {
-    $queue->getContainer()->bind('request', function() {
-        return new Illuminate\Http\Request();
-    });
-    $queue->getContainer()->bind('IronMQ', function() {
-        return new IronMQ;
-    });
+$app->get('/beanstalkd/add', function () use ($container) {
+    $queue = $container['queue'];
 
-    $queue->addConnection([
-        'driver'  => 'iron',
-        'project' => 'your-project-id',
-        'token'   => 'your-token',
-        'queue'   => 'illuminate-test',
-        'encrypt' => true,
-    ]);
+    $queue->connection('beanstalkd')->push('doThing', ['string' => 'beanstalkd-' . date('r')]);
 
-    Queue::push('doThing', array('string' => 'iron-' . date('r')));
-
-    echo 'Pushed an instance of doThing to iron.io.';
+    echo 'Pushed an instance of doThing to beanstalkd.';
 });
 
-$app->get('/ironio/work/worker', function() use ($queue) {
-    $queue->getContainer()->bind('request', function() {
-        return new Illuminate\Http\Request();
-    });
-    $queue->getContainer()->bind('IronMQ', function() {
-        return new IronMQ;
-    });
+$app->get('/beanstalkd/work/worker', function() use ($container) {
+    $queue = $container['queue'];
 
-    $queue->addConnection([
-        'driver'  => 'iron',
-        'project' => 'your-project-id',
-        'token'   => 'your-token',
-        'queue'   => 'illuminate-test',
-        'encrypt' => true,
-    ]);
-
-    $worker = new \Illuminate\Queue\Worker($queue->getQueueManager());
+    $worker = new \Illuminate\Queue\Worker($queue);
 
     //  Params list for 'pop':
     //    * Name of the connection to use--you can define a unique connection name by passing a second parameter to addConnection above
@@ -116,30 +83,17 @@ $app->get('/ironio/work/worker', function() use ($queue) {
     //    * Maximum number of times to retry the specific job item before discarding it
     while (true) {
         try {
-            $worker->pop('default', 'illuminate-test', 3, 64, 30, 3);
+            $worker->pop('beanstalkd', 'default', 3, 64, 30, 3);
         } catch (\Exception $e) {
             // Handle job exception
         }
     }
 });
 
-$app->get('/ironio/work/single', function() use ($queue) {
-    $queue->getContainer()->bind('request', function() {
-        return new Illuminate\Http\Request();
-    });
-    $queue->getContainer()->bind('IronMQ', function() {
-        return new IronMQ;
-    });
+$app->get('/beanstalkd/work/single', function() use ($container) {
+    $queue = $container['queue'];
 
-    $queue->addConnection([
-        'driver'  => 'iron',
-        'project' => 'your-project-id',
-        'token'   => 'your-token',
-        'queue'   => 'illuminate-test',
-        'encrypt' => true,
-    ]);
-
-    $worker = new \Illuminate\Queue\Worker($queue->getQueueManager());
+    $worker = new \Illuminate\Queue\Worker($queue);
 
     //  Params list for 'pop':
     //    * Name of the connection to use--you can define a unique connection name by passing a second parameter to addConnection above
@@ -149,7 +103,8 @@ $app->get('/ironio/work/single', function() use ($queue) {
     //    * Time (in seconds) to sleep when no job is returned
     //    * Maximum number of times to retry the specific job item before discarding it
     try {
-        $worker->pop('default', 'illuminate-test', 3, 64, 30, 3);
+        $worker->pop('beanstalkd', 'default', 3, 64, 30, 3);
+        echo 'Popped<br>';
     } catch (\Exception $e) {
         // Handle job exception
         var_dump($e->getMessage());
@@ -161,8 +116,7 @@ class doThing
     public function fire($job, $data)
     {
         $handle = fopen('proof.txt', 'w');
-        fwrite($handle, $data['string']);
-
+        fwrite($handle, "\n" . $data['string']);
         $job->delete();
     }
 }
