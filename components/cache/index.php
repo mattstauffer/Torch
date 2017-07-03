@@ -84,7 +84,43 @@ $app->get('/redis', function () {
     // $cache = $cacheManager->store('redis');
 
     $cache->put('test', 'This is loaded from cache.', 500);
-    
+
+    echo $cache->get('test');
+});
+
+
+// Cache with memcached driver
+// NOTE: You will need to have memcached running for this to work
+$app->get('/memcached', function () {
+    $container = new Container;
+
+    $container['config'] = [
+        'cache.default' => 'memcached',
+        'cache.stores.memcached' => [
+            'driver' => 'memcached',
+            'servers' => [
+                [
+                    'host' => getenv('MEMCACHED_HOST', '127.0.0.1'),
+                    'port' => getenv('MEMCACHED_PORT', 11211),
+                    'weight' => 100,
+                ],
+            ],
+        ],
+        'cache.prefix' => 'illuminate_non_laravel'
+    ];
+
+    $container['memcached.connector'] = new \Illuminate\Cache\MemcachedConnector();
+
+    $cacheManager = new CacheManager($container);
+
+    // Get the default cache driver (redis in this case)
+    $cache = $cacheManager->store();
+
+    // Or if you have multiple drivers configured, you can get the memcached store like this:
+    // $cache = $cacheManager->store('memcached');
+
+    $cache->put('test', 'This is loaded from cache.', 500);
+
     echo $cache->get('test');
 });
 
