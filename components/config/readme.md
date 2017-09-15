@@ -1,6 +1,6 @@
 # <img src="../../torch-logo.png" alt="Torch Logo" align="right">Torch - Using Laravel's Illuminate Components Independently
 
-[&lt;&lt; Back to Torch](../../README.md)
+[&lt;&lt; Back to Torch](../../readme.md)
 
 # Config
 
