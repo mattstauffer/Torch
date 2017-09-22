@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Routing
 
 This component shows how to use Laravel's [Routing](https://laravel.com/docs/5.1/routing) features in non-Laravel applications.
 

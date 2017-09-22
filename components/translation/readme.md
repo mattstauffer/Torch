@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Translation
 
 This component shows how to use Laravel's [Translation](https://laravel.com/docs/5.1/localization) features in non-Laravel applications.
 

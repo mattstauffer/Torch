@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Validation
 
 This component shows how to use Laravel's [Validation](https://laravel.com/docs/5.1/validation) features in non-Laravel applications.
 

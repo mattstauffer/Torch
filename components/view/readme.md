@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# View
 
 This component shows how to use Laravel's [View](https://laravel.com/docs/5.1/views) features in non-Laravel applications.
 

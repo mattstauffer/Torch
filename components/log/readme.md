@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Log
 
 This component shows how to use Laravel's [Log](https://laravel.com/docs/5.1/errors) features in non-Laravel applications.
 

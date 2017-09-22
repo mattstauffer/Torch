@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../../readme.md)
 
-# Config
+# HTML
 
 This component shows how to use Laravel's [HTML](https://laravelcollective.com/docs/5.1/html) features in non-Laravel applications.
 

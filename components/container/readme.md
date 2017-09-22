@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Container
 
 This component shows how to use Laravel's [Container](https://laravel.com/docs/5.1/container) features in non-Laravel applications.
 

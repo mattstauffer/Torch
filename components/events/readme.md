@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Events
 
 This component shows how to use Laravel's [Events](https://laravel.com/docs/5.1/events) features in non-Laravel applications.
 

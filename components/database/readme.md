@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Database
 
 This component shows how to use Laravel's [Database](https://laravel.com/docs/5.1/database) features in non-Laravel applications.
 

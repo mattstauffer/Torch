@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Cache
 
 This component shows how to use Laravel's [Cache](https://laravel.com/docs/5.1/cache) features in non-Laravel applications.
 

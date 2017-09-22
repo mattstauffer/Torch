@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Pagination
 
 This component shows how to use Laravel's [Pagination](https://laravel.com/docs/5.1/pagination) features in non-Laravel applications.
 

@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Session
 
 This component shows how to use Laravel's [Session](https://laravel.com/docs/5.1/session) features in non-Laravel applications.
 

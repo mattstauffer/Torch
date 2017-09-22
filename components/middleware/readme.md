@@ -2,7 +2,7 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Config
+# Middleware
 
 This component shows how to use Laravel's [Middleware](https://laravel.com/docs/5.1/middleware) features in non-Laravel applications.
 
