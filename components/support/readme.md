@@ -6,7 +6,7 @@
 
 This component shows how to use Laravel's **Support** features in non-Laravel applications.
 
-Since this component doesn't have a dedicated page on doc, you can use the following links for more information:
+Since this component doesn't have a dedicated page in the documentation, you can use the following links to find more information:
 
 * [Collections](http://laravel.com/docs/5.1/collections)
 * [Strings](https://laravel.com/docs/5.1/helpers#strings)
