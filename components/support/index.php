@@ -8,106 +8,46 @@ use Illuminate\Support\Str;
 
 require_once 'vendor/autoload.php';
 
-/**
- * Illuminate/support
- *
- * Provides array helpers, Collection, Fluent, Pluralizer, Str, MessageBag, and more
- *
- * Requires: illuminate/support
- *
- * @source https://github.com/illuminate/support
- */
-
-$app = new \Slim\Slim();
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
-
-$app->get('/', function () {
-    // MessageBag init
-    $messageBag = new MessageBag;
-
-    echo '<h2>Array dot notation with array_get</h2>';
-    echo '<pre>';
-    // Array dot notation (and other helpers)
-    $person = [
-        'name' => [
-            'first' => 'Jill',
-            'last' => 'Schmoe'
-        ]
-    ];
-    echo 'name.first is ' . array_get($person, 'name.first') . "\n";
-
-    $messageBag->add('notice', 'Array dot notation displayed.');
-
-    echo '</pre><hr>';
 
 
-    // Collection
-    echo '<h2>Collection</h2>';
-    echo '<pre>';
-    $people = new Collection(['Declan', 'Abner', 'Mitzi']);
+$app = new \Slim\App();
+// @todo Fix this
+//$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
-    $people->map(function ($person) {
-        return "<i>$person</i>";
-    })->each(function ($person) {
-        echo "Collection person: $person\n";
-    });
+$app->get('/', function ($request, $response, $args) {
 
-    $messageBag->add('notice', 'Collection displayed.');
+    return $response->write(file_get_contents('index.html'));
 
-    echo '</pre><hr>';
-
-    // More at http://laravel.com/docs/5.1/collections
+});
 
 
-    // Fluent
-    echo '<h2>Fluent</h2>';
-    echo '<pre>';
-    $personRecord = [
-        'first_name' => 'Mohammad',
-        'last_name' => 'Gufran'
-    ];
-    $record = new Fluent($personRecord);
+$app->get('/collection', function() {
 
-    $record->address('hometown, street, house');
+    require('./subcomponents/collection.php');
 
-    echo $record->first_name . "\n";
-    echo $record->address . "\n";
+});
 
-    $messageBag->add('notice', 'Fluent displayed.');
+$app->get('/fluent', function() {
 
-    echo '</pre><hr>';
+    require('./subcomponents/fluent.php');
+
+});
 
 
-    // Pluralizer
-    echo '<h2>Pluralizer</h2>';
-    echo '<pre>';
+$app->get('/pluralizer', function() {
 
-    $item = 'goose';
-    echo "One $item, two " . Pluralizer::plural($item) . "\n";
-    $item = 'moose';
-    echo "One $item, two " . Pluralizer::plural($item) . "\n";
+    require('./subcomponents/pluralizer.php');
 
-    echo '</pre><hr>';
+});
 
-    // Str
-    echo '<h2>Str</h2>';
-    echo '<pre>';
+$app->get('/str', function() {
+    
+    require('./subcomponents/str.php');
+});
 
-    if (Str::contains('This is my fourteenth visit', 'first')) {
-        echo 'Howdy!';
-    } else {
-        echo 'Nice to see you again.';
-    }
+$app->get('/messageBag', function() {
 
-    echo '</pre><hr>';
-
-    echo '<h2>MessageBag</h2>';
-    echo '<pre>';
-
-    echo "MessageBag ({$messageBag->count()})\n";
-    foreach ($messageBag->all() as $message) {
-        echo " - $message\n";
-    }
+    require('./subcomponents/messageBag.php');
 });
 
 $app->run();
