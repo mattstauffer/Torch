@@ -20,7 +20,7 @@ use Illuminate\View\FileViewFinder;
  * @source https://github.com/illuminate/view
  */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 $app->get('/', function () {
