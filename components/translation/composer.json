@@ -3,7 +3,7 @@
         "slim/slim": "2.*",
         "zeuxisoo/slim-whoops": "~0.2.0",
         "filp/whoops": "1.1.2",
-        "illuminate/translation": "~5.1.0",
-        "illuminate/filesystem": "~5.1.0"
+        "illuminate/translation": "^5.5",
+        "illuminate/filesystem": "^5.5"
     }
 }
