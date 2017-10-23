@@ -4,7 +4,7 @@
 
 # Encryption
 
-This component shows how to use Laravel's [Encryption](https://laravel.com/docs/5.1/encryption) features in non-Laravel applications.
+This component shows how to use Laravel's [Encryption](https://laravel.com/docs/5.5/encryption) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.

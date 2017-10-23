@@ -8,8 +8,6 @@ use Illuminate\Support\Str;
 
 require_once 'vendor/autoload.php';
 
-
-
 $app = new \Slim\App();
 // @todo Fix this
 //$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);

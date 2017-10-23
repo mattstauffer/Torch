@@ -1,8 +1,8 @@
 # <img src="torch-logo.png" alt="Torch Logo" align="right">Torch - Using Laravel's Illuminate Components Independently
 
-Torch is a project to provide instructions and examples for using Illuminate components as standalone components in non-Laravel applications. The current `master` branch shows how to use Illuminate's `5.1` components.
+Torch is a project to provide instructions and examples for using Illuminate components as standalone components in non-Laravel applications. The current `master` branch shows how to use Illuminate's `5.5` components.
 
-**Note**: If you are working with an older project, you might have more success using the [4.2 components](https://github.com/mattstauffer/torch/tree/4.2).
+**Note**: If you are working with an older project, you might have more success using the [5.1 components](https://github.com/mattstauffer/torch/tree/5.1) or the [4.2 components](https://github.com/mattstauffer/torch/tree/4.2).
 
 ## Usage
 At the moment, the project is divided into many directories beneath `components` which will each contain an index file, usually written with [Slim](http://www.slimframework.com/). Navigate to that directory in your terminal and run the following to serve a web site from that directory:
@@ -16,31 +16,28 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
-### Done
- * [Cache](https://github.com/mattstauffer/Torch/tree/master/components/cache)
+### Ready for 5.5
  * [Config](https://github.com/mattstauffer/Torch/tree/master/components/config)
- * [Container](https://github.com/mattstauffer/Torch/tree/master/components/container)
- * [Database](https://github.com/mattstauffer/Torch/tree/master/components/database)
  * [Encryption](https://github.com/mattstauffer/Torch/tree/master/components/encryption)
+ * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
  * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
+ * [Support](https://github.com/mattstauffer/Torch/tree/tree/components/support)
  * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
- * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
- * [Support](https://github.com/mattstauffer/Torch/tree/master/components/support)
- * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
  * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
  * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
- * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination)
- * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
- * [Middleware](https://github.com/mattstauffer/Torch/tree/master/components/middleware)
 
-### In Progress
- * [Mail](https://github.com/mattstauffer/Torch/tree/master/components/mail) - Imported from 4.2 but needs to be tested/tweaked
- * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue) - Imported from 4.2 but needs to be tested/tweaked
+### Need to be moved over from 5.1
+ * [Cache](https://github.com/mattstauffer/Torch/tree/5.1/components/cache)
+ * [Container](https://github.com/mattstauffer/Torch/tree/5.1/components/container)
+ * [Database](https://github.com/mattstauffer/Torch/tree/5.1/components/database)
+ * [Session](https://github.com/mattstauffer/Torch/tree/5.1/components/session)
+ * [Validation](https://github.com/mattstauffer/Torch/tree/5.1/components/validation)
+ * [Pagination](https://github.com/mattstauffer/Torch/tree/5.1/components/pagination)
+ * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 
-### Planned
- * Artisan - [Work In Progress PR](https://github.com/mattstauffer/Torch/pull/22)
- * Logging & Errors
- * More?
+### Need to be moved over from 4.2
+ * [Mail](https://github.com/mattstauffer/Torch/tree/master/4.2/mail) - Imported from 4.2 but needs to be tested/tweaked
+ * [Queue](https://github.com/mattstauffer/Torch/tree/master/4.2/queue) - Imported from 4.2 but needs to be tested/tweaked
 
 ## Other Packages
 
@@ -55,9 +52,9 @@ A few important notes:
  3. Some components will require a bootstrap, and I hope we can come up with a Best-Practice bootstrap and Laravel-style Application instance for loading Service Providers, etc.
 
 ## Contributing
-The [4.2](https://github.com/mattstauffer/torch/tree/4.2) branch is still going strong, but this 5.1 branch is brand-new. I would appreciate any and all contributions.
+The [4.2](https://github.com/mattstauffer/torch/tree/4.2) and [5.1](https://github.com/mattstauffer/torch/tree/5.1) branches are still going strong, but this 5.5 branch is brand-new. I would appreciate any and all contributions.
 
-At this point, most contributions could be just copying the 4.2 component over, adding `composer.json`, tweaking the old code for the new folder structure, and making sure our old code still works.
+At this point, most contributions could be just copying the 5.1 or 4.2 component over, adding `composer.json` if it doesn't exist (4.2), tweaking the old code for the new folder structure, and making sure our old code still works.
 
 ## But my framework doesn't use Symfony's HttpFoundation!
 Many of these components will still work. But a few of them require HttpFoundation. `¯\(°_o)/¯`
