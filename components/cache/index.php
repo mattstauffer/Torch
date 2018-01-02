@@ -13,7 +13,7 @@ use Illuminate\Redis\Database;
  * @source https://github.com/illuminate/config
  */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 // Cache with file driver

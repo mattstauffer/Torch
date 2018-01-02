@@ -26,7 +26,7 @@ require_once 'vendor/autoload.php';
 * @contributor Jordon Brill
 */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 // Init the container
@@ -116,7 +116,8 @@ $app->get('/set', function () use ($container) {
     echo '<hr><a href="/">View current value of session variable</a>';
 });
 
-function randomVar() {
+function randomVar()
+{
     $names = [
         "Afghanistan",
         "Åland Islands",
