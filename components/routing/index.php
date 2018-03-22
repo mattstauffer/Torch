@@ -24,7 +24,7 @@ $container = new Container;
 
 // Create a request from server variables, and bind it to the container; optional
 $request = Request::capture();
-$container->instance('Illuminate\Http\Request', $request);
+$container->instance(Request::class, $request);
 
 // Using Illuminate/Events/Dispatcher here (not required); any implementation of
 // Illuminate/Contracts/Event/Dispatcher is acceptable
@@ -39,7 +39,7 @@ require_once 'routes.php';
 // Create the redirect instance
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
 
-// use redirect
+// Redirect usage examples:
 // return $redirect->home();
 // return $redirect->back();
 // return $redirect->to('/');
