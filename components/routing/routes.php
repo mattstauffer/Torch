@@ -12,7 +12,7 @@ $router->get('bye', function () {
     return 'goodbye world!';
 });
 
-$router->group(['namespace' => 'App\Controllers', 'prefix' => 'users'], function (Router $router) {
+$router->group(['namespace' => 'Torch\Routing\Controllers', 'prefix' => 'users'], function (Router $router) {
     $router->get('/', ['name' => 'users.index', 'uses' => 'UsersController@index']);
     $router->post('/', ['name' => 'users.store', 'uses' => 'UsersController@store']);
 });

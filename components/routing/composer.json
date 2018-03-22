@@ -5,7 +5,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Torch\\Routing\\": "src/"
         }
     }
 }

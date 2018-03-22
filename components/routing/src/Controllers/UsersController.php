@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace Torch\Routing\Controllers;
 
 use Illuminate\Http\Request;
 
