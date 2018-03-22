@@ -33,6 +33,26 @@ $events = new Dispatcher($container);
 // Create the router instance
 $router = new Router($events, $container);
 
+// Optionally define individual and/or grouped middleware available for use by routes.
+$singleMiddleware = [
+    'guest' => \Torch\Routing\Middleware\RedirectIfAuthenticated::class,
+    'auth' => \Torch\Routing\Middleware\Authenticate::class,
+];
+
+foreach ($singleMiddleware as $alias => $class) {
+    $router->aliasMiddleware($alias, $class);
+}
+
+$middlewareGroups = [
+    'web' => [
+        \Torch\Routing\Middleware\StartSession::class,
+    ],
+];
+
+foreach ($middlewareGroups as $alias => $group) {
+    $router->middlewareGroup($alias, $group);
+}
+
 // Load the routes
 require_once 'routes.php';
 

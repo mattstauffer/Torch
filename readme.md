@@ -16,11 +16,13 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
+### Ready for 5.6
+ * [Routing + Middleware](https://github.com/mattstauffer/Torch/tree/master/components/routing)
+
 ### Ready for 5.5
  * [Config](https://github.com/mattstauffer/Torch/tree/master/components/config)
  * [Encryption](https://github.com/mattstauffer/Torch/tree/master/components/encryption)
  * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
- * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
  * [Support](https://github.com/mattstauffer/Torch/tree/tree/components/support)
  * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
  * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
@@ -33,7 +35,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
  * [Session](https://github.com/mattstauffer/Torch/tree/5.1/components/session)
  * [Validation](https://github.com/mattstauffer/Torch/tree/5.1/components/validation)
  * [Pagination](https://github.com/mattstauffer/Torch/tree/5.1/components/pagination)
- * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 
 ### Need to be moved over from 4.2
  * [Mail](https://github.com/mattstauffer/Torch/tree/master/4.2/mail) - Imported from 4.2 but needs to be tested/tweaked

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middleware;
+namespace Torch\Routing\Middleware;
 
 use Closure;
 
@@ -16,8 +16,8 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! $_SESSION['user']) {
-            return 'Error Authenticate. Please <a href="/login">login</a>';
+        if (! @$_SESSION['logged_in']) {
+            return 'Authentication Error: this URI is for logged-in users only. Please <a href="/login">log in</a>';
         }
 
         return $next($request);

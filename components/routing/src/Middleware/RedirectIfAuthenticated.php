@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Middleware;
-
-use Closure;
-use Illuminate\Support\Facades\Auth;
+namespace Torch\Routing\Middleware;
 
 class RedirectIfAuthenticated
 {
@@ -15,10 +12,10 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, \Closure $next, $guard = null)
     {
-        if ($_SESSION['user']) {
-            return 'Error Authenticate';
+        if (@$_SESSION['logged_in']) {
+            return 'Authentication Error: This URI is for logged-out users only. Please <a href="/logout">log out</a>.';
         }
 
         return $next($request);
