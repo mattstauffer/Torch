@@ -1,7 +1,7 @@
 {
     "require": {
-        "illuminate/routing": "~5.6.0",
-        "illuminate/events": "~5.6.0"
+        "illuminate/routing": "5.5.*",
+        "illuminate/events": "5.5.*"
     },
     "autoload": {
         "psr-4": {
