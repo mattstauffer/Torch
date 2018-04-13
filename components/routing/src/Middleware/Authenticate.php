@@ -16,7 +16,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! @$_SESSION['logged_in']) {
+        if (isset($_SESSION['logged_in']) && ! $_SESSION['logged_in']) {
             return 'Authentication Error: this URI is for logged-in users only. Please <a href="/login">log in</a>';
         }
 
