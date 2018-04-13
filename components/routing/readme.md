@@ -4,7 +4,7 @@
 
 # Routing
 
-This component shows how to use Laravel's [Routing](https://laravel.com/docs/5.6/routing) features in non-Laravel applications.
+This component shows how to use Laravel's [Routing](https://laravel.com/docs/5.5/routing) features in non-Laravel applications.
 
 ## Usage
 
