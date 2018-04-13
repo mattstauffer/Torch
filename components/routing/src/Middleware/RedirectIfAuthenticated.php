@@ -14,7 +14,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, \Closure $next, $guard = null)
     {
-        if ( ! empty($_SESSION['logged_in'])) {
+        if (! empty($_SESSION['logged_in'])) {
             return 'Authentication Error: This URI is for logged-out users only. Please <a href="/logout">log out</a>.';
         }
 
