@@ -29,12 +29,12 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
 * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
 * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
+* [Validation](https://github.com/mattstauffer/Torch/tree/5.1/components/validation)
 
 ### Need to be moved over from 5.1
 
 * [Container](https://github.com/mattstauffer/Torch/tree/5.1/components/container)
 * [Database](https://github.com/mattstauffer/Torch/tree/5.1/components/database)
-* [Validation](https://github.com/mattstauffer/Torch/tree/5.1/components/validation)
 * [Pagination](https://github.com/mattstauffer/Torch/tree/5.1/components/pagination)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 
