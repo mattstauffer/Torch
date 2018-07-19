@@ -37,8 +37,8 @@ $app->get('/', function () {
     $viewResolver = new EngineResolver;
     $bladeCompiler = new BladeCompiler($filesystem, $pathToCompiledTemplates);
 
-    $viewResolver->register('blade', function () use ($bladeCompiler, $filesystem) {
-        return new CompilerEngine($bladeCompiler, $filesystem);
+    $viewResolver->register('blade', function () use ($bladeCompiler) {
+        return new CompilerEngine($bladeCompiler);
     });
 
     $viewResolver->register('php', function () {
