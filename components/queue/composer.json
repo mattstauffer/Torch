@@ -3,10 +3,8 @@
         "slim/slim": "2.*",
         "zeuxisoo/slim-whoops": "~0.2.0",
         "filp/whoops": "1.1.2",
-        "illuminate/queue": "~5.1.0",
-        "illuminate/config": "~5.1.0",
-        "illuminate/events": "~5.1.0",
-        "illuminate/encryption": "~5.1.0",
-        "pda/pheanstalk": "~3.0"
+        "illuminate/queue": "~5.5.0",
+        "illuminate/events": "~5.5.0",
+        "illuminate/redis": "~5.5.0"
     }
 }
