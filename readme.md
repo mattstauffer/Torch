@@ -21,6 +21,8 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 * [Cache](https://github.com/mattstauffer/Torch/tree/master/components/cache)
 * [Config](https://github.com/mattstauffer/Torch/tree/master/components/config)
+* [Container](https://github.com/mattstauffer/Torch/tree/master/components/container)
+* [Database](https://github.com/mattstauffer/Torch/tree/master/components/database)
 * [Encryption](https://github.com/mattstauffer/Torch/tree/master/components/encryption)
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
@@ -33,8 +35,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Need to be moved over from 5.1
 
-* [Container](https://github.com/mattstauffer/Torch/tree/5.1/components/container)
-* [Database](https://github.com/mattstauffer/Torch/tree/5.1/components/database)
 * [Pagination](https://github.com/mattstauffer/Torch/tree/5.1/components/pagination)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 
