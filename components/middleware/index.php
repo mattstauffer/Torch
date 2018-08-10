@@ -31,7 +31,7 @@ $routeMiddleware = [
 
 // Load middlewares to router
 foreach ($routeMiddleware as $key => $middleware) {
-    $router->middleware($key, $middleware);
+    $router->aliasMiddleware($key, $middleware);
 }
 
 // Load the routes
