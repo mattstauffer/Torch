@@ -14,7 +14,7 @@ $ composer install
 $ php -S localhost:8080
 ```
 
-Now you can visit [http://localhost:8000/](http://localhost:8080/) in your browser to view the output of this example.
+Now you can visit [http://localhost:8080/](http://localhost:8080/) in your browser to view the output of this example.
 
 ## Options and information
 
