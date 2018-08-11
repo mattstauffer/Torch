@@ -4,17 +4,17 @@
 
 # Middleware
 
-This component shows how to use Laravel's [Middleware](https://laravel.com/docs/5.1/middleware) features in non-Laravel applications.
+This component shows how to use Laravel's [Middleware](https://laravel.com/docs/5.5/middleware) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
 
 ```bash
 $ composer install
-$ php -S localhost:8000
+$ php -S localhost:8080
 ```
 
-Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
+Now you can visit [http://localhost:8080/](http://localhost:8080/) in your browser to view the output of this example.
 
 ## Options and information
 
