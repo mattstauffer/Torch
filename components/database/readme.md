@@ -4,7 +4,7 @@
 
 # Database
 
-This component shows how to use Laravel's [Database](https://laravel.com/docs/5.1/database) features in non-Laravel applications.
+This component shows how to use Laravel's [Database](https://laravel.com/docs/5.5/database) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
@@ -14,7 +14,7 @@ $ composer install
 $ php -S localhost:8000
 ```
 
-Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
+Now you can visit [http://localhost:8080/](http://localhost:8000/) in your browser to view the output of this example.
 
 ## Options and information
 
