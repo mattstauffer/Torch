@@ -114,7 +114,7 @@ $app->get('/database', function () {
     // Render the Bootstrap framework compatible pagination html;
     // the appends() method retains any other query string parameters
     // so that they can be passed along with pagination links
-    echo $results->appends($_GET)->links('page');
+    echo $results->appends($_GET)->links('pagination');
 
     // additional helper methods available are:
     // $results->count();
@@ -215,7 +215,7 @@ $app->get('/array', function () use ($items) {
         </tr>";
     }
     echo '<table>' . "\n";
-    echo $results->appends($_GET)->links('page');
+    echo $results->appends($_GET)->links('pagination');
 
     echo 'Current Page: ' . $results->currentPage();
     echo '<br>Items Per Page: ' . $results->perPage();
