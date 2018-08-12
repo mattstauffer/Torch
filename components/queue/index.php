@@ -65,7 +65,7 @@ $container->bind('exception.handler', function () {
         {
             var_dump($e->getMessage());
         }
-            
+
         public function renderForConsole($output, Exception $e)
         {
             var_dump($e->getMessage());
@@ -99,20 +99,20 @@ $app->get('/', function () {
 $app->get('/sync', function () use ($container) {
     $queue = $container['queue'];
 
-    $queue->push('doThing', ['string' => 'sync-' . date('r')]);
+    $queue->push('DoThing', ['string' => 'sync-' . date('r')]);
 
-    echo 'Pushed an instance of doThing to sync driver.';
+    echo 'Pushed an instance of DoThing to sync driver.';
 });
 
 $app->get('/redis/add', function () use ($container) {
     $queue = $container['queue'];
 
-    $queue->connection('redis')->push('doThing', ['string' => 'redis-' . date('r')]);
+    $queue->connection('redis')->push('DoThing', ['string' => 'redis-' . date('r')]);
 
-    echo 'Pushed an instance of doThing to redis.';
+    echo 'Pushed an instance of DoThing to redis.';
 });
 
-$app->get('/redis/work/worker', function() use ($container) {
+$app->get('/redis/work/worker', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -123,7 +123,7 @@ $app->get('/redis/work/worker', function() use ($container) {
     $worker->daemon('redis', 'default', $options);
 });
 
-$app->get('/redis/work/single', function() use ($container) {
+$app->get('/redis/work/single', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -135,7 +135,7 @@ $app->get('/redis/work/single', function() use ($container) {
     echo 'Ran job';
 });
 
-class doThing
+class DoThing
 {
     public function fire($job, $data)
     {
