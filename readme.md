@@ -27,6 +27,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
+* [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination)
 * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
 * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
@@ -34,10 +35,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
 * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
 * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
-
-### Need to be moved over from 5.1
-
-* [Pagination](https://github.com/mattstauffer/Torch/tree/5.1/components/pagination)
 
 ### Need to be moved over from 4.2
 
