@@ -17,7 +17,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($_SESSION['user']) {
+        if (isset($_SESSION['user'])) {
             return 'Error Authenticate';
         }
 

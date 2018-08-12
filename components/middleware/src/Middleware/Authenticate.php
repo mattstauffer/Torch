@@ -16,7 +16,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! $_SESSION['user']) {
+        if (! isset($_SESSION['user'])) {
             return 'Error Authenticate. Please <a href="/login">login</a>';
         }
 
