@@ -24,15 +24,15 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Container](https://github.com/mattstauffer/Torch/tree/master/components/container)
 * [Database](https://github.com/mattstauffer/Torch/tree/master/components/database)
 * [Encryption](https://github.com/mattstauffer/Torch/tree/master/components/encryption)
+* [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
+* [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
+* [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
 * [Support](https://github.com/mattstauffer/Torch/tree/tree/components/support)
 * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
-* [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
 * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
-* [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
 * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
-* [Middleware](https://github.com/mattstauffer/Torch/tree/5.1/components/middleware)
 
 ### Need to be moved over from 5.1
 
