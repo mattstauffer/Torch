@@ -51,7 +51,7 @@ $app->get('/', function () {
 });
 
 // This route demonstrates an example of using the paginator with the illuminate\database component
-$app->get('/database', function () use ($viewFactory, $events){
+$app->get('/database', function () use ($viewFactory, $events) {
     // Set up the database connection -- see the database component for more info
     $capsule = new Capsule;
 
