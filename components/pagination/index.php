@@ -200,10 +200,6 @@ $app->get('/array', function () use ($items) {
         return $viewFactory;
     });
 
-    Paginator::viewFactoryResolver(function () use ($viewFactory) {
-        return $viewFactory;
-    });
-
     // Display a paginated table of our array
     echo '<h1>I love hashes</h1>';
     echo '<table>';
