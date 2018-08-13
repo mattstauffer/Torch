@@ -16,6 +16,7 @@ require_once 'vendor/autoload.php';
  * Requires: illuminate/queue
  *           illuminate/events
  *           illuminate/redis *if using redis* (see docs for requirements for other drivers)
+ *           pda/pheanstalk *if using beanstalkd* (see docs for requirements for other drivers)
  *
  * Note: Laravel's queue driver is for pushing Closures and classes up to
  *       a queue, and then pulling them back down and operating on them.
@@ -85,6 +86,12 @@ $queue->addConnection([
     'queue' => 'default',
 ], 'redis');
 
+$queue->addConnection([
+    'driver' => 'beanstalkd',
+    'host' => 'localhost',
+    'queue' => 'default',
+], 'beanstalkd');
+
 $container['queue'] = $queue->getQueueManager();
 
 // END BOOTSTRAP---------------------------------------------------------------
@@ -93,7 +100,10 @@ $app->get('/', function () {
     echo '<a href="/sync">sync</a><br>' .
         '<a href="/redis/add">Redis - Add</a><br>' .
         '<a href="/redis/work/worker">Redis - Do work as a worker</a><br>' .
-        '<a href="/redis/work/single">Redis - Do work one-off</a><br>';
+        '<a href="/redis/work/single">Redis - Do work one-off</a><br>' .
+        '<a href="/beanstalkd/add">Beanstalkd - Add</a><br>' .
+        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a><br>' .
+        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a><br>';
 });
 
 $app->get('/sync', function () use ($container) {
@@ -132,6 +142,37 @@ $app->get('/redis/work/single', function () use ($container) {
     $options = new WorkerOptions();
 
     $worker->runNextJob('redis', 'default', $options);
+    echo 'Ran job';
+});
+
+$app->get('/beanstalkd/add', function () use ($container) {
+    $queue = $container['queue'];
+
+    $queue->connection('beanstalkd')->push('DoThing', ['string' => 'beanstalkd-' . date('r')]);
+
+    echo 'Pushed an instance of DoThing to beanstalkd.';
+});
+
+$app->get('/beanstalkd/work/worker', function () use ($container) {
+    $queue = $container['queue'];
+    $events = $container['events'];
+    $handler = $container['exception.handler'];
+
+    $worker = new Worker($queue, $events, $handler);
+    $options = new WorkerOptions();
+
+    $worker->daemon('beanstalkd', 'default', $options);
+});
+
+$app->get('/beanstalkd/work/single', function () use ($container) {
+    $queue = $container['queue'];
+    $events = $container['events'];
+    $handler = $container['exception.handler'];
+
+    $worker = new Worker($queue, $events, $handler);
+    $options = new WorkerOptions();
+
+    $worker->runNextJob('beanstalkd', 'default', $options);
     echo 'Ran job';
 });
 

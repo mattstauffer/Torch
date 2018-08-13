@@ -5,6 +5,7 @@
         "filp/whoops": "1.1.2",
         "illuminate/queue": "~5.5.0",
         "illuminate/events": "~5.5.0",
-        "illuminate/redis": "~5.5.0"
+        "illuminate/redis": "~5.5.0",
+        "pda/pheanstalk": "^3.1"
     }
 }
