@@ -29,15 +29,29 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
+// Create ViewFactory instance -- see the view component for more info
+$events = new Dispatcher(new Container);
+
+$pathsToTemplates = [__DIR__ . '/templates'];
+
+$filesystem = new Filesystem;
+
+$viewResolver = new EngineResolver;
+$viewResolver->register('php', function () {
+    return new PhpEngine;
+});
+
+$viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
+
+$viewFactory = new Factory($viewResolver, $viewFinder, $events);
+// End of create ViewFactory instance
+
 $app->get('/', function () {
     echo '<a href="database">Database</a> | <a href="array">Non-database</a>';
 });
 
 // This route demonstrates an example of using the paginator with the illuminate\database component
-$app->get('/database', function () {
-    // Event Dispatcher
-    $events = new Dispatcher(new Container);
-
+$app->get('/database', function () use ($viewFactory, $events){
     // Set up the database connection -- see the database component for more info
     $capsule = new Capsule;
 
@@ -56,21 +70,6 @@ $app->get('/database', function () {
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
     // End of database setup
-
-    // Create ViewFactory instance -- see the view component for more info
-    $pathsToTemplates = [__DIR__ . '/templates'];
-
-    $filesystem = new Filesystem;
-
-    $viewResolver = new EngineResolver;
-    $viewResolver->register('php', function () {
-        return new PhpEngine;
-    });
-
-    $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
-
-    $viewFactory = new Factory($viewResolver, $viewFinder, $events);
-    // End of create ViewFactory instance
 
     // Set the view factory resolver
     Paginator::viewFactoryResolver(function () use ($viewFactory) {
@@ -141,7 +140,7 @@ foreach (range(1, 100) as $i) {
 }
 
 // This route demonstrates an example of paginating an array of items
-$app->get('/array', function () use ($items) {
+$app->get('/array', function () use ($items, $viewFactory) {
     // Set up the pagination options
     $total = count($items); // total number of items
     $perPage = 25; // results per page
@@ -177,23 +176,6 @@ $app->get('/array', function () use ($items) {
         $results = new LengthAwarePaginator($lengthAwarePaginatorItems, $total, $perPage, $currentPage, $options);
     }
     // End of LengthAwarePaginator example
-
-    // Create ViewFactory instance -- see the view component for more info
-    $events = new Dispatcher(new Container);
-
-    $pathsToTemplates = [__DIR__ . '/templates'];
-
-    $filesystem = new Filesystem;
-
-    $viewResolver = new EngineResolver;
-    $viewResolver->register('php', function () {
-        return new PhpEngine;
-    });
-
-    $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
-
-    $viewFactory = new Factory($viewResolver, $viewFinder, $events);
-    // End of create ViewFactory instance
 
     // Set the view factory resolver
     Paginator::viewFactoryResolver(function () use ($viewFactory) {
