@@ -23,7 +23,7 @@ $router->get('/articles', ['as' => 'articles.index', 'uses' => function () use (
 }]);
 
 // Naming routes using `name` method:
-// Note: You are responsible for refreshing names & action lookups if you named your
+// Note: You are responsible for refreshing name & action lookups if you named your
 // routes using `name` method otherwise an exception of "route not defined" will be thrown.
 $router->get('/articles/create', function () use ($urlGenerator) {
     return 'The url to the route named "articles.create" is: ' . $urlGenerator->route('articles.create');
