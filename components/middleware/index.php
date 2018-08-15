@@ -10,11 +10,11 @@
 
 require_once 'vendor/autoload.php';
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Router;
-use Illuminate\Routing\Pipeline;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Pipeline;
+use Illuminate\Routing\Router;
 
 // Create new IoC Container instance
 $container = new Container;
@@ -49,8 +49,8 @@ require_once 'routes.php';
 $request = Request::capture();
 
 // Dispatching the request:
-// When it comes to dispatching the request, you have two options
-// a) you either send the request directrly through the router
+// When it comes to dispatching the request, you have two options:
+// a) you either send the request directly through the router
 // or b) you pass the request object through a stack of (global) middlewares
 // then dispatch it.
 
@@ -59,11 +59,11 @@ $request = Request::capture();
 
 // b. Pass the request through the global middlewares pipeline then dispatch it through the router
 $response = (new Pipeline($container))
-                    ->send($request)
-                    ->through($globalMiddleware)
-                    ->then(function ($request) use ($router) {
-                        return $router->dispatch($request);
-                    });
+    ->send($request)
+    ->through($globalMiddleware)
+    ->then(function ($request) use ($router) {
+        return $router->dispatch($request);
+    });
 
 // Send the response back to the browser
 $response->send();
