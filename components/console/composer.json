@@ -1,0 +1,9 @@
+{
+	"require": {
+		"illuminate/console": "^5.5",
+		"illuminate/events": "^5.5"
+	},
+	"autoload": {
+		"classmap": ["commands"]
+	}
+}
