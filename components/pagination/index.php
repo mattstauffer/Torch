@@ -3,11 +3,16 @@
 require_once 'vendor/autoload.php';
 
 use App\Eloquent\User;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\View\Factory;
 use Illuminate\Events\Dispatcher;
+use Illuminate\View\FileViewFinder;
 use Illuminate\Container\Container;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\Engines\PhpEngine;
+use Illuminate\View\Engines\EngineResolver;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Illuminate/paginiation
@@ -15,6 +20,7 @@ use Illuminate\Pagination\Paginator;
  *
  * Requires: illuminate/pagination
  *           illuminate/database
+ *           illuminate/view
  *
  * @source https://github.com/illuminate/pagination
  * @contributor https://github.com/jamescarlos
@@ -23,14 +29,32 @@ use Illuminate\Pagination\Paginator;
 $app = new \Slim\Slim();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
+// Create ViewFactory instance -- see the view component for more info
+$events = new Dispatcher(new Container);
+
+$pathsToTemplates = [__DIR__ . '/templates'];
+
+$filesystem = new Filesystem;
+
+$viewResolver = new EngineResolver;
+$viewResolver->register('php', function () {
+    return new PhpEngine;
+});
+
+$viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
+
+$viewFactory = new Factory($viewResolver, $viewFinder, $events);
+// End of create ViewFactory instance
+
 $app->get('/', function () {
     echo '<a href="database">Database</a> | <a href="array">Non-database</a>';
 });
 
 // This route demonstrates an example of using the paginator with the illuminate\database component
-$app->get('/database', function () {
-    // Set up the database connection--see the database component for more info
+$app->get('/database', function () use ($viewFactory, $events) {
+    // Set up the database connection -- see the database component for more info
     $capsule = new Capsule;
+
     $capsule->addConnection([
         'driver'    => 'mysql',
         'host'      => 'localhost',
@@ -42,10 +66,15 @@ $app->get('/database', function () {
         'prefix'    => '',
     ]);
 
-    $capsule->setEventDispatcher(new Dispatcher(new Container));
+    $capsule->setEventDispatcher($events);
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
     // End of database setup
+
+    // Set the view factory resolver
+    Paginator::viewFactoryResolver(function () use ($viewFactory) {
+        return $viewFactory;
+    });
 
     // Set up a current path resolver so the paginator can generate proper links
     Paginator::currentPathResolver(function () {
@@ -84,7 +113,7 @@ $app->get('/database', function () {
     // Render the Bootstrap framework compatible pagination html;
     // the appends() method retains any other query string parameters
     // so that they can be passed along with pagination links
-    echo $results->appends($_GET)->render();
+    echo $results->appends($_GET)->links('pagination');
 
     // additional helper methods available are:
     // $results->count();
@@ -101,7 +130,7 @@ $app->get('/database', function () {
 });
 
 
-// Build our fake array to paginate 
+// Build our fake array to paginate
 $items = [];
 foreach (range(1, 100) as $i) {
     $items[] = [
@@ -111,7 +140,7 @@ foreach (range(1, 100) as $i) {
 }
 
 // This route demonstrates an example of paginating an array of items
-$app->get('/array', function () use ($items) {
+$app->get('/array', function () use ($items, $viewFactory) {
     // Set up the pagination options
     $total = count($items); // total number of items
     $perPage = 25; // results per page
@@ -125,13 +154,13 @@ $app->get('/array', function () use ($items) {
     // The Paginator class does not need to know the total number of items in the
     // result set; however, because of this, the class does not have methods for
     // retrieving the index of the last page.
-    
+
     // The LengthAwarePaginator accepts almost the same arguments as the Paginator;
     // however, it does require a count of the total number of items in the result set.
 
     // Note: You are responsible for manually "slice"ing the array of results you
     // pass to the paginator
-    
+
     $useLengthAware = true;
 
     // Paginator class example
@@ -148,6 +177,11 @@ $app->get('/array', function () use ($items) {
     }
     // End of LengthAwarePaginator example
 
+    // Set the view factory resolver
+    Paginator::viewFactoryResolver(function () use ($viewFactory) {
+        return $viewFactory;
+    });
+
     // Display a paginated table of our array
     echo '<h1>I love hashes</h1>';
     echo '<table>';
@@ -159,7 +193,7 @@ $app->get('/array', function () use ($items) {
         </tr>";
     }
     echo '<table>' . "\n";
-    echo $results->appends($_GET)->render();
+    echo $results->appends($_GET)->links('pagination');
 
     echo 'Current Page: ' . $results->currentPage();
     echo '<br>Items Per Page: ' . $results->perPage();

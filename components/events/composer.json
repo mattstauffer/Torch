@@ -1,6 +1,6 @@
 {
     "require": {
-        "illuminate/events": "~5.1.16"
+        "illuminate/events": "^5.5"
     },
     "autoload": {
         "psr-4": {

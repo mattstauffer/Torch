@@ -4,7 +4,7 @@ namespace App\Middleware;
 
 use Closure;
 
-class Authenticate
+class StartSession
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (! isset($_SESSION['user'])) {
-            return 'Error Authenticate. Please <a href="/login">login</a>';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
 
         return $next($request);

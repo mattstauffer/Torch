@@ -8,7 +8,7 @@ date_default_timezone_set('America/Detroit');
  * @source https://github.com/illuminate/log
  */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 
 $app->get('/', function ()
 {

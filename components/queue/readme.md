@@ -2,11 +2,12 @@
 
 [&lt;&lt; Back to Torch](../../readme.md)
 
-# Middleware
+# Database
 
-This component shows how to use Laravel's [Middleware](https://laravel.com/docs/5.5/middleware) features in non-Laravel applications.
+This component shows how to use Laravel's [Queue](https://laravel.com/docs/5.5/queues) features in non-Laravel applications.
 
 ## Usage
+
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
 
 ```bash

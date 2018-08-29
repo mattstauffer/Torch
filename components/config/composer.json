@@ -1,8 +1,8 @@
 {
     "require": {
-        "slim/slim": "2.*",
-        "zeuxisoo/slim-whoops": "~0.2.0",
-        "filp/whoops": "1.1.2",
-        "illuminate/config": "~5.1.0"
+        "slim/slim": "3.*",
+        "zeuxisoo/slim-whoops": "0.6.*",
+        "filp/whoops": "2.1.10",
+        "illuminate/config": "~5.5.0"
     }
 }
