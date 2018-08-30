@@ -16,4 +16,4 @@ $ php artisan.php
 
 ## Options and information
 
-To learn more about this component's dependencies and options, view the source of [artisan.php](artisan.php).
+To learn more about this component's dependencies and options, view the source of [artisan](artisan).
