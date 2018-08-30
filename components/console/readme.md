@@ -4,16 +4,16 @@
 
 # Console
 
-This component shows how to use Laravel's [Console](https://laravel.com/docs/5.5/artisan) features in non-Laravel applications.
+This component shows how to use Laravel's [Artisan Console](https://laravel.com/docs/5.5/artisan) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve console application.
 
 ```bash
 $ composer install
-$ php cli.php
+$ php artisan.php
 ```
 
 ## Options and information
 
-To learn more about this component's dependencies and options, view the source of [cli.php](cli.php).
+To learn more about this component's dependencies and options, view the source of [artisan.php](artisan.php).
