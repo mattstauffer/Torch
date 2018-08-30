@@ -19,6 +19,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Ready for 5.5
 
+* [Artisan Console](https://github.com/mattstauffer/Torch/tree/master/components/artisan)
 * [Cache](https://github.com/mattstauffer/Torch/tree/master/components/cache)
 * [Config](https://github.com/mattstauffer/Torch/tree/master/components/config)
 * [Container](https://github.com/mattstauffer/Torch/tree/master/components/container)
