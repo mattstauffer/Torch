@@ -3,9 +3,9 @@
 require_once 'vendor/autoload.php';
 
 use Illuminate\Cache\CacheManager;
+use Illuminate\Redis\RedisManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Redis\Database;
 
 /**
  * Illuminate/config
@@ -73,7 +73,7 @@ $app->get('/redis', function () {
         ]
     ];
 
-    $container['redis'] = new Database($container['config']['database.redis']);
+    $container['redis'] = new RedisManager('predis',$container['config']['database.redis']);
 
     $cacheManager = new CacheManager($container);
 
