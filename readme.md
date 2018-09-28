@@ -32,7 +32,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
 * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
-* [Support](https://github.com/mattstauffer/Torch/tree/tree/components/support)
+* [Support](https://github.com/mattstauffer/Torch/tree/master/components/support)
 * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
 * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
 * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
