@@ -3,6 +3,6 @@
         "slim/slim": "2.*",
         "zeuxisoo/slim-whoops": "~0.2.0",
         "filp/whoops": "1.1.2",
-        "illuminate/container": "~5.1.0"
+        "illuminate/container": "~5.5.0"
     }
 }
