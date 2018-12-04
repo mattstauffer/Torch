@@ -22,11 +22,6 @@
 // Include project libraries, including a number of mock
 // examples of common, real-world services
 require_once 'vendor/autoload.php';
-require_once 'libraries/Authentication.php';
-require_once 'libraries/Controller.php';
-require_once 'libraries/Database.php';
-require_once 'libraries/Mailer.php';
-require_once 'libraries/Template.php';
 
 // Create new IoC Container instance
 $container = new Illuminate\Container\Container;
