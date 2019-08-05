@@ -11,7 +11,7 @@ From this directory, run the following to serve console application.
 
 ```bash
 $ composer install
-$ php artisan.php
+$ php artisan
 ```
 
 ## Options and information
