@@ -1,7 +1,7 @@
 {
     "require": {
-        "illuminate/console": "^5.5",
-        "illuminate/events": "^5.5"
+        "illuminate/console": "^6.0",
+        "illuminate/events": "^6.0"
     },
     "autoload": {
         "classmap": ["commands"]
