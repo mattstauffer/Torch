@@ -22,11 +22,6 @@
 // Include project libraries, including a number of mock
 // examples of common, real-world services
 require_once 'vendor/autoload.php';
-require_once 'libraries/Authentication.php';
-require_once 'libraries/Controller.php';
-require_once 'libraries/Database.php';
-require_once 'libraries/Mailer.php';
-require_once 'libraries/Template.php';
 
 // Create new IoC Container instance
 $container = new Illuminate\Container\Container;
@@ -55,6 +50,8 @@ $container->singleton('database', function ($container) {
 $auth = new Acme\Authentication;
 $container->instance('auth', $auth);
 
+// Bind an interface to a given implementation. 
+$container->bind('Acme\Contracts\NotifyUser', 'Acme\TextMessageNotification');
 
 /*
 |--------------------------------------------------------------------------
@@ -114,5 +111,15 @@ $app->get('/articles', function () use ($container) {
 // creates an instance of the requested controller, including all
 // of its class dependencies
 $app->get('/automatic-resolution', [$container->make('Acme\Controller'), 'home']);
+
+// A NotifyUser interface is bound in the container. 
+// Whenever an implementation is needed
+// Illuminate/Container resolves 
+// the concrete implemention.
+$app->get('/interface-to-implementation', function () use ($container) {
+
+    $notification = $container->make('Acme\Contracts\NotifyUser');
+    $notification->sendNotification('Somebody hit the url!');    
+});
 
 $app->run();

@@ -3,9 +3,9 @@
 require_once 'vendor/autoload.php';
 
 use Illuminate\Cache\CacheManager;
+use Illuminate\Redis\RedisManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Redis\Database;
 
 /**
  * Illuminate/config
@@ -44,11 +44,15 @@ $app->get('/', function () {
     // Or, if you have multiple drivers:
     // $cache = $cacheManager->store('file');
 
+    if ($cache->has('test')) {
+        // Echo out the value we just stored in cache
+        echo $cache->get('test');
+        return;
+    }
+
     // Store a value into cache for 500 minutes
     $cache->put('test', 'This is loaded from cache.', 500);
-
-    // Echo out the value we just stored in cache
-    echo $cache->get('test');
+    echo 'Storing into cache. Refresh to see the version pulled from cache.';
 });
 
 // Cache with redis driver
@@ -73,7 +77,7 @@ $app->get('/redis', function () {
         ]
     ];
 
-    $container['redis'] = new Database($container['config']['database.redis']);
+    $container['redis'] = new RedisManager('predis', $container['config']['database.redis']);
 
     $cacheManager = new CacheManager($container);
 
@@ -83,15 +87,26 @@ $app->get('/redis', function () {
     // Or if you have multiple drivers configured, you can get the redis store like this:
     // $cache = $cacheManager->store('redis');
 
-    $cache->put('test', 'This is loaded from cache.', 500);
+    if ($cache->has('test')) {
+        // Echo out the value we just stored in cache
+        echo $cache->get('test');
+        return;
+    }
 
-    echo $cache->get('test');
+    // Store a value into cache for 500 minutes
+    $cache->put('test', 'This is loaded from Redis cache.', 500);
+    echo 'Storing into cache. Refresh to see the version pulled from cache.';
 });
 
 
 // Cache with memcached driver
 // NOTE: You will need to have memcached running for this to work
 $app->get('/memcached', function () {
+    if (! class_exists('Memcached')) {
+        echo 'Sorry, but you have to have memcached enabled on your PHP install. More: <a href="https://serversforhackers.com/c/installing-php-7-with-memcached">https://serversforhackers.com/c/installing-php-7-with-memcached</a>';
+        return;
+    }
+
     $container = new Container;
 
     $container['config'] = [
@@ -119,9 +134,15 @@ $app->get('/memcached', function () {
     // Or if you have multiple drivers configured, you can get the memcached store like this:
     // $cache = $cacheManager->store('memcached');
 
-    $cache->put('test', 'This is loaded from cache.', 500);
+    if ($cache->has('test')) {
+        // Echo out the value we just stored in cache
+        echo $cache->get('test');
+        return;
+    }
 
-    echo $cache->get('test');
+    // Store a value into cache for 500 minutes
+    $cache->put('test', 'This is loaded from Memcached cache.', 500);
+    echo 'Storing into cache. Refresh to see the version pulled from cache.';
 });
 
 $app->run();

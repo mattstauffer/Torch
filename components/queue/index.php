@@ -4,6 +4,7 @@ use Illuminate\Queue\Worker;
 use Illuminate\Redis\RedisManager;
 use Illuminate\Container\Container;
 use Illuminate\Queue\WorkerOptions;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Events\EventServiceProvider;
 use Illuminate\Queue\Capsule\Manager as Queue;
 use Illuminate\Contracts\Debug\ExceptionHandler;
@@ -39,9 +40,11 @@ class App extends Container
 }
 
 // BOOTSTRAP-------------------------------------------------------------------
-$container = new App;
+$container = App::getInstance();
 
 (new EventServiceProvider($container))->register();
+
+$container->instance('Illuminate\Contracts\Events\Dispatcher', new Dispatcher($container));
 
 $container->bind('redis', function () {
     return new RedisManager('predis', [
