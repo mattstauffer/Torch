@@ -4,7 +4,7 @@
 
 # Console
 
-This component shows how to use Laravel's [Artisan Console](https://laravel.com/docs/5.5/artisan) features in non-Laravel applications.
+This component shows how to use Laravel's [Artisan Console](https://laravel.com/docs/6.0/artisan) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve console application.
