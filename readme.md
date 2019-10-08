@@ -19,6 +19,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Ready for 6.0
 
+* [Container](https://github.com/mattstauffer/Torch/tree/master/components/container)
 * [Database](https://github.com/mattstauffer/Torch/tree/master/components/database)
 
 ### Need to be moved over from 5.5
@@ -26,7 +27,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Artisan Console](https://github.com/mattstauffer/Torch/tree/5.5/components/artisan)
 * [Cache](https://github.com/mattstauffer/Torch/tree/5.5/components/cache)
 * [Config](https://github.com/mattstauffer/Torch/tree/5.5/components/config)
-* [Container](https://github.com/mattstauffer/Torch/tree/5.5/components/container)
 * [Encryption](https://github.com/mattstauffer/Torch/tree/5.5/components/encryption)
 * [Events](https://github.com/mattstauffer/Torch/tree/5.5/components/events)
 * [Log](https://github.com/mattstauffer/Torch/tree/5.5/components/log)
