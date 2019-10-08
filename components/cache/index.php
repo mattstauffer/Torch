@@ -77,7 +77,7 @@ $app->get('/redis', function () {
         ]
     ];
 
-    $container['redis'] = new RedisManager('predis', $container['config']['database.redis']);
+    $container['redis'] = new RedisManager($container, 'predis', $container['config']['database.redis']);
 
     $cacheManager = new CacheManager($container);
 
