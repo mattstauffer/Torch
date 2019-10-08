@@ -19,7 +19,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Ready for 6.0
 
-<<<<<<< HEAD
 * None yet
 
 ### Need to be moved over from 5.5
