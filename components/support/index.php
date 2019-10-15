@@ -4,6 +4,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Pluralizer;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 require_once 'vendor/autoload.php';
@@ -25,7 +26,7 @@ $app->get('/', function () {
     // MessageBag init
     $messageBag = new MessageBag;
 
-    echo '<h2>Array dot notation with array_get</h2>';
+    echo '<h2>Array dot notation with Arr::get</h2>';
     echo '<pre>';
     // Array dot notation (and other helpers)
     $person = [
@@ -34,7 +35,7 @@ $app->get('/', function () {
             'last' => 'Schmoe'
         ]
     ];
-    echo 'name.first is ' . array_get($person, 'name.first') . "\n";
+    echo 'name.first is ' . Arr::get($person, 'name.first') . "\n";
 
     $messageBag->add('notice', 'Array dot notation displayed.');
 
