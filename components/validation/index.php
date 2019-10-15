@@ -46,7 +46,7 @@ $app->post('/no-database', function () use ($app) {
     $validation = new Factory($translator, new Container);
 
     $data = ['email' => $_POST['email']];
-    $rules = ['email' => 'required|email'];
+    $rules = ['email' => 'required|email|not_in:admin@example.com,alan@example.com'];
     $errors = null;
 
     $validator = $validation->make($data, $rules);
