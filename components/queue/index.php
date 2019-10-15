@@ -1,5 +1,6 @@
 <?php
 
+use Predis\Client;
 use Illuminate\Queue\Worker;
 use Illuminate\Redis\RedisManager;
 use Illuminate\Container\Container;
@@ -46,8 +47,8 @@ $container = App::getInstance();
 
 $container->instance('Illuminate\Contracts\Events\Dispatcher', new Dispatcher($container));
 
-$container->bind('redis', function () {
-    return new RedisManager('predis', [
+$container->bind('redis', function () use ($container) {
+    return new RedisManager($container, 'predis', [
         'default' => [
             'host' => '127.0.0.1',
             'password' => null,
@@ -60,6 +61,11 @@ $container->bind('redis', function () {
 $container->bind('exception.handler', function () {
     return new class implements ExceptionHandler
     {
+        public function shouldReport(Exception $e)
+        {
+            var_dump($e->getMessage());
+        }
+
         public function report(Exception $e)
         {
             var_dump($e->getMessage());
@@ -129,8 +135,11 @@ $app->get('/redis/work/worker', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
+    $isDownForMaintenance = function () use ($container) {
+        return $container->isDownForMaintenance();
+    };
 
-    $worker = new Worker($queue, $events, $handler);
+    $worker = new Worker($queue, $events, $handler, $isDownForMaintenance);
     $options = new WorkerOptions();
 
     $worker->daemon('redis', 'default', $options);
@@ -140,8 +149,11 @@ $app->get('/redis/work/single', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
+    $isDownForMaintenance = function () use ($container) {
+        return $container->isDownForMaintenance();
+    };
 
-    $worker = new Worker($queue, $events, $handler);
+    $worker = new Worker($queue, $events, $handler, $isDownForMaintenance);
     $options = new WorkerOptions();
 
     $worker->runNextJob('redis', 'default', $options);
@@ -160,8 +172,11 @@ $app->get('/beanstalkd/work/worker', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
+    $isDownForMaintenance = function () use ($container) {
+        return $container->isDownForMaintenance();
+    };
 
-    $worker = new Worker($queue, $events, $handler);
+    $worker = new Worker($queue, $events, $handler, $isDownForMaintenance);
     $options = new WorkerOptions();
 
     $worker->daemon('beanstalkd', 'default', $options);
@@ -171,8 +186,11 @@ $app->get('/beanstalkd/work/single', function () use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
+    $isDownForMaintenance = function () use ($container) {
+        return $container->isDownForMaintenance();
+    };
 
-    $worker = new Worker($queue, $events, $handler);
+    $worker = new Worker($queue, $events, $handler, $isDownForMaintenance);
     $options = new WorkerOptions();
 
     $worker->runNextJob('beanstalkd', 'default', $options);
