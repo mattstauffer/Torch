@@ -13,10 +13,10 @@ $app = new \Slim\App();
 $app->get('/', function ()
 {
     // Create new writer instance with dependencies
-    $log = new Illuminate\Log\Writer(new Monolog\Logger('Torch Logger'));
+    $log = new Illuminate\Log\Logger(new Monolog\Logger('Torch Logger'));
 
     // Setup log file location
-    $log->useFiles('./logs/torch.log');
+    $log->pushHandler(new Monolog\Handler\StreamHandler('./logs/torch.log'));
 
     // Actual log(s)
     $log->info('Logging an info message');
