@@ -1,4 +1,6 @@
-# <img src="torch-logo.png" alt="Torch Logo" align="right">Torch - Using Laravel's Illuminate Components Independently
+![Torch logo](https://raw.githubusercontent.com/mattstauffer/torch/master/torch-banner.png)
+
+# Torch - Using Laravel's Illuminate Components Independently
 
 Torch is a project to provide instructions and examples for using Illuminate components as standalone components in non-Laravel applications. The current `master` branch shows how to use Illuminate's `6.0` components.
 
