@@ -33,11 +33,14 @@ $events = new Dispatcher($container);
 // Create the router instance
 $router = new Router($events, $container);
 
+// Create Url generator instance
+$urlGenerator = new UrlGenerator($router->getRoutes(), $request);
+
 // Load the routes
 require_once 'routes.php';
 
 // Create the redirect instance
-$redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
+$redirect = new Redirector($urlGenerator);
 
 // use redirect
 // return $redirect->home();
