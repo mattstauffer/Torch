@@ -32,6 +32,12 @@ $app->get('/', function () {
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
+    ], 'mysql');
+
+    $capsule->addConnection([
+        'driver'    => 'sqlite',
+        'database' => 'database.sqlite',
+        'prefix' => '',
     ]);
 
     // Set the event dispatcher used by Eloquent models... (optional)

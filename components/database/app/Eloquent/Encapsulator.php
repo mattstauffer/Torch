@@ -33,6 +33,12 @@ class Encapsulator
                 'charset' => 'utf8',
                 'collation' => 'utf8_unicode_ci',
                 'prefix' => '',
+            ], 'mysql');
+
+            $capsule->addConnection([
+                'driver'    => 'sqlite',
+                'database' => 'database.sqlite',
+                'prefix' => '',
             ]);
 
             $capsule->setEventDispatcher(new Dispatcher(new Container));
