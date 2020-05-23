@@ -8,8 +8,8 @@ This component shows how to use Laravel's **Support** features in non-Laravel ap
 
 Since this component doesn't have a dedicated page in the documentation, you can use the following links to find more information:
 
-* [Collections](http://laravel.com/docs/6.0/collections)
-* [Strings](https://laravel.com/docs/6.0/helpers#strings)
+* [Collections](https://laravel.com/docs/7.x/collections)
+* [Strings](https://laravel.com/docs/7.x/helpers#strings)
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
