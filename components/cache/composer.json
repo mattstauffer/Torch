@@ -7,6 +7,6 @@
         "illuminate/container": "~7.0",
         "illuminate/filesystem": "~7.0",
         "illuminate/redis": "~7.0",
-        "predis/predis": "^1.0"
+        "predis/predis": "^1.1"
     }
 }
