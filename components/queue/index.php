@@ -28,7 +28,7 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/queue
  * @author https://github.com/mattstauffer
  */
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 date_default_timezone_set('UTC');
 
