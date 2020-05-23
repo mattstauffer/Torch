@@ -3,7 +3,7 @@
         "slim/slim": "2.*",
         "zeuxisoo/slim-whoops": "~0.2.0",
         "filp/whoops": "1.1.2",
-        "illuminate/container": "~6.0"
+        "illuminate/container": "~7.0"
     },
     "autoload": {
         "psr-4": {"Acme\\": "libraries/"}
