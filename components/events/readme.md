@@ -4,7 +4,7 @@
 
 # Events
 
-This component shows how to use Laravel's [Events](https://laravel.com/docs/6.0/events) features in non-Laravel applications.
+This component shows how to use Laravel's [Events](https://laravel.com/docs/7.x/events) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
