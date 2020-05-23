@@ -3,9 +3,9 @@
         "slim/slim": "2.*",
         "zeuxisoo/slim-whoops": "~0.2.0",
         "filp/whoops": "1.1.2",
-        "illuminate/queue": "~6.0",
-        "illuminate/events": "~6.0",
-        "illuminate/redis": "~6.0",
+        "illuminate/queue": "~7.0",
+        "illuminate/events": "~7.0",
+        "illuminate/redis": "~7.0",
         "pda/pheanstalk": "^4.0",
         "predis/predis": "^1.0"
     }
