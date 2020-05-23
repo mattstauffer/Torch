@@ -64,6 +64,12 @@ $app->get('/database', function () use ($viewFactory, $events) {
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
+    ], 'mysql');
+
+    $capsule->addConnection([
+        'driver'    => 'sqlite',
+        'database' => 'database.sqlite',
+        'prefix' => '',
     ]);
 
     $capsule->setEventDispatcher($events);
