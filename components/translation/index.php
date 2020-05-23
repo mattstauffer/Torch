@@ -15,7 +15,7 @@ require_once 'vendor/autoload.php';
  * @contributor Robin Malfait
  */
 
-$app = new Slim\Slim();
+$app = new Slim\App();
 $app->add(new Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 $app->get('/', function () {
