@@ -2,7 +2,7 @@
     "require": {
         "slim/slim": "3.*",
         "zeuxisoo/slim-whoops": "0.6.*",
-        "filp/whoops": "2.1.10",
+        "filp/whoops": "2.3.2",
         "illuminate/view": "^7.0",
         "illuminate/events": "^7.0",
         "illuminate/filesystem": "^7.0"
