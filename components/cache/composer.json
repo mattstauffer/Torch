@@ -2,11 +2,11 @@
     "require": {
         "slim/slim": "3.*",
         "zeuxisoo/slim-whoops": "0.6.*",
-        "filp/whoops": "2.1.10",
-        "illuminate/cache": "~6.0",
-        "illuminate/container": "~6.0",
-        "illuminate/filesystem": "~6.0",
-        "illuminate/redis": "~6.0",
-        "predis/predis": "^1.0"
+        "filp/whoops": "2.3.*",
+        "illuminate/cache": "~7.0",
+        "illuminate/container": "~7.0",
+        "illuminate/filesystem": "~7.0",
+        "illuminate/redis": "~7.0",
+        "predis/predis": "^1.1"
     }
 }

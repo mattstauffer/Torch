@@ -14,7 +14,7 @@ use Illuminate\Filesystem\Filesystem;
  */
 
 $app = new \Slim\App();
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware());
 
 // Cache with file driver
 $app->get('/', function () {

@@ -22,25 +22,27 @@ use Illuminate\Translation\Translator;
 use Illuminate\Validation\DatabasePresenceVerifier;
 use Illuminate\Validation\Factory;
 
-$app = new \Slim\Slim([
-    'templates.path' => './templates/'
-]);
+$container = new \Slim\Container();
+$container['render'] = function ($container) {
+    return new \Slim\Views\PhpRenderer('./templates/');
+};
+$app = new \Slim\App($container);
 
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
-$app->get('/', function () use ($app) {
-    return $app->render('home.php');
+$app->get('/', function ($request, $response, $args) {
+    return $this->get('render')->render($response, 'home.php');
 });
 
-$app->get('/no-database', function () use ($app) {
-    return $app->render('form.php', [
+$app->get('/no-database', function ($request, $response, $args){
+    return $this->get('render')->render($response, 'form.php', [
         'posted' => false,
         'errors' => null,
         'email' => '',
     ]);
 });
 
-$app->post('/no-database', function () use ($app) {
+$app->post('/no-database', function ($request, $response, $args) {
     $loader = new FileLoader(new Filesystem, 'lang');
     $translator = new Translator($loader, 'en');
     $validation = new Factory($translator, new Container);
@@ -55,7 +57,7 @@ $app->post('/no-database', function () use ($app) {
         $errors = $validator->errors();
     }
 
-    return $app->render('form.php', [
+    return $this->get('render')->render($response, 'form.php', [
         'posted' => true,
         'errors' => $errors,
         'email' => $_POST['email'],
@@ -66,16 +68,16 @@ $app->post('/no-database', function () use ($app) {
 // to drive the database presence verifier used by the validator.
 // If you do not need to validate against values in the database,
 // the database presence verifier and related code can be removed.
-$app->get('/database', function () use ($app)
+$app->get('/database', function ($request, $response, $args)
 {
-    return $app->render('form.php', [
+    return $this->get('render')->render($response, 'form.php', [
         'posted' => false,
         'errors' => null,
         'email' => '',
     ]);
 });
 
-$app->post('/database', function () use ($app) {
+$app->post('/database', function ($request, $response, $args) {
     $capsule = new Capsule;
 
     $capsule->addConnection([
@@ -100,7 +102,7 @@ $app->post('/database', function () use ($app) {
         $errors = $validator->errors();
     }
 
-    return $app->render('form.php', [
+    return $this->get('render')->render($response, 'form.php', [
         'posted'   => true,
         'errors' => $errors,
         'email'    => $_POST['email'],

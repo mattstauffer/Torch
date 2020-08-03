@@ -2,7 +2,7 @@
 
 # Torch - Using Laravel's Illuminate Components Independently
 
-Torch is a project to provide instructions and examples for using Illuminate components as standalone components in non-Laravel applications. The current `master` branch shows how to use Illuminate's `6.0` components.
+Torch is a project to provide instructions and examples for using Illuminate components as standalone components in non-Laravel applications. The current `master` branch shows how to use Illuminate's `7.0` components.
 
 **Note**: If you are working with an older project, you might have more success using the [5.5 components](https://github.com/mattstauffer/torch/tree/5.5) or the [5.1 components](https://github.com/mattstauffer/torch/tree/5.1) or the [4.2 components](https://github.com/mattstauffer/torch/tree/4.2).
 
@@ -19,7 +19,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ## Packages
 
-### Ready for 6.0
+### Ready for 7.0
 
 * [Artisan Console](https://github.com/mattstauffer/Torch/tree/master/components/artisan)
 * [Cache](https://github.com/mattstauffer/Torch/tree/master/components/cache)

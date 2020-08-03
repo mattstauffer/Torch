@@ -28,7 +28,7 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/queue
  * @author https://github.com/mattstauffer
  */
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 date_default_timezone_set('UTC');
 
@@ -61,22 +61,22 @@ $container->bind('redis', function () use ($container) {
 $container->bind('exception.handler', function () {
     return new class implements ExceptionHandler
     {
-        public function shouldReport(Exception $e)
+        public function shouldReport(Throwable $e)
         {
             var_dump($e->getMessage());
         }
 
-        public function report(Exception $e)
+        public function report(Throwable $e)
         {
             var_dump($e->getMessage());
         }
 
-        public function render($request, Exception $e)
+        public function render($request, Throwable $e)
         {
             var_dump($e->getMessage());
         }
 
-        public function renderForConsole($output, Exception $e)
+        public function renderForConsole($output, Throwable $e)
         {
             var_dump($e->getMessage());
         }

@@ -59,7 +59,7 @@ $container->bind('Acme\Contracts\NotifyUser', 'Acme\TextMessageNotification');
 |--------------------------------------------------------------------------
 */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 
 $app->get('/', function () use ($container) {
     // Create new Acme\Template instance

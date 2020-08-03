@@ -17,7 +17,7 @@ use Illuminate\Container\Container;
  * @source https://github.com/illuminate/database
  */
 
-$app = new \Slim\Slim();
+$app = new \Slim\App();
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 $app->get('/', function () {
@@ -32,6 +32,12 @@ $app->get('/', function () {
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
+    ], 'mysql');
+
+    $capsule->addConnection([
+        'driver'    => 'sqlite',
+        'database' => 'database.sqlite',
+        'prefix' => '',
     ]);
 
     // Set the event dispatcher used by Eloquent models... (optional)

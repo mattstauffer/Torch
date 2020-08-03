@@ -4,7 +4,7 @@
 
 # Database
 
-This component shows how to use Laravel's [Database](https://laravel.com/docs/6.0/database) features in non-Laravel applications.
+This component shows how to use Laravel's [Database](https://laravel.com/docs/7.x/database) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.

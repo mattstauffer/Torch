@@ -2,10 +2,10 @@
   "require": {
     "slim/slim": "3.*",
     "zeuxisoo/slim-whoops": "0.6.*",
-    "filp/whoops": "2.1.10",
-    "illuminate/session": "~5.5.0",
-    "illuminate/support": "~5.5.0",
-    "illuminate/container": "~5.5.0",
-    "illuminate/config": "~5.5.0"
+    "filp/whoops": "2.3.2",
+    "illuminate/session": "~7.0",
+    "illuminate/support": "~7.0",
+    "illuminate/container": "~7.0",
+    "illuminate/config": "~7.0"
   }
 }
