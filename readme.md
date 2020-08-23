@@ -42,7 +42,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 
 ### Need to be moved over from 4.2
 
-* [Mail](https://github.com/mattstauffer/Torch/tree/master/4.2/mail) - Imported from 4.2 but needs to be tested/tweaked
+* [Mail](https://github.com/mattstauffer/Torch/tree/4.2/public/mail) - Never finished porting from 4.2-5.1 and then it never got the simpler upgrades from 5.1 until today
 
 ## Other Packages
 
@@ -60,9 +60,7 @@ A few important notes:
 
 ## Contributing
 
-The [4.2](https://github.com/mattstauffer/torch/tree/4.2) and [5.1](https://github.com/mattstauffer/torch/tree/5.1) and [5.5](https://github.com/mattstauffer/torch/tree/5.1) branches are still going strong, but this 6.0 branch is brand-new. I would appreciate any and all contributions.
-
-At this point, most contributions could be just copying the 5.5 or 4.1 component over, adding `composer.json` if it doesn't exist (4.1), tweaking the old code for the new folder structure, and making sure our old code still works.
+The most helpful use for contributions right now would be updating the readme's in each section to make sure we have instructions on how to test this specific component to see that it's working (based on how the specific `index.php` for this component is set up).
 
 ## But my framework doesn't use Symfony's HttpFoundation!
 
