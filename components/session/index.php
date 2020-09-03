@@ -31,7 +31,7 @@ $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 // Init the container
 $container = new Container;
-$container->bind('app', $container);
+$container->instance('app', $container);
 
 $container['config'] = new Config(require __DIR__ . '/config/app.php');
 
