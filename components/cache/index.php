@@ -13,7 +13,7 @@ use Illuminate\Filesystem\Filesystem;
  * @source https://github.com/illuminate/config
  */
 
-$app = new \Slim\App();
+$app = new \Slim\App(['settings' => ['debug' => true]]);
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware());
 
 // Cache with file driver

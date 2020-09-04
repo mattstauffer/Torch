@@ -19,7 +19,7 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/support
  */
 
-$app = new \Slim\App();
+$app = new \Slim\App(['settings' => ['debug' => true]]);
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 $app->get('/', function () {

@@ -26,7 +26,7 @@ require_once 'vendor/autoload.php';
 * @contributor Jordon Brill
 */
 
-$app = new \Slim\App();
+$app = new \Slim\App(['settings' => ['debug' => true]]);
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 // Init the container

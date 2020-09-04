@@ -26,7 +26,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
  * @contributor https://github.com/jamescarlos
  */
 
-$app = new \Slim\App();
+$app = new \Slim\App(['settings' => ['debug' => true]]);
 $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
 
 // Create ViewFactory instance -- see the view component for more info

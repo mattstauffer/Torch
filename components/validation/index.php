@@ -22,7 +22,7 @@ use Illuminate\Translation\Translator;
 use Illuminate\Validation\DatabasePresenceVerifier;
 use Illuminate\Validation\Factory;
 
-$container = new \Slim\Container();
+$container = new \Slim\Container(['settings' => ['debug' => true]]);
 $container['render'] = function ($container) {
     return new \Slim\Views\PhpRenderer('./templates/');
 };
