@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Config\Repository;
-
 require_once 'vendor/autoload.php';
+
+use Illuminate\Config\Repository;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 /**
  * Illuminate/config
@@ -10,25 +14,32 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/config
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+// Instantiate App
+$app = AppFactory::create();
+
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
 
 $configPath = __DIR__ . '/config/';
 
-$app->get('/', function () use ($configPath) {
+$app->get('/', function (Request $request, Response $response) use ($configPath) {
     // Init
     $config = new Repository(require $configPath . 'app.php');
 
     // Get config using the get method
-    echo "This is coming from config/app.php: <hr>" . $config->get('app.siteName') . "<br><br><br>";
+    $html = "This is coming from config/app.php: <hr>" . $config->get('app.siteName') . "<br><br><br>";
 
     // Get config using ArrayAccess
-    echo "This is coming from config/app.php: <hr>" . $config['app.user'] . "<br><br>";
+    $html .= "This is coming from config/app.php: <hr>" . $config['app.user'] . "<br><br>";
 
     // Set a config
     $config->set('settings.greeting', 'Hello there how are you?');
 
-    echo "Set using config->set: <hr>" . $config->get('settings.greeting');
+    $html .= "Set using config->set: <hr>" . $config->get('settings.greeting');
+
+    $response->getBody()->write($html);
+
+    return $response;
 });
 
 $app->run();
