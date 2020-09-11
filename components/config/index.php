@@ -27,17 +27,14 @@ $app->get('/', function (Request $request, Response $response) use ($configPath)
     $config = new Repository(require $configPath . 'app.php');
 
     // Get config using the get method
-    $html = "This is coming from config/app.php: <hr>" . $config->get('app.siteName') . "<br><br><br>";
+    $response->getBody()->write("This is coming from config/app.php: <hr>" . $config->get('app.siteName') . "<br><br><br>");
 
     // Get config using ArrayAccess
-    $html .= "This is coming from config/app.php: <hr>" . $config['app.user'] . "<br><br>";
+    $response->getBody()->write("This is coming from config/app.php: <hr>" . $config['app.user'] . "<br><br>");
 
     // Set a config
     $config->set('settings.greeting', 'Hello there how are you?');
-
-    $html .= "Set using config->set: <hr>" . $config->get('settings.greeting');
-
-    $response->getBody()->write($html);
+    $response->getBody()->write("Set using config->set: <hr>" . $config->get('settings.greeting'));
 
     return $response;
 });
