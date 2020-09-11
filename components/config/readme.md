@@ -4,7 +4,7 @@
 
 # Config
 
-This component shows how to use Laravel's [Configuration](https://laravel.com/docs/7.x/installation#configuration) features in non-Laravel applications.
+This component shows how to use Laravel's [Configuration](https://laravel.com/docs/8.x/installation#configuration) features in non-Laravel applications.
 
 ## Usage
 From this directory, run the following to serve a web site locally showing the output of the `index.php` file.
