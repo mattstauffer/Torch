@@ -6,8 +6,8 @@
         "illuminate/filesystem": "^8.0",
         "illuminate/redis": "^8.0",
         "predis/predis": "^1.1",
-        "zeuxisoo/slim-whoops": "0.6.*"
         "slim/psr7": "^1.2",
         "slim/slim": "4.*",
+        "zeuxisoo/slim-whoops": "0.7.*"
     }
 }
