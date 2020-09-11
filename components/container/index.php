@@ -1,5 +1,13 @@
 <?php
 
+use Acme\Mailer;
+use Acme\Controller;
+use Illuminate\Container\Container;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
+
 /**
  * Illuminate/Container is a powerful inversion of control container,
  * which can easily be used independent of Laravel to help manage
@@ -59,17 +67,23 @@ $container->bind('Acme\Contracts\NotifyUser', 'Acme\TextMessageNotification');
 |--------------------------------------------------------------------------
 */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
+// Instantiate App
+$app = AppFactory::create();
 
-$app->get('/', function () use ($container) {
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
+
+$app->get('/', function (Request $request, Response $response) use ($container) {
     // Create new Acme\Template instance
     $template = $container->make('template');
 
     // Render template
-    echo $template->render('home');
+    $response->getBody()->write($template->render('home'));
+
+    return $response;
 });
 
-$app->get('/send-email', function () use ($container) {
+$app->get('/send-email', function (Request $request, Response $response) use ($container) {
     // Create new Acme\Mailer instance
     $mailer = $container->make('mailer');
 
@@ -80,21 +94,25 @@ $app->get('/send-email', function () use ($container) {
 
     // Send the email
     if ($mailer->send()) {
-        echo 'Email successfully sent!';
+        $response->getBody()->write('Email successfully sent!');
     }
+
+    return $response;
 });
 
-$app->get('/login', function () use ($container) {
+$app->get('/login', function (Request $request, Response $response) use ($container) {
     // Create new Acme\Authentication instance
     $auth = $container->make('auth');
 
     // Validate the user credentials
     if ($auth->verifyLogin('username', 'password')) {
-        echo 'User successfully logged in!';
+        $response->getBody()->write('User successfully logged in!');
     }
+
+    return $response;
 });
 
-$app->get('/articles', function () use ($container) {
+$app->get('/articles', function (Request $request, Response $response) use ($container) {
     // Create new Acme\Database instance
     $database = $container->make('database');
 
@@ -103,8 +121,10 @@ $app->get('/articles', function () use ($container) {
 
     // Display the articles
     foreach ($articles as $article) {
-        echo '<a href="#">' . $article['title'] . '</a><br>';
+        $response->getBody()->write('<a href="#">' . $article['title'] . '</a><br>');
     }
+
+    return $response;
 });
 
 // Example of automatic resolution, where the container automatically
@@ -116,10 +136,11 @@ $app->get('/automatic-resolution', [$container->make('Acme\Controller'), 'home']
 // Whenever an implementation is needed
 // Illuminate/Container resolves
 // the concrete implemention.
-$app->get('/interface-to-implementation', function () use ($container) {
-
+$app->get('/interface-to-implementation', function (Request $request, Response $response) use ($container) {
     $notification = $container->make('Acme\Contracts\NotifyUser');
     $notification->sendNotification('Somebody hit the url!');
+
+    return $response;
 });
 
 $app->run();
