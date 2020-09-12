@@ -114,13 +114,15 @@ $container['queue'] = $queue->getQueueManager();
 // END BOOTSTRAP---------------------------------------------------------------
 
 $app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write('<a href="/sync">sync</a><br>' .
-        '<a href="/redis/add">Redis - Add</a><br>' .
-        '<a href="/redis/work/worker">Redis - Do work as a worker</a><br>' .
-        '<a href="/redis/work/single">Redis - Do work one-off</a><br>' .
-        '<a href="/beanstalkd/add">Beanstalkd - Add</a><br>' .
-        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a><br>' .
-        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a><br>');
+    $response->getBody()->write(implode('<br>', [
+        '<a href="/sync">sync</a>',
+        '<a href="/redis/add">Redis - Add</a>',
+        '<a href="/redis/work/worker">Redis - Do work as a worker</a>',
+        '<a href="/redis/work/single">Redis - Do work one-off</a>',
+        '<a href="/beanstalkd/add">Beanstalkd - Add</a>',
+        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a>',
+        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a>'
+    ]));
 
     return $response;
 });
