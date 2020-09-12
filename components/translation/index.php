@@ -1,8 +1,12 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
-use Illuminate\Filesystem\Filesystem;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 require_once 'vendor/autoload.php';
 
@@ -15,10 +19,13 @@ require_once 'vendor/autoload.php';
  * @contributor Robin Malfait
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+ // Instantiate App
+ $app = AppFactory::create();
 
-$app->get('/', function () {
+ // Middleware
+ $app->add(new WhoopsMiddleware(['enable' => true]));
+
+$app->get('/', function (Request $request, Response $response) {
     // Prepare the FileLoader
     $loader = new FileLoader(new Filesystem(), './lang');
 
@@ -28,10 +35,12 @@ $app->get('/', function () {
     // Register the Dutch translator
     $transDutch = new Translator($loader, "nl");
 
-    echo "<h1>Translations</h1><pre>";
+    $response->getBody()->write("<h1>Translations</h1><pre>");
 
-    echo "English: " . $transEnglish->get('talk.conclusion') . "\n";
-    echo "Dutch:   " . $transDutch->get('talk.conclusion');
+    $response->getBody()->write("English: " . $transEnglish->get('talk.conclusion') . "\n");
+    $response->getBody()->write("Dutch:   " . $transDutch->get('talk.conclusion'));
+
+    return $response;
 });
 
 $app->run();
