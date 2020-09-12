@@ -1,8 +1,8 @@
 {
     "require": {
-        "slim/slim": "3.*",
         "zeuxisoo/slim-whoops": "0.6.*"
         "filp/whoops": "2.7.*",
         "illuminate/support": "^8.0",
+        "slim/slim": "4.*",
     }
 }
