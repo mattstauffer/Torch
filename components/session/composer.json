@@ -5,7 +5,7 @@
     "illuminate/container": "^8.0",
     "illuminate/session": "^8.0",
     "illuminate/support": "^8.0",
-    "slim/psr7": "^1.2",
+    "slim/psr7": "1.2.*",
     "slim/slim": "4.*",
     "zeuxisoo/slim-whoops": "0.7.*"
   }
