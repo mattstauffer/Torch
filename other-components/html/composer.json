@@ -1,9 +1,9 @@
 {
     "require": {
-        "laravelcollective/html": "5.1.*"
         "illuminate/config": "^8.0",
         "illuminate/events": "^8.0",
         "illuminate/routing": "^8.0",
+        "laravelcollective/html": "6.2.*"
     },
     "autoload": {
         "psr-4": {
