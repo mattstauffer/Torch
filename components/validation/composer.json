@@ -1,6 +1,5 @@
 {
     "require": {
-        "zeuxisoo/slim-whoops": "0.6.*"
         "filp/whoops": "2.7.*",
         "illuminate/database": "^8.0",
         "illuminate/translation": "^8.0",
@@ -8,5 +7,6 @@
         "slim/php-view": "^3.0",
         "slim/psr7": "^1.2",
         "slim/slim": "4.*",
+        "zeuxisoo/slim-whoops": "0.7.*"
     }
 }
