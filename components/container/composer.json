@@ -2,7 +2,7 @@
     "require": {
         "filp/whoops": "2.7.*",
         "illuminate/container": "^8.0",
-        "slim/psr7": "^1.2",
+        "slim/psr7": "1.2.*",
         "slim/slim": "4.*",
         "zeuxisoo/slim-whoops": "0.7.*"
     },
