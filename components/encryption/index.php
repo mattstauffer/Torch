@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Encryption\Encrypter;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 require_once 'vendor/autoload.php';
 
@@ -12,8 +16,11 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/encryption
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+ // Instantiate App
+ $app = AppFactory::create();
+
+ // Middleware
+ $app->add(new WhoopsMiddleware(['enable' => true]));
 
 /*
  * This key is used by the Illuminate encrypter service and should be set
@@ -22,16 +29,18 @@ $app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
  */
 $key = '1hs8heis)2(-*3d.';
 
-$app->get('/', function () use ($key) {
+$app->get('/', function (Request $request, Response $response) use ($key) {
     $encrypter = new Encrypter($key);
 
     // Encrypt Hello World string
     $encryptedHelloWorld = $encrypter->encrypt('Hello World');
-    echo "Here is the encrypted string: <hr>" . $encryptedHelloWorld . "<br><br><br>";
+    $response->getBody()->write("Here is the encrypted string: <hr>" . $encryptedHelloWorld . "<br><br><br>");
 
     // Decrypt encrypted string
     $decryptedHelloWorld = $encrypter->decrypt($encryptedHelloWorld);
-    echo "Here is the decrypted string: <hr>" . $decryptedHelloWorld . "<br><br>";
+    $response->getBody()->write("Here is the decrypted string: <hr>" . $decryptedHelloWorld . "<br><br>");
+
+    return $response;
 });
 
 $app->run();
