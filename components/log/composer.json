@@ -4,5 +4,6 @@
         "filp/whoops": "2.7.*",
         "illuminate/log": "^8.0",
         "slim/psr7": "1.2.*",
+        "slim/slim": "4.*",
     }
 }
