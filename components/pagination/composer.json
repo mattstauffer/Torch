@@ -6,6 +6,7 @@
         "illuminate/events": "^8.0",
         "illuminate/pagination": "^8.0",
         "illuminate/view": "^8.0",
+        "slim/psr7": "1.2.*",
         "slim/slim": "4.*",
     },
     "autoload": {
