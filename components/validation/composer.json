@@ -6,6 +6,7 @@
         "illuminate/translation": "^8.0",
         "illuminate/validation": "^8.0",
         "slim/php-view": "^3.0",
+        "slim/psr7": "^1.2",
         "slim/slim": "4.*",
     }
 }
