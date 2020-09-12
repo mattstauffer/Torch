@@ -4,6 +4,7 @@
         "filp/whoops": "2.7.*",
         "illuminate/filesystem": "^8.0",
         "illuminate/translation": "^8.0",
+        "slim/psr7": "^1.2",
         "slim/slim": "4.*",
     }
 }
