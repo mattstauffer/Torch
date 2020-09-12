@@ -3,16 +3,20 @@
 require_once 'vendor/autoload.php';
 
 use App\Eloquent\User;
-use Illuminate\View\Factory;
-use Illuminate\Events\Dispatcher;
-use Illuminate\View\FileViewFinder;
 use Illuminate\Container\Container;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Engines\PhpEngine;
-use Illuminate\View\Engines\EngineResolver;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\View\Engines\EngineResolver;
+use Illuminate\View\Engines\PhpEngine;
+use Illuminate\View\Factory;
+use Illuminate\View\FileViewFinder;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 /**
  * Illuminate/paginiation
@@ -26,8 +30,11 @@ use Illuminate\Database\Capsule\Manager as Capsule;
  * @contributor https://github.com/jamescarlos
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+// Instantiate App
+$app = AppFactory::create();
+
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
 
 // Create ViewFactory instance -- see the view component for more info
 $events = new Dispatcher(new Container);
@@ -37,8 +44,8 @@ $pathsToTemplates = [__DIR__ . '/templates'];
 $filesystem = new Filesystem;
 
 $viewResolver = new EngineResolver;
-$viewResolver->register('php', function () {
-    return new PhpEngine;
+$viewResolver->register('php', function () use ($filesystem) {
+    return new PhpEngine($filesystem);
 });
 
 $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
@@ -46,12 +53,14 @@ $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
 $viewFactory = new Factory($viewResolver, $viewFinder, $events);
 // End of create ViewFactory instance
 
-$app->get('/', function () {
-    echo '<a href="database">Database</a> | <a href="array">Non-database</a>';
+$app->get('/', function (Request $request, Response $response) {
+    $response->getBody()->write('<a href="database">Database</a> | <a href="array">Non-database</a>');
+
+    return $response;
 });
 
 // This route demonstrates an example of using the paginator with the illuminate\database component
-$app->get('/database', function () use ($viewFactory, $events) {
+$app->get('/database', function (Request $request, Response $response) use ($viewFactory, $events) {
     // Set up the database connection -- see the database component for more info
     $capsule = new Capsule;
 
@@ -98,7 +107,9 @@ $app->get('/database', function () use ($viewFactory, $events) {
     $pageName = 'page'; // (optional, defaults to 'page') query string parameter name for the page number
 
     if (User::all()->count() <= $perPage) {
-        exit("Need more than <strong>$perPage</strong> users in your <i>illuminate_non_laravel</i> database to see this work");
+        $response->getBody()->write("Need more than <strong>$perPage</strong> users in your <i>illuminate_non_laravel</i> database to see this work");
+
+        return $response;
     }
 
     // Set $page (optional, defaults to null) to the current page;
@@ -109,17 +120,17 @@ $app->get('/database', function () use ($viewFactory, $events) {
     $results = User::orderBy('id')->paginate($perPage, $columns, $pageName, $page);
 
     // Display the table of users
-    echo '<h1>Users</h1>';
-    echo '<table>';
+    $response->getBody()->write('<h1>Users</h1>');
+    $response->getBody()->write('<table>');
     foreach ($results as $user) {
-        echo "<tr><td>User number {$user->id}</td></tr>";
+        $response->getBody()->write("<tr><td>User number {$user->id}</td></tr>");
     }
-    echo '<table>' . "\n";
+    $response->getBody()->write('<table>' . "\n");
 
     // Render the Bootstrap framework compatible pagination html;
     // the appends() method retains any other query string parameters
     // so that they can be passed along with pagination links
-    echo $results->appends($_GET)->links('pagination');
+    $response->getBody()->write($results->appends($_GET)->links('pagination')->toHtml());
 
     // additional helper methods available are:
     // $results->count();
@@ -133,6 +144,8 @@ $app->get('/database', function () use ($viewFactory, $events) {
     // $results->url($page);
     // $results->firstItem();
     // $results->lastItem();
+
+    return $response;
 });
 
 
@@ -146,7 +159,7 @@ foreach (range(1, 100) as $i) {
 }
 
 // This route demonstrates an example of paginating an array of items
-$app->get('/array', function () use ($items, $viewFactory) {
+$app->get('/array', function (Request $request, Response $response) use ($items, $viewFactory) {
     // Set up the pagination options
     $total = count($items); // total number of items
     $perPage = 25; // results per page
@@ -189,27 +202,29 @@ $app->get('/array', function () use ($items, $viewFactory) {
     });
 
     // Display a paginated table of our array
-    echo '<h1>I love hashes</h1>';
-    echo '<table>';
+    $response->getBody()->write('<h1>I love hashes</h1>');
+    $response->getBody()->write('<table>');
     foreach ($results as $result) {
-        echo "
+        $response->getBody()->write("
         <tr>
             <td>{$result['id']}</td>
             <td>{$result['hash']}</td>
-        </tr>";
+        </tr>");
     }
-    echo '<table>' . "\n";
-    echo $results->appends($_GET)->links('pagination');
+    $response->getBody()->write('<table>' . "\n");
+    $response->getBody()->write($results->appends($_GET)->links('pagination')->toHtml());
 
-    echo 'Current Page: ' . $results->currentPage();
-    echo '<br>Items Per Page: ' . $results->perPage();
+    $response->getBody()->write('Current Page: ' . $results->currentPage());
+    $response->getBody()->write('<br>Items Per Page: ' . $results->perPage());
 
     // The following methods are only available when using the LengthAwarePaginator instance
     if ($useLengthAware) {
-        echo '<br>From ' . $results->firstItem() . ' to ' . $results->lastItem();
-        echo '<br>Total Items: ' . $results->total();
-        echo '<br>Last Page: ' . $results->lastPage();
+        $response->getBody()->write('<br>From ' . $results->firstItem() . ' to ' . $results->lastItem());
+        $response->getBody()->write('<br>Total Items: ' . $results->total());
+        $response->getBody()->write('<br>Last Page: ' . $results->lastPage());
     }
+
+    return $response;
 });
 
 $app->run();
