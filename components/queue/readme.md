@@ -4,7 +4,7 @@
 
 # Database
 
-This component shows how to use Laravel's [Queue](https://laravel.com/docs/7.x/queues) features in non-Laravel applications.
+This component shows how to use Laravel's [Queue](https://laravel.com/docs/8.x/queues) features in non-Laravel applications.
 
 ## Usage
 
