@@ -4,9 +4,13 @@ require_once 'vendor/autoload.php';
 
 use App\Eloquent\User;
 use App\Eloquent\UserEncapsulated;
+use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
-use Illuminate\Container\Container;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 /**
  * Illuminate/database, aka Eloquent, can be used via Capsule. See below a plain MVP,
@@ -17,10 +21,13 @@ use Illuminate\Container\Container;
  * @source https://github.com/illuminate/database
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+// Instantiate App
+$app = AppFactory::create();
 
-$app->get('/', function () {
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
+
+$app->get('/', function (Request $request, Response $response) {
     $capsule = new Capsule;
 
     $capsule->addConnection([
@@ -53,22 +60,24 @@ $app->get('/', function () {
     $capsule->bootEloquent();
 
     // Use it
-    echo '<h2>First User using the query builder:</h2>';
-    echo '<pre>';
+    $response->getBody()->write('<h2>First User using the query builder:</h2>');
+    $response->getBody()->write('<pre>');
 
     $user = Capsule::table('users')->where('id', 1)->get();
 
-    var_dump($user);
-    echo '</pre>';
+    $response->getBody()->write(json_encode($user, JSON_PRETTY_PRINT));
+    $response->getBody()->write('</pre>');
 
-    echo '<h2>All Users using Eloquent:</h2>';
-    echo '<pre>';
+    $response->getBody()->write('<h2>All Users using Eloquent:</h2>');
+    $response->getBody()->write('<pre>');
 
     $users = User::all();
 
-    var_dump($users);
+    $response->getBody()->write(json_encode($users, JSON_PRETTY_PRINT));
 
     // More examples and docs here: https://github.com/illuminate/database
+
+    return $response;
 });
 
 /**
@@ -76,11 +85,16 @@ $app->get('/', function () {
  * for demonstration of a way to store the connection & its settings from one
  * model to another
  */
-$app->get('/encapsulated', function() {
-    echo '<pre>';
+$app->get('/encapsulated', function (Request $request, Response $response) {
+    $response->getBody()->write('<pre>');
 
     $users = UserEncapsulated::all();
 
-    var_dump($users);
+    $response->getBody()->write('<pre>');
+    $response->getBody()->write(json_encode($users, JSON_PRETTY_PRINT));
+    $response->getBody()->write('</pre>');
+
+    return $response;
 });
+
 $app->run();
