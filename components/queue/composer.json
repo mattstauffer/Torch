@@ -1,9 +1,9 @@
 {
     "require": {
-        "illuminate/queue": "~7.0",
         "illuminate/redis": "~7.0",
         "filp/whoops": "2.7.*",
         "illuminate/events": "^8.0",
+        "illuminate/queue": "^8.0",
         "pda/pheanstalk": "^4.0",
         "predis/predis": "^1.0",
         "slim/slim": "3.*",
