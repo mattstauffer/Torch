@@ -11,6 +11,13 @@ date_default_timezone_set('UTC');
 $http = new \Illuminate\Http\Client\Factory();
 
 /** @var \Illuminate\Http\Client\Response $response */
-$response = $http->get('https://jsonplaceholder.typicode.com/todos');
+$response = $http->post('https://jsonplaceholder.typicode.com/posts', [
+    'title' => 'foo',
+    'body' => 'bar',
+    'userId' => 1,
+]);
+$id = $response->json()['id'];
 
+/** @var \Illuminate\Http\Client\Response $response */
+$response = $http->get('https://jsonplaceholder.typicode.com/posts');
 echo $response->body();
