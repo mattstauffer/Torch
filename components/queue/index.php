@@ -1,14 +1,18 @@
 <?php
 
-use Predis\Client;
-use Illuminate\Queue\Worker;
-use Illuminate\Redis\RedisManager;
 use Illuminate\Container\Container;
-use Illuminate\Queue\WorkerOptions;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Events\EventServiceProvider;
 use Illuminate\Queue\Capsule\Manager as Queue;
-use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Queue\Worker;
+use Illuminate\Queue\WorkerOptions;
+use Illuminate\Redis\RedisManager;
+use Predis\Client;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 require_once 'vendor/autoload.php';
 
@@ -28,8 +32,13 @@ require_once 'vendor/autoload.php';
  * @source https://github.com/illuminate/queue
  * @author https://github.com/mattstauffer
  */
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+
+// Instantiate App
+$app = AppFactory::create();
+
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
+
 date_default_timezone_set('UTC');
 
 class App extends Container
@@ -59,26 +68,25 @@ $container->bind('redis', function () use ($container) {
 });
 
 $container->bind('exception.handler', function () {
-    return new class implements ExceptionHandler
-    {
+    return new class implements ExceptionHandler {
         public function shouldReport(Throwable $e)
         {
-            var_dump($e->getMessage());
+            throw $e;
         }
 
         public function report(Throwable $e)
         {
-            var_dump($e->getMessage());
+            throw $e;
         }
 
         public function render($request, Throwable $e)
         {
-            var_dump($e->getMessage());
+            throw $e;
         }
 
         public function renderForConsole($output, Throwable $e)
         {
-            var_dump($e->getMessage());
+            throw $e;
         }
     };
 });
@@ -105,33 +113,41 @@ $container['queue'] = $queue->getQueueManager();
 
 // END BOOTSTRAP---------------------------------------------------------------
 
-$app->get('/', function () {
-    echo '<a href="/sync">sync</a><br>' .
-        '<a href="/redis/add">Redis - Add</a><br>' .
-        '<a href="/redis/work/worker">Redis - Do work as a worker</a><br>' .
-        '<a href="/redis/work/single">Redis - Do work one-off</a><br>' .
-        '<a href="/beanstalkd/add">Beanstalkd - Add</a><br>' .
-        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a><br>' .
-        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a><br>';
+$app->get('/', function (Request $request, Response $response) {
+    $response->getBody()->write(implode('<br>', [
+        '<a href="/sync">sync</a>',
+        '<a href="/redis/add">Redis - Add</a>',
+        '<a href="/redis/work/worker">Redis - Do work as a worker</a>',
+        '<a href="/redis/work/single">Redis - Do work one-off</a>',
+        '<a href="/beanstalkd/add">Beanstalkd - Add</a>',
+        '<a href="/beanstalkd/work/worker">Beanstalkd - Do work as a worker</a>',
+        '<a href="/beanstalkd/work/single">Beanstalkd - Do work one-off</a>'
+    ]));
+
+    return $response;
 });
 
-$app->get('/sync', function () use ($container) {
+$app->get('/sync', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
 
     $queue->push('DoThing', ['string' => 'sync-' . date('r')]);
 
-    echo 'Pushed an instance of DoThing to sync driver.';
+    $response->getBody()->write('Pushed an instance of DoThing to sync driver.');
+
+    return $response;
 });
 
-$app->get('/redis/add', function () use ($container) {
+$app->get('/redis/add', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
 
     $queue->connection('redis')->push('DoThing', ['string' => 'redis-' . date('r')]);
 
-    echo 'Pushed an instance of DoThing to redis.';
+    $response->getBody()->write('Pushed an instance of DoThing to redis.');
+
+    return $response;
 });
 
-$app->get('/redis/work/worker', function () use ($container) {
+$app->get('/redis/work/worker', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -143,9 +159,11 @@ $app->get('/redis/work/worker', function () use ($container) {
     $options = new WorkerOptions();
 
     $worker->daemon('redis', 'default', $options);
+
+    return $response;
 });
 
-$app->get('/redis/work/single', function () use ($container) {
+$app->get('/redis/work/single', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -157,18 +175,23 @@ $app->get('/redis/work/single', function () use ($container) {
     $options = new WorkerOptions();
 
     $worker->runNextJob('redis', 'default', $options);
-    echo 'Ran job';
+
+    $response->getBody()->write('Ran job');
+
+    return $response;
 });
 
-$app->get('/beanstalkd/add', function () use ($container) {
+$app->get('/beanstalkd/add', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
 
     $queue->connection('beanstalkd')->push('DoThing', ['string' => 'beanstalkd-' . date('r')]);
 
-    echo 'Pushed an instance of DoThing to beanstalkd.';
+    $response->getBody()->write('Pushed an instance of DoThing to beanstalkd.');
+
+    return $response;
 });
 
-$app->get('/beanstalkd/work/worker', function () use ($container) {
+$app->get('/beanstalkd/work/worker', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -180,9 +203,11 @@ $app->get('/beanstalkd/work/worker', function () use ($container) {
     $options = new WorkerOptions();
 
     $worker->daemon('beanstalkd', 'default', $options);
+
+    return $response;
 });
 
-$app->get('/beanstalkd/work/single', function () use ($container) {
+$app->get('/beanstalkd/work/single', function (Request $request, Response $response) use ($container) {
     $queue = $container['queue'];
     $events = $container['events'];
     $handler = $container['exception.handler'];
@@ -194,7 +219,9 @@ $app->get('/beanstalkd/work/single', function () use ($container) {
     $options = new WorkerOptions();
 
     $worker->runNextJob('beanstalkd', 'default', $options);
-    echo 'Ran job';
+    $response->getBody()->write('Ran job');
+
+    return $response;
 });
 
 class DoThing
@@ -202,7 +229,7 @@ class DoThing
     public function fire($job, $data)
     {
         $handle = fopen('proof.txt', 'a');
-        fwrite($handle, "\n" . $data['string']);
+        fwrite($handle, PHP_EOL . $data['string']);
         $job->delete();
     }
 }
