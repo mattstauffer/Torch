@@ -1,0 +1,6 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.3.1 || ^7.0.1",
+        "illuminate/http": "~7.0"
+    }
+}
