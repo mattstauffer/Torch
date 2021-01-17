@@ -1,11 +1,14 @@
 {
     "require": {
-        "slim/slim": "3.*",
-        "zeuxisoo/slim-whoops": "0.6.*",
-        "filp/whoops": "2.3.2",
-        "illuminate/container": "~7.0"
+        "filp/whoops": "2.7.*",
+        "illuminate/container": "^8.0",
+        "slim/psr7": "1.2.*",
+        "slim/slim": "4.*",
+        "zeuxisoo/slim-whoops": "0.7.*"
     },
     "autoload": {
-        "psr-4": {"Acme\\": "libraries/"}
+        "psr-4": {
+            "Acme\\": "libraries/"
+        }
     }
 }
