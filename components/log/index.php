@@ -1,4 +1,10 @@
 <?php
+
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
+
 require_once 'vendor/autoload.php';
 date_default_timezone_set('America/Detroit');
 
@@ -8,10 +14,13 @@ date_default_timezone_set('America/Detroit');
  * @source https://github.com/illuminate/log
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
+// Instantiate App
+$app = AppFactory::create();
 
-$app->get('/', function ()
-{
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
+
+$app->get('/', function (Request $request, Response $response) {
     // Create new writer instance with dependencies
     $log = new Illuminate\Log\Logger(new Monolog\Logger('Torch Logger'));
 
@@ -25,7 +34,9 @@ $app->get('/', function ()
 
     $log->notice('Logging a notice message');
 
-    echo str_replace("\n", "<br>", file_get_contents('./logs/torch.log'));
+    $response->getBody()->write(str_replace(PHP_EOL, '<br>', file_get_contents('./logs/torch.log')));
+
+    return $response;
 });
 
 $app->run();
