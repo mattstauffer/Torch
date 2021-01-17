@@ -11,6 +11,10 @@ use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\Factory;
 use Illuminate\View\FileViewFinder;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 /**
  * Illuminate/view
@@ -20,10 +24,13 @@ use Illuminate\View\FileViewFinder;
  * @source https://github.com/illuminate/view
  */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+// Instantiate App
+$app = AppFactory::create();
 
-$app->get('/', function () {
+// Middleware
+$app->add(new WhoopsMiddleware(['enable' => true]));
+
+$app->get('/', function (Request $request, Response $response) {
     // Configuration
     // Note that you can set several directories where your templates are located
     $pathsToTemplates = [__DIR__ . '/templates'];
@@ -54,7 +61,11 @@ $app->get('/', function () {
         'text' => 'This is my text!',
     ];
 
-    echo $viewFactory->make('page', $templateData)->render();
+    $response->getBody()->write(
+        $viewFactory->make('page', $templateData)->render()
+    );
+
+    return $response;
 });
 
 $app->run();
