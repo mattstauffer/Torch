@@ -4,7 +4,7 @@
 
 # Session
 
-This component shows how to use Laravel's [Session](https://laravel.com/docs/7.x/session) features in non-Laravel applications.
+This component shows how to use Laravel's [Session](https://laravel.com/docs/8.x/session) features in non-Laravel applications.
 
 ## Usage
 

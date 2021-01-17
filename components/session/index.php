@@ -4,7 +4,11 @@ use Illuminate\Config\Repository as Config;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Session\SessionManager;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 use Symfony\Component\HttpFoundation\Cookie;
+use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 require_once 'vendor/autoload.php';
 
@@ -26,8 +30,11 @@ require_once 'vendor/autoload.php';
 * @contributor Jordon Brill
 */
 
-$app = new \Slim\App(['settings' => ['debug' => true]]);
-$app->add(new \Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware);
+ // Instantiate App
+ $app = AppFactory::create();
+
+ // Middleware
+ $app->add(new WhoopsMiddleware(['enable' => true]));
 
 // Init the container
 $container = new Container;
@@ -67,26 +74,28 @@ $container['session']->start();
 // END BOOTSTRAP---------------------------------------------------------------
 
 // View
-$app->get('/', function () use ($container) {
-    echo 'Current state of <code>$test</code>: ';
+$app->get('/', function (Request $request, Response $response) use ($container) {
+    $response->getBody()->write('Current state of <code>$test</code>: ');
 
     if ($container['session']->has('test')) {
-        echo 'Set<br> Value: ' . $container['session']->get('test');
+        $response->getBody()->write('Set<br> Value: ' . $container['session']->get('test'));
     } else {
-        echo 'Not set';
+        $response->getBody()->write('Not set');
     }
 
-    echo '<hr><a href="/set">Set session variable</a>';
+    $response->getBody()->write('<hr><a href="/set">Set session variable</a>');
+
+    return $response;
 });
 
 // Set
-$app->get('/set', function () use ($container) {
+$app->get('/set', function (Request $request, Response $response) use ($container) {
     $var = randomVar();
 
     if ($container['session']->has('test')) {
-        echo '<p><code>$test</code> is set. Overriding it to now be <code>' . $var . '</code></p>';
+        $response->getBody()->write('<p><code>$test</code> is set. Overriding it to now be <code>' . $var . '</code></p>');
     } else {
-        echo '<p><code>$test</code> is not set. Setting to be <code>' . $var . '</code></p>';
+        $response->getBody()->write('<p><code>$test</code> is not set. Setting to be <code>' . $var . '</code></p>');
     }
 
     $container['session']->put('test', $var);
@@ -113,7 +122,9 @@ $app->get('/set', function () use ($container) {
         $cookie->getDomain()
     );
 
-    echo '<hr><a href="/">View current value of session variable</a>';
+    $response->getBody()->write('<hr><a href="/">View current value of session variable</a>');
+
+    return $response;
 });
 
 function randomVar()
