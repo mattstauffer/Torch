@@ -28,6 +28,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Database](https://github.com/mattstauffer/Torch/tree/master/components/database)
 * [Encryption](https://github.com/mattstauffer/Torch/tree/master/components/encryption)
 * [Events](https://github.com/mattstauffer/Torch/tree/master/components/events)
+* [Filesystem](https://github.com/mattstauffer/Torch/tree/master/components/filesystem)
 * [HTTP Client](https://github.com/mattstauffer/Torch/tree/master/components/http)
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/master/components/middleware)
