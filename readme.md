@@ -35,6 +35,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination)
 * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue)
 * [Routing](https://github.com/mattstauffer/Torch/tree/master/components/routing)
+* [Schedule](https://github.com/mattstauffer/Torch/tree/master/components/schedule)
 * [Session](https://github.com/mattstauffer/Torch/tree/master/components/session)
 * [Support](https://github.com/mattstauffer/Torch/tree/master/components/support)
 * [Translation](https://github.com/mattstauffer/Torch/tree/master/components/translation)
