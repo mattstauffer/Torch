@@ -24,6 +24,16 @@ use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
  * @source https://github.com/illuminate/view
  */
 
+class App extends Container
+{
+    public function getNamespace()
+    {
+        return 'App';
+    }
+}
+
+App::getInstance()->instance(\Illuminate\Contracts\Foundation\Application::class, App::getInstance());
+
 // Instantiate App
 $app = AppFactory::create();
 
@@ -49,11 +59,15 @@ $app->get('/', function (Request $request, Response $response) {
     });
 
     $viewResolver->register('php', function () {
-        return new PhpEngine;
+        return new PhpEngine(new Filesystem());
     });
 
     $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
     $viewFactory = new Factory($viewResolver, $viewFinder, $eventDispatcher);
+    $viewFactory->setContainer(App::getInstance());
+
+    App::getInstance()->instance(\Illuminate\Contracts\View\Factory::class, $viewFactory);
+    App::getInstance()->alias(\Illuminate\Contracts\View\Factory::class, 'view');
 
     // Render template with page.blade.php
     $templateData = [
