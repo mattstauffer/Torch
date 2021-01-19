@@ -13,6 +13,8 @@ use Slim\Factory\AppFactory;
 use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 require_once 'vendor/autoload.php';
+require_once '../../src/App.php';
+require_once '../../src/ExceptionHandler.php';
 
 /**
  * Illuminate/queue
@@ -40,7 +42,7 @@ $app->add(new WhoopsMiddleware(['enable' => true]));
 date_default_timezone_set('UTC');
 
 // BOOTSTRAP-------------------------------------------------------------------
-$container = \Torch\App::getInstance();
+$container = App::getInstance();
 
 (new EventServiceProvider($container))->register();
 
@@ -57,7 +59,7 @@ $container->bind('redis', function () use ($container) {
     ]);
 });
 
-$container->bind('exception.handler', \Torch\ExceptionHandler::class);
+$container->bind('exception.handler', ExceptionHandler::class);
 
 $queue = new Queue($container);
 

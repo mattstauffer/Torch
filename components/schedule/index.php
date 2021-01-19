@@ -3,14 +3,16 @@
 use Illuminate\Filesystem\Filesystem;
 
 require_once 'vendor/autoload.php';
+require_once '../../src/App.php';
+require_once '../../src/ExceptionHandler.php';
 date_default_timezone_set('UTC');
 
 // initialize container/app
-$container = \Torch\App::getInstance();
+$container = App::getInstance();
 $container->instance('app', $container);
 
 // initialize exception handler
-$container->bind(\Illuminate\Contracts\Debug\ExceptionHandler::class, \Torch\ExceptionHandler::class);
+$container->bind(\Illuminate\Contracts\Debug\ExceptionHandler::class, ExceptionHandler::class);
 
 // initialize event dispatcher
 $container->singleton(\Illuminate\Contracts\Events\Dispatcher::class, function (\Illuminate\Container\Container $container) {

@@ -1,7 +1,5 @@
 <?php
 
-namespace Torch;
-
 use Illuminate\Container\Container;
 
 class App extends Container

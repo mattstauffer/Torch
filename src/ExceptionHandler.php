@@ -1,9 +1,6 @@
 <?php
 
-namespace Torch;
-
 use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
 
 class ExceptionHandler implements ExceptionHandlerContract

@@ -9,10 +9,5 @@
         "illuminate/events": "^8.0",
         "illuminate/filesystem": "^8.0",
         "symfony/console": "^5.1.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Torch\\": "../../src/"
-        }
     }
 }
