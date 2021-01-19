@@ -1,0 +1,13 @@
+{
+    "require": {
+        "dragonmantank/cron-expression": "^3.0.2",
+        "illuminate/cache": "^8.0",
+        "illuminate/config": "^8.0",
+        "illuminate/console": "^8.0",
+        "illuminate/container": "^8.0",
+        "illuminate/contracts": "^8.0",
+        "illuminate/events": "^8.0",
+        "illuminate/filesystem": "^8.0",
+        "symfony/console": "^5.1.4"
+    }
+}
