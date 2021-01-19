@@ -9,5 +9,10 @@
         "slim/psr7": "1.2.*",
         "slim/slim": "4.*",
         "zeuxisoo/slim-whoops": "0.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Torch\\": "../../src/"
+        }
     }
 }

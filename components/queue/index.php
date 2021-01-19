@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Events\EventServiceProvider;
 use Illuminate\Queue\Capsule\Manager as Queue;
@@ -41,16 +39,8 @@ $app->add(new WhoopsMiddleware(['enable' => true]));
 
 date_default_timezone_set('UTC');
 
-class App extends Container
-{
-    public function isDownForMaintenance()
-    {
-        return false;
-    }
-}
-
 // BOOTSTRAP-------------------------------------------------------------------
-$container = App::getInstance();
+$container = \Torch\App::getInstance();
 
 (new EventServiceProvider($container))->register();
 
@@ -67,29 +57,7 @@ $container->bind('redis', function () use ($container) {
     ]);
 });
 
-$container->bind('exception.handler', function () {
-    return new class implements ExceptionHandler {
-        public function shouldReport(Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function report(Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function render($request, Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function renderForConsole($output, Throwable $e)
-        {
-            throw $e;
-        }
-    };
-});
+$container->bind('exception.handler', \Torch\ExceptionHandler::class);
 
 $queue = new Queue($container);
 
