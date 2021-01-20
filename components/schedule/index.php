@@ -3,50 +3,16 @@
 use Illuminate\Filesystem\Filesystem;
 
 require_once 'vendor/autoload.php';
+require_once '../../src/App.php';
+require_once '../../src/ExceptionHandler.php';
 date_default_timezone_set('UTC');
-
-// custom app class with required methods
-class App extends \Illuminate\Container\Container
-{
-    public function isDownForMaintenance()
-    {
-        return false;
-    }
-
-    public function environment(): string
-    {
-        return 'torch';
-    }
-}
 
 // initialize container/app
 $container = App::getInstance();
 $container->instance('app', $container);
 
 // initialize exception handler
-$container->bind(\Illuminate\Contracts\Debug\ExceptionHandler::class, function () {
-    return new class implements \Illuminate\Contracts\Debug\ExceptionHandler {
-        public function shouldReport(Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function report(Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function render($request, Throwable $e)
-        {
-            throw $e;
-        }
-
-        public function renderForConsole($output, Throwable $e)
-        {
-            throw $e;
-        }
-    };
-});
+$container->bind(\Illuminate\Contracts\Debug\ExceptionHandler::class, ExceptionHandler::class);
 
 // initialize event dispatcher
 $container->singleton(\Illuminate\Contracts\Events\Dispatcher::class, function (\Illuminate\Container\Container $container) {
