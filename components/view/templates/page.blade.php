@@ -6,5 +6,4 @@
     <p>{{ $text }}</p>
 
     <x-alert type="success" message="Good luck!" />
-    
 @endsection
