@@ -1,6 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
+require_once '../../src/App.php';
 
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
@@ -24,14 +25,6 @@ use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
  * @source https://github.com/illuminate/view
  */
 
-class App extends Container
-{
-    public function getNamespace()
-    {
-        return 'App';
-    }
-}
-
 App::getInstance()->instance(\Illuminate\Contracts\Foundation\Application::class, App::getInstance());
 
 // Instantiate App
@@ -48,6 +41,7 @@ $app->get('/', function (Request $request, Response $response) {
 
     // Dependencies
     $filesystem = new Filesystem;
+    App::getInstance()->instance('files', $filesystem);
     $eventDispatcher = new Dispatcher(new Container);
 
     // Create View Factory capable of rendering PHP and Blade templates
@@ -59,7 +53,7 @@ $app->get('/', function (Request $request, Response $response) {
     });
 
     $viewResolver->register('php', function () {
-        return new PhpEngine(new Filesystem());
+        return App::getInstance()->make(PhpEngine::class);
     });
 
     $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
