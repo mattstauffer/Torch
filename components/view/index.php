@@ -25,6 +25,8 @@ use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
  * @source https://github.com/illuminate/view
  */
 
+// we have to bind our app class to the interface
+// as the blade compiler needs the `getNamespace()` method to guess Blade component FQCNs
 App::getInstance()->instance(\Illuminate\Contracts\Foundation\Application::class, App::getInstance());
 
 // Instantiate App
