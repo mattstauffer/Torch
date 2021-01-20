@@ -1,20 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
-
-use Illuminate\Container\Container;
-use Illuminate\Events\Dispatcher;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\View\Engines\CompilerEngine;
-use Illuminate\View\Engines\EngineResolver;
-use Illuminate\View\Engines\PhpEngine;
-use Illuminate\View\Factory;
-use Illuminate\View\FileViewFinder;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
-use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
+require_once '../../src/App.php';
 
 /**
  * Illuminate/view
@@ -24,48 +11,36 @@ use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
  * @source https://github.com/illuminate/view
  */
 
-// Instantiate App
-$app = AppFactory::create();
+$container = App::getInstance();
 
-// Middleware
-$app->add(new WhoopsMiddleware(['enable' => true]));
+// we have to bind our app class to the interface
+// as the blade compiler needs the `getNamespace()` method to guess Blade component FQCNs
+$container->instance(\Illuminate\Contracts\Foundation\Application::class, $container);
 
-$app->get('/', function (Request $request, Response $response) {
-    // Configuration
-    // Note that you can set several directories where your templates are located
-    $pathsToTemplates = [__DIR__ . '/templates'];
-    $pathToCompiledTemplates = __DIR__ . '/compiled';
+// Configuration
+// Note that you can set several directories where your templates are located
+$pathsToTemplates = [__DIR__ . '/templates'];
+$pathToCompiledTemplates = __DIR__ . '/compiled';
 
-    // Dependencies
-    $filesystem = new Filesystem;
-    $eventDispatcher = new Dispatcher(new Container);
+// Dependencies
+$filesystem = new \Illuminate\Filesystem\Filesystem;
+$eventDispatcher = new \Illuminate\Events\Dispatcher($container);
 
-    // Create View Factory capable of rendering PHP and Blade templates
-    $viewResolver = new EngineResolver;
-    $bladeCompiler = new BladeCompiler($filesystem, $pathToCompiledTemplates);
+// Create View Factory capable of rendering PHP and Blade templates
+$viewResolver = new \Illuminate\View\Engines\EngineResolver;
+$bladeCompiler = new \Illuminate\View\Compilers\BladeCompiler($filesystem, $pathToCompiledTemplates);
 
-    $viewResolver->register('blade', function () use ($bladeCompiler) {
-        return new CompilerEngine($bladeCompiler);
-    });
-
-    $viewResolver->register('php', function () {
-        return new PhpEngine;
-    });
-
-    $viewFinder = new FileViewFinder($filesystem, $pathsToTemplates);
-    $viewFactory = new Factory($viewResolver, $viewFinder, $eventDispatcher);
-
-    // Render template with page.blade.php
-    $templateData = [
-        'title' => 'Title',
-        'text' => 'This is my text!',
-    ];
-
-    $response->getBody()->write(
-        $viewFactory->make('page', $templateData)->render()
-    );
-
-    return $response;
+$viewResolver->register('blade', function () use ($bladeCompiler) {
+    return new \Illuminate\View\Engines\CompilerEngine($bladeCompiler);
 });
 
-$app->run();
+$viewFinder = new \Illuminate\View\FileViewFinder($filesystem, $pathsToTemplates);
+$viewFactory = new \Illuminate\View\Factory($viewResolver, $viewFinder, $eventDispatcher);
+$viewFactory->setContainer($container);
+$container->instance('view', $viewFactory);
+
+// Render template with page.blade.php
+echo $viewFactory->make('page', [
+    'title' => 'Title',
+    'text' => 'This is my text!',
+])->render();

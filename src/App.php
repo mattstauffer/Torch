@@ -15,17 +15,30 @@ class App extends Container
     }
 
     /**
-     * @param  string|array  $environments
+     * @param string|string[] $environments
      * @return string|bool
      *
      * @see \Illuminate\Contracts\Foundation\Application::environment()
      */
     public function environment(...$environments)
     {
-        if(!empty($environments)) {
-            return in_array('torch', $environments);
+        if(empty($environments)) {
+            return 'torch';
         }
 
-        return 'torch';
+        return in_array(
+            'torch',
+            is_array($environments[0]) ? $environments[0] : $environments
+        );
+    }
+
+    /**
+     * @return string
+     *
+     * @see \Illuminate\Contracts\Foundation\Application::getNamespace()
+     */
+    public function getNamespace(): string
+    {
+        return 'App\\';
     }
 }
