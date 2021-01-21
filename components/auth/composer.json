@@ -1,0 +1,16 @@
+{
+    "require": {
+        "illuminate/auth": "^8.23",
+        "illuminate/database": "^8.23",
+        "illuminate/events": "^8.23",
+        "illuminate/config": "^8.23",
+        "illuminate/hashing": "^8.23",
+        "illuminate/session": "^8.23",
+        "illuminate/cookie": "^8.23"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
