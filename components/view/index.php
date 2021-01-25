@@ -37,7 +37,8 @@ $viewResolver->register('blade', function () use ($bladeCompiler) {
 $viewFinder = new \Illuminate\View\FileViewFinder($filesystem, $pathsToTemplates);
 $viewFactory = new \Illuminate\View\Factory($viewResolver, $viewFinder, $eventDispatcher);
 $viewFactory->setContainer($container);
-$container->instance('view', $viewFactory);
+$container->instance(\Illuminate\Contracts\View\Factory::class, $viewFactory);
+$container->alias(\Illuminate\Contracts\View\Factory::class, 'view');
 
 // Render template with page.blade.php
 echo $viewFactory->make('page', [
