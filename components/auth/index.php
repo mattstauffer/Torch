@@ -52,6 +52,8 @@ $container->singleton('auth', function ($app) {
     return new Illuminate\Auth\AuthManager($app);
 });
 
+$container->alias('auth', \Illuminate\Contracts\Auth\Factory::class);
+
 $container->singleton('auth.driver', function ($app) {
     return $app['auth']->guard();
 });
