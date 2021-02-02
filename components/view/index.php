@@ -38,9 +38,12 @@ $viewFinder = new \Illuminate\View\FileViewFinder($filesystem, $pathsToTemplates
 $viewFactory = new \Illuminate\View\Factory($viewResolver, $viewFinder, $eventDispatcher);
 $viewFactory->setContainer($container);
 $container->instance(\Illuminate\Contracts\View\Factory::class, $viewFactory);
-$container->alias(\Illuminate\Contracts\View\Factory::class, (new class extends \Illuminate\Support\Facades\View {
-    public static function getFacadeAccessor() { return parent::getFacadeAccessor(); }
-})::getFacadeAccessor());
+$container->alias(
+    \Illuminate\Contracts\View\Factory::class, 
+    (new class extends \Illuminate\Support\Facades\View {
+        public static function getFacadeAccessor() { return parent::getFacadeAccessor(); }
+    })::getFacadeAccessor()
+);
 
 // Render template with page.blade.php
 echo $viewFactory->make('page', [
