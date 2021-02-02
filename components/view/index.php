@@ -37,10 +37,18 @@ $viewResolver->register('blade', function () use ($bladeCompiler) {
 $viewFinder = new \Illuminate\View\FileViewFinder($filesystem, $pathsToTemplates);
 $viewFactory = new \Illuminate\View\Factory($viewResolver, $viewFinder, $eventDispatcher);
 $viewFactory->setContainer($container);
+\Illuminate\Support\Facades\Facade::setFacadeApplication($container);
 $container->instance(\Illuminate\Contracts\View\Factory::class, $viewFactory);
 $container->alias(
     \Illuminate\Contracts\View\Factory::class, 
     (new class extends \Illuminate\Support\Facades\View {
+        public static function getFacadeAccessor() { return parent::getFacadeAccessor(); }
+    })::getFacadeAccessor()
+);
+$container->instance(\Illuminate\View\Compilers\BladeCompiler::class, $bladeCompiler);
+$container->alias(
+    \Illuminate\View\Compilers\BladeCompiler::class, 
+    (new class extends \Illuminate\Support\Facades\Blade {
         public static function getFacadeAccessor() { return parent::getFacadeAccessor(); }
     })::getFacadeAccessor()
 );
