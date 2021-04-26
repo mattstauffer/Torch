@@ -63,7 +63,7 @@ $app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write('<h2>First User using the query builder:</h2>');
     $response->getBody()->write('<pre>');
 
-    $user = Capsule::table('users')->where('id', 1)->get();
+    $user = Capsule::table((new User)->getTable())->where((new User)->getKeyName(), 1)->get();
 
     $response->getBody()->write(json_encode($user, JSON_PRETTY_PRINT));
     $response->getBody()->write('</pre>');
