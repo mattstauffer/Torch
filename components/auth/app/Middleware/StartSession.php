@@ -3,6 +3,7 @@
 namespace App\Middleware;
 
 use Closure;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class StartSession
 {
@@ -16,21 +17,31 @@ class StartSession
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $container = \App::getInstance();
+
         if (session_status() == PHP_SESSION_NONE) {
             // In order to maintain the session between requests, we need to populate the
             // session ID from the supplied cookie
-            $cookieName = \App::getInstance()['session']->getName();
+            $cookieName = $container['session']->getName();
 
             if (isset($_COOKIE[$cookieName])) {
                 if ($sessionId = $_COOKIE[$cookieName]) {
-                    \App::getInstance()['session']->setId($sessionId);
+                    $container['session']->setId($sessionId);
                 }
             }
 
             // Boot the session
-            \App::getInstance()['session']->start();
+            $container['session']->start();
         }
 
-        return $next($request);
+        $response = $next($request);
+
+        $response->headers->setCookie(new Cookie(
+            $container['session']->getName(), $container['session']->getId(), 
+        ));
+
+        $container['session']->save();
+
+        return $response;
     }
 }
