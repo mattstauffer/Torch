@@ -18,7 +18,7 @@ $router->group(['middleware' => 'guest'], function (Router $router) {
 
 $router->group(['middleware' => 'auth'], function (Router $router) {
     $router->get('/', function () {
-        return 'hello world!';
+        return 'hello ' . \App::getInstance()['auth']->user()->name . '!';
     });
 
     $router->get('bye', function () {

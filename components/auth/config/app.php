@@ -121,7 +121,7 @@ return [
         'path' => '/',
         'domain' => null,
         'driver' => 'file',
-        'files' => __DIR__ . '/sessions',
+        'files' => __DIR__ . '/../sessions',
         'lifetime' => 120,
         'expire_on_close' => false,
     ]

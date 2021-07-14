@@ -18,6 +18,7 @@ use Illuminate\Hashing\HashManager;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Session\SessionManager;
+use Symfony\Component\HttpFoundation\Cookie;
 
 $container = App::getInstance();
 
@@ -160,7 +161,6 @@ $router = new Router($events, $container);
 
 // Global middlewares
 $globalMiddleware = [
-    \App\Middleware\StartSession::class,
 ];
 
 // Array middlewares
@@ -180,6 +180,19 @@ require_once 'routes.php';
 // Create a request from server variables
 $request = Request::capture();
 
+// In order to maintain the session between requests, we need to populate the
+// session ID from the supplied cookie
+$cookieName = $container['session']->getName();
+
+if (isset($_COOKIE[$cookieName])) {
+    if ($sessionId = $_COOKIE[$cookieName]) {
+        $container['session']->setId($sessionId);
+    }
+}
+
+// Boot the session
+$container['session']->start();
+
 // Dispatching the request:
 // When it comes to dispatching the request, you have two options:
 // a) you either send the request directly through the router
@@ -197,9 +210,16 @@ $response = (new Pipeline($container))
         return $router->dispatch($request);
     });
 
+$response->headers->setCookie(new Cookie(
+    $container['session']->getName(), $container['session']->getId(), 
+));
+
+$container['session']->save();
+
 // Send the response back to the browser
 $response->send();
 
+// Create your user
 // User::create([
 //     'email' => 'admin',
 //     'name' => 'admin',
