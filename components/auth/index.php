@@ -18,7 +18,6 @@ use Illuminate\Hashing\HashManager;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Session\SessionManager;
-use Symfony\Component\HttpFoundation\Cookie;
 
 $container = App::getInstance();
 
@@ -155,6 +154,9 @@ $capsule->addConnection([
 $capsule->setEventDispatcher($events);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+
+$container[GateContract::class]->policy(\App\Eloquent\User::class, \App\Policies\UserPolicy::class);
+$container[GateContract::class]->define('add-user', [\App\Policies\UserPolicy::class, 'add']);
 
 // Create the router instance
 $router = new Router($events, $container);
