@@ -124,5 +124,6 @@ return [
         'files' => __DIR__ . '/../sessions',
         'lifetime' => 120,
         'expire_on_close' => false,
+        'secure' => false,
     ]
 ];
