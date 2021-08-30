@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Env;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Pluralizer;
@@ -26,10 +27,14 @@ require_once 'vendor/autoload.php';
  // Instantiate App
 $app = AppFactory::create();
 
+// Intantiate, providing path to your .env file
+$dotenv = Dotenv\Dotenv::createImmutable('.');
+$env = $dotenv->load();
+
 // Middleware
 $app->add(new WhoopsMiddleware(['enable' => true]));
 
-$app->get('/', function (Request $request, Response $response) {
+$app->get('/', function (Request $request, Response $response) use ($env) {
     // MessageBag init
     $messageBag = new MessageBag;
 
@@ -115,6 +120,16 @@ $app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write("MessageBag ({$messageBag->count()})\n");
     foreach ($messageBag->all() as $message) {
         $response->getBody()->write(" - $message\n");
+    }
+
+    $response->getBody()->write('</pre><hr>');
+
+    // Env
+    $response->getBody()->write('<h2>Env</h2>');
+    $response->getBody()->write('<pre>');
+
+    foreach ($env as $k => $v) {
+        $response->getBody()->write("{$k}: " . env($k) . "\n");
     }
 
     return $response;

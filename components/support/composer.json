@@ -4,6 +4,7 @@
         "illuminate/support": "^8.0",
         "slim/psr7": "1.2.*",
         "slim/slim": "4.*",
-        "zeuxisoo/slim-whoops": "0.7.*"
+        "zeuxisoo/slim-whoops": "0.7.*",
+        "vlucas/phpdotenv": "^5.3"
     }
 }
