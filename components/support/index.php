@@ -27,7 +27,7 @@ require_once 'vendor/autoload.php';
  // Instantiate App
 $app = AppFactory::create();
 
-// Intantiate, providing path to your .env file
+// Instantiate DotEnv, providing path to your .env file
 $dotenv = Dotenv\Dotenv::createImmutable('.');
 $env = $dotenv->load();
 
