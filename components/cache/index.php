@@ -144,7 +144,7 @@ $app->get('/memcached', function (Request $request, Response $response) {
 
     $cacheManager = new CacheManager($container);
 
-    // Get the default cache driver (redis in this case)
+    // Get the default cache driver (memcached in this case)
     $cache = $cacheManager->store();
 
     // Or if you have multiple drivers configured, you can get the memcached store like this:
