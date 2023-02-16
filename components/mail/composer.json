@@ -1,0 +1,10 @@
+{
+  "require": {
+    "filp/whoops": "2.7.*",
+    "illuminate/mail": "^8.0",
+    "illuminate/view": "^8.0",
+    "slim/psr7": "1.2.*",
+    "slim/slim": "4.*",
+    "zeuxisoo/slim-whoops": "0.7.*"
+  }
+}

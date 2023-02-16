@@ -31,6 +31,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [Filesystem](https://github.com/mattstauffer/Torch/tree/master/components/filesystem)
 * [HTTP Client](https://github.com/mattstauffer/Torch/tree/master/components/http)
 * [Log](https://github.com/mattstauffer/Torch/tree/master/components/log)
+* [Mail](https://github.com/mattstauffer/Torch/tree/master/components/mail)
 * [Middleware](https://github.com/mattstauffer/Torch/tree/master/components/middleware)
 * [Pagination](https://github.com/mattstauffer/Torch/tree/master/components/pagination)
 * [Queue](https://github.com/mattstauffer/Torch/tree/master/components/queue)
@@ -42,10 +43,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 * [View](https://github.com/mattstauffer/Torch/tree/master/components/view)
 * [Validation](https://github.com/mattstauffer/Torch/tree/master/components/validation)
 
-
-### Need to be moved over from 4.2
-
-* [Mail](https://github.com/mattstauffer/Torch/tree/4.2/public/mail) - Never finished porting from 4.2-5.1 and then it never got the simpler upgrades from 5.1 until today
 
 ## Other Packages
 
